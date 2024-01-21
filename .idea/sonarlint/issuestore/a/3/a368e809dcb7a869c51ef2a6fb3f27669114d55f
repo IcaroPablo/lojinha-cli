@@ -1,0 +1,7 @@
+
+g	java:S112*"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8úÙ‘¾Ñ1
+I
+java:S1481 ",Remove this unused "usuario" local variable.(Û¡¥å8’Ú‘¾Ñ1
+G	java:S106R"+Replace this use of System.out by a logger.(—Ÿûõ8—Ú‘¾Ñ1
+N
+java:S1068",Remove this unused "usuarios" private field.(Ö°Ë·ÿÿÿÿÿ8›Ú‘¾Ñ1
