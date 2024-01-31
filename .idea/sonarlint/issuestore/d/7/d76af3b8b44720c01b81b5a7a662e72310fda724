@@ -1,3 +1,55 @@
 
-ž
-java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Çµí‘8§éíˆÏ1
+F	java:S106"+Replace this use of System.out by a logger.(Ã’ã
+8à¶È„Ö1
+L	java:S106"+Replace this use of System.out by a logger.(šêžñþÿÿÿÿ8â¶È„Ö1
+L	java:S106"+Replace this use of System.out by a logger.(³‡Õ¢ûÿÿÿÿ8ä¶È„Ö1
+G	java:S106*"+Replace this use of System.out by a logger.(·Ä“Î8å¶È„Ö1
+G	java:S1061"+Replace this use of System.out by a logger.(ƒé·ƒ8ç¶È„Ö1
+L	java:S1062"+Replace this use of System.out by a logger.(‰¼Þéøÿÿÿÿ8è¶È„Ö1
+L	java:S1063"+Replace this use of System.out by a logger.(ô÷Ê¿øÿÿÿÿ8é¶È„Ö1
+L	java:S1068"+Replace this use of System.out by a logger.(šêžñþÿÿÿÿ8ê¶È„Ö1
+G	java:S106;"+Replace this use of System.out by a logger.(…ü¿”8ê¶È„Ö1
+L	java:S106<"+Replace this use of System.out by a logger.(† ¥Åùÿÿÿÿ8ê¶È„Ö1
+L	java:S106@"+Replace this use of System.out by a logger.(ƒõÕ£ùÿÿÿÿ8ê¶È„Ö1
+L	java:S106B"+Replace this use of System.out by a logger.(ËÐ®¨þÿÿÿÿ8ê¶È„Ö1
+G	java:S106D"+Replace this use of System.out by a logger.(‹™„´8ê¶È„Ö1
+G	java:S106Q"+Replace this use of System.out by a logger.(³å¥Þ8ë¶È„Ö1
+G	java:S106U"+Replace this use of System.out by a logger.(æòîó8ë¶È„Ö1
+G	java:S106Y"+Replace this use of System.out by a logger.(Êƒ¬´8ì¶È„Ö1
+G	java:S106]"+Replace this use of System.out by a logger.(ƒáÓ´8ì¶È„Ö1
+L	java:S106^"+Replace this use of System.out by a logger.(£þ€Šüÿÿÿÿ8ì¶È„Ö1
+L	java:S106a"+Replace this use of System.out by a logger.(ÕÔˆªúÿÿÿÿ8ì¶È„Ö1
+L	java:S106e"+Replace this use of System.out by a logger.(Ê¦ûÿÿÿÿ8ì¶È„Ö1
+L	java:S106f"+Replace this use of System.out by a logger.(¦á¬Áþÿÿÿÿ8ì¶È„Ö1
+G	java:S106k"+Replace this use of System.out by a logger.(§Ö¶€8ì¶È„Ö1
+G	java:S106o"+Replace this use of System.out by a logger.(õ‘ÁŽ8ì¶È„Ö1
+G	java:S106s"+Replace this use of System.out by a logger.(©…àº8ì¶È„Ö1
+F	java:S106w"+Replace this use of System.out by a logger.(âÃäz8í¶È„Ö1
+L	java:S106~"+Replace this use of System.out by a logger.(´áÌ—øÿÿÿÿ8í¶È„Ö1
+G	java:S106"+Replace this use of System.out by a logger.(Ã„ç8í¶È„Ö1
+H	java:S106€"+Replace this use of System.out by a logger.(±Œ¹š8í¶È„Ö1
+G	java:S106"+Replace this use of System.out by a logger.(÷úôt8í¶È„Ö1
+M	java:S106‚"+Replace this use of System.out by a logger.(´½îˆÿÿÿÿÿ8í¶È„Ö1
+H	java:S106ƒ"+Replace this use of System.out by a logger.(À·™¹8í¶È„Ö1
+H	java:S106„"+Replace this use of System.out by a logger.(­øœ×8í¶È„Ö1
+H	java:S106…"+Replace this use of System.out by a logger.(úì8í¶È„Ö1
+M	java:S106’"+Replace this use of System.out by a logger.(îÞžüÿÿÿÿ8î¶È„Ö1
+M	java:S106–"+Replace this use of System.out by a logger.(éÙÓüÿÿÿÿ8î¶È„Ö1
+M	java:S106™"+Replace this use of System.out by a logger.(Ï‚—ïøÿÿÿÿ8ï¶È„Ö1
+H	java:S106œ"+Replace this use of System.out by a logger.(›ƒÛÁ8ï¶È„Ö1
+H	java:S106 "+Replace this use of System.out by a logger.(îýë•8ï¶È„Ö1
+M	java:S106¦"+Replace this use of System.out by a logger.(ßñÌ‹úÿÿÿÿ8ï¶È„Ö1
+G	java:S106§"+Replace this use of System.out by a logger.(ßÖ³X8ï¶È„Ö1
+H	java:S106¨"+Replace this use of System.out by a logger.(ˆÉÿ8ï¶È„Ö1
+M	java:S106©"+Replace this use of System.out by a logger.(ðøÝ‰øÿÿÿÿ8ï¶È„Ö1
+G	java:S106ª"+Replace this use of System.out by a logger.(ö¨ÃU8ï¶È„Ö1
+H	java:S106«"+Replace this use of System.out by a logger.(‰Ø8ï¶È„Ö1
+M	java:S106¯"+Replace this use of System.out by a logger.(ÍŽ—Åøÿÿÿÿ8ñ¶È„Ö1
+G	java:S106°"+Replace this use of System.out by a logger.(ßÖ³X8ñ¶È„Ö1
+H	java:S106±"+Replace this use of System.out by a logger.(˜Ì­Å8ñ¶È„Ö1
+M	java:S106²"+Replace this use of System.out by a logger.(þ¥íŒûÿÿÿÿ8ñ¶È„Ö1
+M	java:S106³"+Replace this use of System.out by a logger.(·†‡øúÿÿÿÿ8ñ¶È„Ö1
+H	java:S106´"+Replace this use of System.out by a logger.(Ù‘ÀÙ8ñ¶È„Ö1
+H	java:S106µ"+Replace this use of System.out by a logger.(‰Ø8ñ¶È„Ö1
+è
+java:S6541"ÅA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 96 to 64, Complexity from 16 to 14, Nesting Level from 4 to 2, Number of Variables from 11 to 6.(òá–Ýýÿÿÿÿ8ò¶È„Ö1

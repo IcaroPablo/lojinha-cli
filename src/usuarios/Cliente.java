@@ -1,6 +1,5 @@
 package src.usuarios;
 
 public class Cliente extends Usuario {
-  public Cliente(String nome, String telefone, String cpf, String senha) {
-  }
+  public Cliente(String cpf, String nome, String telefone) {super(cpf, nome, telefone, false);}
 }

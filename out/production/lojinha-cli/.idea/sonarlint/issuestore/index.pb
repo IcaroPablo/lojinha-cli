@@ -13,3 +13,5 @@ I
 src/usuarios/Cliente.java,0/9/0917ec56151985d1a1dd50a28820a3d354b58bdd
 I
 src/usuarios/Usuario.java,0/6/065f04faf2b46121b4545e64faa994ea6fadd77f
+P
+ src/usuarios/UsuarioManager.java,a/3/a368e809dcb7a869c51ef2a6fb3f27669114d55f

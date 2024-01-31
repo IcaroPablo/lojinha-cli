@@ -1,5 +1,7 @@
 package src.usuarios;
 
+import com.sun.tools.javac.Main;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -11,96 +13,151 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UsuarioManager {
-  private static final String NOME_ARQUIVO = "usuarios.txt";
+  private static final String DADOS_LOGIN = "login_usuarios.csv";
+  private static final String BD_USUARIOS = "bd_usuarios.csv";
   private List<Usuario> usuarios;
 
   public UsuarioManager() throws FileNotFoundException {
     this.usuarios = new ArrayList<>();
-    carregarUsuarios();
+    createIfNotExists();
+//    carregarUsuarios();
   }
 
-  private void carregarUsuarios() throws FileNotFoundException {
-    try (BufferedReader reader = new BufferedReader(new FileReader(NOME_ARQUIVO))) {
+  public boolean login(String cpf, String senha) {
+    try (BufferedReader reader = new BufferedReader(new FileReader(BD_USUARIOS))) {
       String linha;
       while ((linha = reader.readLine()) != null) {
         String[] dados = linha.split(",");
-        if (dados.length >= 4) {
-          boolean administrador = false;
-          if (dados.length == 5 && Boolean.parseBoolean(dados[4])) {
-            administrador = true;
-          }
-          Usuario usuario;
-          if(administrador) {
-            usuario = new Gerente(dados[0], dados[1], dados[2], dados[3], true);
-          } else {
-            usuario = new Cliente(dados[0], dados[1], dados[2], dados[3]);
-          }
-
+        if (dados.length == 3 && dados[0].equals(cpf) && dados[1].equals(senha)) {
+          return Boolean.parseBoolean(dados[2]);
         }
       }
+      return false;
     } catch (IOException e) {
-      throw new RuntimeException(e);
+      throw new RuntimeException("Erro ao carregar usuários ", e);
     }
   }
 
-  public void createIfNotExists() {
-    try {
-      if (!arquivoExiste(NOME_ARQUIVO)) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(NOME_ARQUIVO))) {
-          writer.write("Usuário,Senha");
-          writer.newLine();
-        }
-      }
+  public void salvarDadosAcessoUsuario(String cpf, String senha, String administrador) {
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(DADOS_LOGIN, true))) {
+      writer.write(cpf + "," + senha + "," + administrador);
+      writer.newLine();
     } catch (IOException e) {
-      e.printStackTrace();
+      throw new RuntimeException("Erro ao salvar usuário ", e);
     }
   }
 
-  public boolean autenticarUsuario(String usuario, String senha) {
-    try (BufferedReader reader = new BufferedReader(new FileReader(NOME_ARQUIVO))) {
+  public void salvarUsuario(String cpf, String nome, String telefone, String administrador) {
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(BD_USUARIOS, true))) {
+      writer.write(cpf + "," + nome + "," + telefone + "," + administrador);
+      writer.newLine();
+    } catch (IOException e) {
+      throw new RuntimeException("Erro ao salvar usuário ", e);
+    }
+  }
+
+  public String bemVindoUsuario(String cpf) {
+    try (BufferedReader reader = new BufferedReader(new FileReader(DADOS_LOGIN))) {
       String linha;
       while ((linha = reader.readLine()) != null) {
         String[] dados = linha.split(",");
-        if (dados.length == 2 && dados[0].equals(usuario) && dados[1].equals(senha)) {
+        if(dados.length >= 3 && dados[0].equals(cpf)) {
+          return "Boas-vindas, " + dados[1] + "!";
+        }
+      }
+    } catch (IOException e) {
+      throw new RuntimeException("Erro ao buscar o nome do usuário. ", e);
+    }
+    return null;
+  }
+
+  public boolean auntenticarUsuario(String cpf, String senha) {
+    try (BufferedReader reader = new BufferedReader(new FileReader(BD_USUARIOS))) {
+      String linha;
+      while ((linha = reader.readLine()) != null) {
+        String[] dados = linha.split(",");
+        if (dados.length == 3 && dados[0].equals(cpf) && dados[1].equals(senha)) {
           return true;
         }
       }
     } catch (IOException e) {
-      e.printStackTrace();
+      throw new RuntimeException("Erro ao autenticar usuário", e);
     }
     return false;
-  }
-
-  public void cadastrarUsuario(String usuario, String senha) {
-    try {
-      if (!usuarioExiste(usuario)) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(NOME_ARQUIVO, true))) {
-          writer.write(usuario + "," + senha);
-          writer.newLine();
-        }
-      } else {
-        System.out.println("Usuário já cadastrado.");
-      }
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
   }
 
   private boolean arquivoExiste(String nomeArquivo) {
     return new File(nomeArquivo).exists();
   }
 
-  private boolean usuarioExiste(String usuario) {
-    try (BufferedReader reader = new BufferedReader(new FileReader(NOME_ARQUIVO))) {
+  public boolean usuarioExiste(String cpf) {
+    try (BufferedReader reader = new BufferedReader(new FileReader(BD_USUARIOS))) {
       String linha;
       while ((linha = reader.readLine()) != null) {
         String[] dados = linha.split(",");
-        if (dados.length > 0 && dados[0].equals(usuario)) {
+        if (dados.length > 0 && dados[0].equals(cpf)) {
           return true;
         }
       }
     } catch (IOException e) {
+      throw new RuntimeException("Erro ao verificar se o usuário existe", e);
+    }
+    return false;
+    }
+
+  public void createIfNotExists() {
+    try {
+      if (!arquivoExiste(DADOS_LOGIN)) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(DADOS_LOGIN))) {
+          writer.write("CPF, SENHA, ADMINISTRADOR");
+          writer.newLine();
+        }
+      }
+      if (!arquivoExiste(BD_USUARIOS)) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(BD_USUARIOS))) {
+          writer.write("CPF, NOME, TELEFONE, ADMINISTRADOR");
+          writer.newLine();
+        }
+      }
+    } catch (IOException e) {
       e.printStackTrace();
+    }
+  }
+
+  public void removerUsuario(String cpf) {
+    List<Usuario> listaUsuarios = new ArrayList<>();
+
+    for (Usuario usuario : usuarios) {
+      if (!usuario.getCpf().equals(cpf)) {
+        listaUsuarios.add(usuario);
+      }
+    }
+
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(BD_USUARIOS))) {
+      writer.write("CPF, NOME, TELEFONE, ADMINISTRADOR");
+      writer.newLine();
+
+      for (Usuario usuario : listaUsuarios) {
+        writer.write(usuario.getCpf() + "," + usuario.getNome() + "," + usuario.getTelefone() + "," + usuario.getAdministrador());
+        writer.newLine();
+      }
+      System.out.println("Usuário removido com sucesso.");
+    } catch (IOException e) {
+      throw new RuntimeException("Erro ao remover usuário.", e);
+    }
+  }
+
+  public boolean isAdministrador(String cpf) {
+    try (BufferedReader reader = new BufferedReader(new FileReader(BD_USUARIOS))) {
+      String linha;
+      while ((linha = reader.readLine()) != null) {
+        String[] dados = linha.split(",");
+        if (dados.length > 0 && dados[0].equals(cpf)) {
+          return Boolean.parseBoolean(dados[3]);
+        }
+      }
+    } catch (IOException e) {
+      throw new RuntimeException("Erro ao verificar se o usuário é administrador", e);
     }
     return false;
   }

@@ -1,7 +1,13 @@
 
-g	java:S112*"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8úÙ‘¾Ñ1
-I
-java:S1481 ",Remove this unused "usuario" local variable.(Û¡¥å8’Ú‘¾Ñ1
-G	java:S106R"+Replace this use of System.out by a logger.(—Ÿûõ8—Ú‘¾Ñ1
-N
-java:S1068",Remove this unused "usuarios" private field.(Ö°Ë·ÿÿÿÿÿ8›Ú‘¾Ñ1
+g	java:S112%"FDefine and throw a dedicated exception instead of using a generic one.(¦Ñşšûÿÿÿÿ8È÷Ÿ„Ö1
+b	java:S112."FDefine and throw a dedicated exception instead of using a generic one.(Õ¸õ·8É÷Ÿ„Ö1
+b	java:S1127"FDefine and throw a dedicated exception instead of using a generic one.(Õ¸õ·8É÷Ÿ„Ö1
+g	java:S112E"FDefine and throw a dedicated exception instead of using a generic one.(—êı†ùÿÿÿÿ8É÷Ÿ„Ö1
+b	java:S112T"FDefine and throw a dedicated exception instead of using a generic one.(î‚ğ‚8É÷Ÿ„Ö1
+g	java:S112g"FDefine and throw a dedicated exception instead of using a generic one.(ß¯õÿÿÿÿÿ8É÷Ÿ„Ö1
+c	java:S112’"FDefine and throw a dedicated exception instead of using a generic one.(•ª¹Á8É÷Ÿ„Ö1
+c	java:S112 "FDefine and throw a dedicated exception instead of using a generic one.(–Ä¯8š–­„Ö1
+]	java:S125"<This block of commented-out lines of code should be removed.(¹ô¾üÿÿÿÿ8ç÷Ÿ„Ö1
+H	java:S106"+Replace this use of System.out by a logger.(ãä¹Í8ñ÷Ÿ„Ö1
+W
+java:S1128"5Remove this unused import 'com.sun.tools.javac.Main'.( ƒ™şüÿÿÿÿ8–™£„Ö1

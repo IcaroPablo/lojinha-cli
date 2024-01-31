@@ -1,46 +1,46 @@
 package src.usuarios;
 
 public class Usuario {
+  private String cpf;
   private String nome;
   private String telefone;
-  private String cpf;
-  private String senha;
+  private Boolean administrador;
 
-
-  public Usuario() {}
-
-  public Usuario(String nome, String telefone, String cpf, String senha) {
+  public Usuario(String cpf, String nome, String telefone, Boolean administrador) {
+    this.cpf = cpf;
     this.nome = nome;
     this.telefone = telefone;
-    this.cpf = cpf;
-    this.senha = senha;
-  }
-
-  public String getNome() {
-    return nome;
-  }
-
-  public String getTelefone() {
-    return telefone;
+    this.administrador = administrador;
   }
 
   public String getCpf() {
     return cpf;
   }
 
-  public String getSenha() { return senha; }
+  public void setCpf(String cpf) {
+    this.cpf = cpf;
+  }
+  public String getNome() {
+    return nome;
+  }
 
   public void setNome(String nome) {
     this.nome = nome;
+  }
+
+  public String getTelefone() {
+    return telefone;
   }
 
   public void setTelefone(String telefone) {
     this.telefone = telefone;
   }
 
-  public void setCpf(String cpf) {
-    this.cpf = cpf;
+  public Boolean getAdministrador() {
+    return administrador;
   }
 
-  public void setSenha(String senha) { this.senha = senha; }
+  public void setAdministrador(Boolean administrador) {
+    this.administrador = administrador;
+  }
 }

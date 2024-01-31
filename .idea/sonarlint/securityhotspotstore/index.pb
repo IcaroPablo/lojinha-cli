@@ -15,3 +15,11 @@ I
 src/usuarios/Usuario.java,0/6/065f04faf2b46121b4545e64faa994ea6fadd77f
 P
  src/usuarios/UsuarioManager.java,a/3/a368e809dcb7a869c51ef2a6fb3f27669114d55f
+M
+src/usuarios/GerenteImpl.java,0/b/0bb22ad35237619ef17806ceb20592468b893481
+G
+src/usuarios/Login.java,b/d/bde719cdd85d11c9b0944232bc2a21e42ca33486
+B
+login_usuarios.csv,4/e/4e387375a094e1c0aac75b5b2f5c2660e1271f07
+?
+bd_usuarios.csv,b/9/b9ac52e2e2060897d6ab75ed77e687b7cb9609d2

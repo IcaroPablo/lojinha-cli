@@ -1,14 +1,23 @@
 package src.usuarios;
 
 public class Gerente extends Usuario {
-  private boolean administrador;
 
-  public Gerente(String nome, String telefone, String cpf, String senha, boolean administrador) {
-    super(nome, telefone, cpf, senha);
-    this.administrador = administrador;
+  public Gerente(String cpf, String nome, String telefone) {
+    super(cpf, nome, telefone, true);
+  }
+  @Override
+  public boolean equals(Object obj) {
+    return false;
   }
 
-  public boolean isAdministrador() {
-    return administrador;
+  @Override
+  public int hashCode() {
+    return 0;
   }
+
+  @Override
+  public String toString() {
+    return null;
+  }
+
 }
