@@ -71,21 +71,6 @@ public class UsuarioManager {
     return null;
   }
 
-  public boolean auntenticarUsuario(String cpf, String senha) {
-    try (BufferedReader reader = new BufferedReader(new FileReader(BD_USUARIOS))) {
-      String linha;
-      while ((linha = reader.readLine()) != null) {
-        String[] dados = linha.split(",");
-        if (dados.length == 3 && dados[0].equals(cpf) && dados[1].equals(senha)) {
-          return true;
-        }
-      }
-    } catch (IOException e) {
-      throw new RuntimeException("Erro ao autenticar usuário", e);
-    }
-    return false;
-  }
-
   private boolean arquivoExiste(String nomeArquivo) {
     return new File(nomeArquivo).exists();
   }
@@ -160,5 +145,127 @@ public class UsuarioManager {
       throw new RuntimeException("Erro ao verificar se o usuário é administrador", e);
     }
     return false;
+  }
+
+  public void visualizarCadastro() {
+    try (BufferedReader reader = new BufferedReader(new FileReader(BD_USUARIOS))) {
+      String linha;
+      while ((linha = reader.readLine()) != null) {
+        String[] dados = linha.split(",");
+        if (dados.length >= 4) {
+          String cpf = dados[0];
+          String nome = dados[1];
+          String telefone = dados[2];
+          String administrador = dados[3];
+          System.out.println("CPF: " + cpf);
+          System.out.println("Nome: " + nome);
+          System.out.println("Telefone: " + telefone);
+          System.out.println("Administrador: " + administrador);
+          System.out.println("=".repeat(70));
+        }
+      }
+    } catch (IOException e) {
+      throw new RuntimeException("Erro ao visualizar cadastro de usuários", e);
+    }
+  }
+
+  public void visualizarProprioCadastro(String cpf) {
+    try (BufferedReader reader = new BufferedReader(new FileReader(BD_USUARIOS))) {
+      String linha;
+      while ((linha = reader.readLine()) != null) {
+        String[] dados = linha.split(",");
+        if (dados.length >= 4) {
+          if (cpf.equals(dados[0])) {
+            cpf = dados[0];
+            String nome = dados[1];
+            String telefone = dados[2];
+            String administrador = dados[3].equals("true") ? "Gerente" : "Cliente";
+            System.out.println("=".repeat(70));
+            System.out.println("CPF: " + cpf);
+            System.out.println("Nome: " + nome);
+            System.out.println("Telefone: " + telefone);
+            System.out.println("Cadastro de: " + administrador);
+            System.out.println("=".repeat(70));
+          }
+        }
+      }
+    } catch (IOException e) {
+      throw new RuntimeException("Erro ao visualizar cadastro de usuários", e);
+    }
+  }
+
+  public void alterarProprioCadastro(String cpf, String novoNome, String novoTelefone) {
+    try (BufferedReader reader = new BufferedReader(new FileReader(BD_USUARIOS));
+         BufferedWriter writer = new BufferedWriter(new FileWriter("temp.txt"))) {
+
+      String linha;
+      while ((linha = reader.readLine()) != null) {
+        String[] dados = linha.split(",");
+        if (dados.length >= 4 && cpf.equals(dados[0])) {
+          dados[1] = novoNome;
+          dados[2] = novoTelefone;
+        }
+        writer.write(String.join(",", dados));
+        writer.newLine();
+      }
+    } catch (IOException e) {
+      throw new RuntimeException("Erro ao alterar cadastro de usuário", e);
+    }
+
+    File file = new File(BD_USUARIOS);
+    File tempFile = new File("temp.txt");
+    if (tempFile.renameTo(file)) {
+      System.out.println("Cadastro alterado com sucesso.");
+    } else {
+      throw new RuntimeException("Erro ao renomear o arquivo temporário.");
+    }
+  }
+
+  public void removerProprioCadastro(String cpf) {
+    try (BufferedReader reader = new BufferedReader(new FileReader(BD_USUARIOS));
+         BufferedWriter writer = new BufferedWriter(new FileWriter("temp_bd.txt"))) {
+
+      String linha;
+      while ((linha = reader.readLine()) != null) {
+        String[] dados = linha.split(",");
+        if (dados.length >= 4 && cpf.equals(dados[0])) {
+          continue;
+        }
+        writer.write(linha);
+        writer.newLine();
+      }
+    } catch (IOException e) {
+      throw new RuntimeException("Erro ao remover cadastro de usuário do arquivo BD_USUARIOS", e);
+    }
+
+    File fileBD = new File(BD_USUARIOS);
+    File tempFileBD = new File("temp_bd.txt");
+    if (!tempFileBD.renameTo(fileBD)) {
+      throw new RuntimeException("Erro ao renomear o arquivo temporário para BD_USUARIOS.");
+    }
+
+    try (BufferedReader reader = new BufferedReader(new FileReader(DADOS_LOGIN));
+         BufferedWriter writer = new BufferedWriter(new FileWriter("temp_login.txt"))) {
+
+      String linha;
+      while ((linha = reader.readLine()) != null) {
+        String[] dados = linha.split(",");
+        if (dados.length >= 3 && cpf.equals(dados[0])) {
+          continue;
+        }
+        writer.write(linha);
+        writer.newLine();
+      }
+    } catch (IOException e) {
+      throw new RuntimeException("Erro ao remover cadastro de usuário do arquivo LOGIN_USUARIOS", e);
+    }
+
+    File fileLogin = new File(DADOS_LOGIN);
+    File tempFileLogin = new File("temp_login.txt");
+    if (!tempFileLogin.renameTo(fileLogin)) {
+      throw new RuntimeException("Erro ao renomear o arquivo temporário para LOGIN_USUARIOS.");
+    }
+
+    System.out.println("Cadastro removido com sucesso.");
   }
 }
