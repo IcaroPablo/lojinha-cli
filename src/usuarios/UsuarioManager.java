@@ -1,7 +1,5 @@
 package src.usuarios;
 
-import com.sun.tools.javac.Main;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -12,25 +10,34 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static src.constants.Constantes.BD_GERENTES;
+import static src.constants.Constantes.BD_USUARIOS;
+import static src.constants.Constantes.CLIENTE;
+import static src.constants.Constantes.GERENTE;
+import static src.constants.Constantes.LOGIN_GERENTES;
+import static src.constants.Constantes.LOGIN_USUARIOS;
+
 public class UsuarioManager {
-  private static final String DADOS_LOGIN = "login_usuarios.csv";
-  private static final String BD_USUARIOS = "bd_usuarios.csv";
+
+
   private List<Usuario> usuarios;
 
   public UsuarioManager() throws FileNotFoundException {
     this.usuarios = new ArrayList<>();
     createIfNotExists();
-//    carregarUsuarios();
   }
 
-  public boolean login(String cpf, String senha) {
-    try (BufferedReader reader = new BufferedReader(new FileReader(BD_USUARIOS))) {
+  public boolean login(String cpf, String senha, String fileName) {
+    try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
       String linha;
       while ((linha = reader.readLine()) != null) {
         String[] dados = linha.split(",");
-        if (dados.length == 3 && dados[0].equals(cpf) && dados[1].equals(senha)) {
-          return Boolean.parseBoolean(dados[2]);
+        if (LOGIN_USUARIOS.equals(fileName) && dados.length == 3 && dados[0].equals(cpf) && dados[1].equals(senha)) {
+          return dados[2].equals(CLIENTE);
+        } else if(LOGIN_GERENTES.equals(fileName) && dados.length == 3 && dados[0].equals(cpf) && dados[1].equals(senha)) {
+          return dados[2].equals(GERENTE);
         }
+
       }
       return false;
     } catch (IOException e) {
@@ -38,45 +45,47 @@ public class UsuarioManager {
     }
   }
 
-  public void salvarDadosAcessoUsuario(String cpf, String senha, String administrador) {
-    try (BufferedWriter writer = new BufferedWriter(new FileWriter(DADOS_LOGIN, true))) {
-      writer.write(cpf + "," + senha + "," + administrador);
+  public void salvarDadosAcessoUsuario(String cpf, String senha, String userType, String fileName) {
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
+      writer.write(cpf + "," + senha + "," + userType);
       writer.newLine();
     } catch (IOException e) {
       throw new RuntimeException("Erro ao salvar usuário ", e);
     }
   }
 
-  public void salvarUsuario(String cpf, String nome, String telefone, String administrador) {
-    try (BufferedWriter writer = new BufferedWriter(new FileWriter(BD_USUARIOS, true))) {
-      writer.write(cpf + "," + nome + "," + telefone + "," + administrador);
+  public void salvarUsuario(String cpf, String nome, String telefone, String userType, String fileName) {
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
+      writer.write(cpf + "," + nome + "," + telefone + "," + userType);
       writer.newLine();
     } catch (IOException e) {
       throw new RuntimeException("Erro ao salvar usuário ", e);
     }
   }
 
-  public String bemVindoUsuario(String cpf) {
-    try (BufferedReader reader = new BufferedReader(new FileReader(DADOS_LOGIN))) {
+  public void bemVindoUsuario(String cpf, String fileName) {
+    try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
       String linha;
       while ((linha = reader.readLine()) != null) {
         String[] dados = linha.split(",");
         if(dados.length >= 3 && dados[0].equals(cpf)) {
-          return "Boas-vindas, " + dados[1] + "!";
+          System.out.print("=".repeat(15));
+          System.out.printf("Boas-vindas, %s!", dados[1]);
+          System.out.print("=".repeat(15));
+          System.out.println();
         }
       }
     } catch (IOException e) {
       throw new RuntimeException("Erro ao buscar o nome do usuário. ", e);
     }
-    return null;
   }
 
   private boolean arquivoExiste(String nomeArquivo) {
     return new File(nomeArquivo).exists();
   }
 
-  public boolean usuarioExiste(String cpf) {
-    try (BufferedReader reader = new BufferedReader(new FileReader(BD_USUARIOS))) {
+  public boolean usuarioExiste(String cpf, String fileName) {
+    try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
       String linha;
       while ((linha = reader.readLine()) != null) {
         String[] dados = linha.split(",");
@@ -88,12 +97,12 @@ public class UsuarioManager {
       throw new RuntimeException("Erro ao verificar se o usuário existe", e);
     }
     return false;
-    }
+  }
 
   public void createIfNotExists() {
     try {
-      if (!arquivoExiste(DADOS_LOGIN)) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(DADOS_LOGIN))) {
+      if (!arquivoExiste(LOGIN_USUARIOS)) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(LOGIN_USUARIOS))) {
           writer.write("CPF, SENHA, ADMINISTRADOR");
           writer.newLine();
         }
@@ -101,6 +110,18 @@ public class UsuarioManager {
       if (!arquivoExiste(BD_USUARIOS)) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(BD_USUARIOS))) {
           writer.write("CPF, NOME, TELEFONE, ADMINISTRADOR");
+          writer.newLine();
+        }
+      }
+      if (!arquivoExiste(BD_GERENTES)) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(BD_GERENTES))) {
+          writer.write("CPF, NOME, TELEFONE, ADMINISTRADOR");
+          writer.newLine();
+        }
+      }
+      if (!arquivoExiste(LOGIN_GERENTES)) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(LOGIN_GERENTES))) {
+          writer.write("CPF, SENHA, ADMINISTRADOR");
           writer.newLine();
         }
       }
@@ -147,8 +168,9 @@ public class UsuarioManager {
     return false;
   }
 
-  public void visualizarCadastro() {
+  public void visualizarCadastros() {
     try (BufferedReader reader = new BufferedReader(new FileReader(BD_USUARIOS))) {
+      reader.readLine();
       String linha;
       while ((linha = reader.readLine()) != null) {
         String[] dados = linha.split(",");
@@ -169,8 +191,8 @@ public class UsuarioManager {
     }
   }
 
-  public void visualizarProprioCadastro(String cpf) {
-    try (BufferedReader reader = new BufferedReader(new FileReader(BD_USUARIOS))) {
+  public void visualizarCadastro(String cpf, String fileName) {
+    try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
       String linha;
       while ((linha = reader.readLine()) != null) {
         String[] dados = linha.split(",");
@@ -194,7 +216,7 @@ public class UsuarioManager {
     }
   }
 
-  public void alterarProprioCadastro(String cpf, String novoNome, String novoTelefone) {
+  public void alterarCadastro(String cpf, String novoNome, String novoTelefone) {
     try (BufferedReader reader = new BufferedReader(new FileReader(BD_USUARIOS));
          BufferedWriter writer = new BufferedWriter(new FileWriter("temp.txt"))) {
 
@@ -221,7 +243,7 @@ public class UsuarioManager {
     }
   }
 
-  public void removerProprioCadastro(String cpf) {
+  public void removerCadastro(String cpf) {
     try (BufferedReader reader = new BufferedReader(new FileReader(BD_USUARIOS));
          BufferedWriter writer = new BufferedWriter(new FileWriter("temp_bd.txt"))) {
 
@@ -244,7 +266,7 @@ public class UsuarioManager {
       throw new RuntimeException("Erro ao renomear o arquivo temporário para BD_USUARIOS.");
     }
 
-    try (BufferedReader reader = new BufferedReader(new FileReader(DADOS_LOGIN));
+    try (BufferedReader reader = new BufferedReader(new FileReader(LOGIN_USUARIOS));
          BufferedWriter writer = new BufferedWriter(new FileWriter("temp_login.txt"))) {
 
       String linha;
@@ -260,7 +282,7 @@ public class UsuarioManager {
       throw new RuntimeException("Erro ao remover cadastro de usuário do arquivo LOGIN_USUARIOS", e);
     }
 
-    File fileLogin = new File(DADOS_LOGIN);
+    File fileLogin = new File(LOGIN_USUARIOS);
     File tempFileLogin = new File("temp_login.txt");
     if (!tempFileLogin.renameTo(fileLogin)) {
       throw new RuntimeException("Erro ao renomear o arquivo temporário para LOGIN_USUARIOS.");

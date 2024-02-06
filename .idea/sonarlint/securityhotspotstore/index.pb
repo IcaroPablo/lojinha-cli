@@ -19,3 +19,15 @@ B
 login_usuarios.csv,4/e/4e387375a094e1c0aac75b5b2f5c2660e1271f07
 ?
 bd_usuarios.csv,b/9/b9ac52e2e2060897d6ab75ed77e687b7cb9609d2
+O
+src/service/LojinhaService.java,7/5/75c016d5421657ad7baa8f230303311c46ec124b
+F
+src/service/Menus.java,5/6/5644e207e09f14c052d35457e257cdacc6d9f84d
+7
+LICENSE,0/3/0398ccd0f49298b10a3d76a47800d2ebecd49859
+?
+bd_gerentes.csv,2/2/22f6f8ee34652d61dad574aba2be6a772c401751
+M
+src/constants/Constantes.java,d/4/d4a8a9bba207be4969ef34807add15a5ead6b3b3
+B
+login_gerentes.csv,7/9/79714d151bb3ce9155615189d0102f1119807db4

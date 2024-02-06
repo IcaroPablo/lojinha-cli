@@ -1,0 +1,59 @@
+
+e
+java:S6208l"CMerge the previous cases into this one using comma-separated label.(µ»ïşıÿÿÿÿ8ºÎŞ¬×1
+|
+java:S1192m"_Define a constant instead of duplicating this literal "Saindo do sistema. AtÃ© breve!" 3 times.(ê¶€8üúƒ¬×1
+k
+java:S1192$"ODefine a constant instead of duplicating this literal "Digite o CPF: " 3 times.(ğé«y8„Ÿ½¬×1
+L	java:S106#"+Replace this use of System.out by a logger.(¡Ü Øûÿÿÿÿ8ÏÍü«×1
+F	java:S106$"+Replace this use of System.out by a logger.(ğé«y8ĞÍü«×1
+G	java:S106'"+Replace this use of System.out by a logger.(èÁ°ü8ĞÍü«×1
+L	java:S1061"+Replace this use of System.out by a logger.(¯ßÈÅıÿÿÿÿ8ÑÍü«×1
+L	java:S1062"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8ÑÍü«×1
+G	java:S1067"+Replace this use of System.out by a logger.(ƒé·ƒ8ÑÍü«×1
+L	java:S1068"+Replace this use of System.out by a logger.(‰¼Şéøÿÿÿÿ8ÑÍü«×1
+G	java:S1069"+Replace this use of System.out by a logger.(Ìöıî8ÑÍü«×1
+F	java:S106?"+Replace this use of System.out by a logger.(ğé«y8ÓÍü«×1
+L	java:S106B"+Replace this use of System.out by a logger.(åî¾Üûÿÿÿÿ8ÖÍü«×1
+L	java:S106C"+Replace this use of System.out by a logger.(† ¥Åùÿÿÿÿ8ÖÍü«×1
+L	java:S106G"+Replace this use of System.out by a logger.(ÆÒûşÿÿÿÿ8ÖÍü«×1
+L	java:S106I"+Replace this use of System.out by a logger.(‡õ‡âşÿÿÿÿ8ÖÍü«×1
+G	java:S106K"+Replace this use of System.out by a logger.(¬’¢”8ÖÍü«×1
+F	java:S106P"+Replace this use of System.out by a logger.(Î „8ÖÍü«×1
+F	java:S106R"+Replace this use of System.out by a logger.(ğé«y8×Íü«×1
+L	java:S106U"+Replace this use of System.out by a logger.(¬•ßÒşÿÿÿÿ8×Íü«×1
+L	java:S106V"+Replace this use of System.out by a logger.(† ¥Åùÿÿÿÿ8×Íü«×1
+L	java:S106Z"+Replace this use of System.out by a logger.(ÆÒûşÿÿÿÿ8×Íü«×1
+L	java:S106\"+Replace this use of System.out by a logger.(‡õ‡âşÿÿÿÿ8ØÍü«×1
+G	java:S106^"+Replace this use of System.out by a logger.(¬’¢”8ØÍü«×1
+F	java:S106c"+Replace this use of System.out by a logger.(Î „8ØÍü«×1
+G	java:S106f"+Replace this use of System.out by a logger.(«á„„8ØÍü«×1
+G	java:S106g"+Replace this use of System.out by a logger.(ËÅóé8„ıƒ¬×1
+G	java:S106m"+Replace this use of System.out by a logger.(ê¶€8„ıƒ¬×1
+_
+java:S1117x"BRename "usuarioManager" which hides the field declared at line 15.(—°8ÔÍü«×1
+]	java:S125~"<This block of commented-out lines of code should be removed.(ë×ä¸üÿÿÿÿ8ÕÍü«×1
+M	java:S106"+Replace this use of System.out by a logger.(îŞüÿÿÿÿ8ªé¬¬×1
+H	java:S106„"+Replace this use of System.out by a logger.(½ÉÒ‰8ªé¬¬×1
+G	java:S106…"+Replace this use of System.out by a logger.(ÙŠô-8û¡®¬×1
+M	java:S106ˆ"+Replace this use of System.out by a logger.(çºíçùÿÿÿÿ8û¡®¬×1
+R
+java:S2201Š"/The return value of "toLowerCase" must be used.(÷­ÃÚıÿÿÿÿ8‚ıƒ¬×1
+H	java:S106“"+Replace this use of System.out by a logger.(ê¶€8û¡®¬×1
+H	java:S106˜"+Replace this use of System.out by a logger.(æ£Ö¡8û¡®¬×1
+G	java:S106™"+Replace this use of System.out by a logger.(ÙŠô-8û¡®¬×1
+G	java:S106œ"+Replace this use of System.out by a logger.(ÈêÓ<8û¡®¬×1
+H	java:S106"+Replace this use of System.out by a logger.(ÒÇğø8—Ÿ½¬×1
+M	java:S106¤"+Replace this use of System.out by a logger.(‡‚¬†üÿÿÿÿ8—Ÿ½¬×1
+M	java:S106¥"+Replace this use of System.out by a logger.(Ûñ‰øÿÿÿÿ8—Ÿ½¬×1
+M	java:S106¨"+Replace this use of System.out by a logger.(Àî§îşÿÿÿÿ8—Ÿ½¬×1
+M	java:S106«"+Replace this use of System.out by a logger.(ßåáûÿÿÿÿ8—Ÿ½¬×1
+H	java:S106¯"+Replace this use of System.out by a logger.(îÛÏğ8˜Ÿ½¬×1
+H	java:S106µ"+Replace this use of System.out by a logger.(ê¶€8Ó”Ù¬×1
+H	java:S106¹"+Replace this use of System.out by a logger.(îıë•8Ó”Ù¬×1
+^
+java:S1854À";Remove this useless assignment to local variable "scanner".(ù ƒ‘üÿÿÿÿ8…×ƒ¬×1
+™
+java:S1130¿"vRemove the declaration of thrown exception 'java.io.FileNotFoundException', as it cannot be thrown from method's body.(ÒĞ ºıÿÿÿÿ8…×ƒ¬×1
+O
+java:S1481À",Remove this unused "scanner" local variable.(ù ƒ‘üÿÿÿÿ8†×ƒ¬×1
