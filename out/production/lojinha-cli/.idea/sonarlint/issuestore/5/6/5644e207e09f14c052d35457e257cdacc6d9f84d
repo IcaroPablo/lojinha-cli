@@ -15,14 +15,16 @@ G	java:S106"+Replace this use of System.out by a logger.(Ù Şä8‘Åú«×1
 G	java:S106 "+Replace this use of System.out by a logger.(ÎÃõı8‘Åú«×1
 L	java:S106!"+Replace this use of System.out by a logger.(µÖÛûÿÿÿÿ8’Åú«×1
 F	java:S106""+Replace this use of System.out by a logger.(ı‘·?8’Åú«×1
-L	java:S106&"+Replace this use of System.out by a logger.(İé¨´øÿÿÿÿ8’Åú«×1
-F	java:S106'"+Replace this use of System.out by a logger.(ßÖ³X8’Åú«×1
-G	java:S106("+Replace this use of System.out by a logger.(˜Ì­Å8’Åú«×1
-L	java:S106)"+Replace this use of System.out by a logger.(ş¥íŒûÿÿÿÿ8’Åú«×1
-L	java:S106*"+Replace this use of System.out by a logger.(·†‡øúÿÿÿÿ8’Åú«×1
-G	java:S106+"+Replace this use of System.out by a logger.(Ù‘ÀÙ8¶¸Å¬×1
-F	java:S106,"+Replace this use of System.out by a logger.(ı‘·?8Ìœß¬×1
+F	java:S106&"+Replace this use of System.out by a logger.(ßÖ³X8’Åú«×1
+F	java:S106'"+Replace this use of System.out by a logger.(Åö¢f8’Åú«×1
+L	java:S106("+Replace this use of System.out by a logger.(ƒÉçäşÿÿÿÿ8¶¸Å¬×1
+L	java:S106)"+Replace this use of System.out by a logger.(®°æ´ÿÿÿÿÿ8Ìœß¬×1
+G	java:S106*"+Replace this use of System.out by a logger.(æä˜ã8µ´Æâ×1
+F	java:S106+"+Replace this use of System.out by a logger.(Ø­Ã18Åøëâ×1
+G	java:S106,"+Replace this use of System.out by a logger.(şä‹ß8ô¥ìâ×1
+G	java:S106-"+Replace this use of System.out by a logger.(îºãğ8ßßìâ×1
+L	java:S106."+Replace this use of System.out by a logger.(ÕØšâÿÿÿÿÿ8³íâ×1
 P
-java:S1128".Remove this unused import 'java.util.Scanner'.(ÒÜÅ¸úÿÿÿÿ8’Åú«×1
+java:S1128".Remove this unused import 'java.util.Scanner'.(ÒÜÅ¸úÿÿÿÿ8ô„—‰Ø1
 O
 java:S1068	"2Remove this unused "usuarioManager" private field.(ÕÜş¶8’Åú«×1

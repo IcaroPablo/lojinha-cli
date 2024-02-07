@@ -41,10 +41,9 @@ public class Menus {
     System.out.println("3. Alterar cadastro de cliente");
     System.out.println("4. Excluir Cadastro de Cliente");
     System.out.println("5. Cadastrar Produto");
-    System.out.println("6. Ver estoque");
-    System.out.println("7. Excluir Cadastro de Produto");
+    System.out.println("6. Inserir Produto no estoque");
+    System.out.println("7. Ver Estoque");
+    System.out.println("8. Excluir Cadastro de Produto");
     System.out.println("8. Sair");
   }
-
-
 }

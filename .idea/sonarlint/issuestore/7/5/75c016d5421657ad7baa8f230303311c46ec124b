@@ -1,97 +1,105 @@
 
 }
-java:S1192Š"_Define a constant instead of duplicating this literal "Saindo do sistema. AtÃ© breve!" 7 times.(ê¶€8ı’•å×1
+java:S1192Œ"_Define a constant instead of duplicating this literal "Saindo do sistema. AtÃ© breve!" 4 times.(ê¶€8üË’Ø1
+ƒ
+java:S1192N"aDefine a constant instead of duplicating this literal "Redirecionando ao menu principal" 3 times.(† ¥Åùÿÿÿÿ8ıË’Ø1
 k
-java:S1192,"ODefine a constant instead of duplicating this literal "Digite o CPF: " 4 times.(ğé«y8ş’•å×1
-L	java:S106+"+Replace this use of System.out by a logger.(¡Ü Øûÿÿÿÿ8ç“•å×1
-F	java:S106,"+Replace this use of System.out by a logger.(ğé«y8ç“•å×1
-G	java:S106/"+Replace this use of System.out by a logger.(èÁ°ü8ç“•å×1
-L	java:S1065"+Replace this use of System.out by a logger.(ğã–şÿÿÿÿ8è“•å×1
-L	java:S1069"+Replace this use of System.out by a logger.(¯ßÈÅıÿÿÿÿ8è“•å×1
-L	java:S106:"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8è“•å×1
-G	java:S106?"+Replace this use of System.out by a logger.(ƒé·ƒ8è“•å×1
-L	java:S106@"+Replace this use of System.out by a logger.(‰¼Şéøÿÿÿÿ8è“•å×1
-G	java:S106A"+Replace this use of System.out by a logger.(Ìöıî8è“•å×1
-F	java:S106G"+Replace this use of System.out by a logger.(ğé«y8è“•å×1
-L	java:S106J"+Replace this use of System.out by a logger.(åî¾Üûÿÿÿÿ8è“•å×1
-L	java:S106K"+Replace this use of System.out by a logger.(† ¥Åùÿÿÿÿ8è“•å×1
-L	java:S106O"+Replace this use of System.out by a logger.(ÆÒûşÿÿÿÿ8é“•å×1
-L	java:S106Q"+Replace this use of System.out by a logger.(‡õ‡âşÿÿÿÿ8é“•å×1
-G	java:S106S"+Replace this use of System.out by a logger.(¬’¢”8é“•å×1
-F	java:S106X"+Replace this use of System.out by a logger.(Î „8é“•å×1
-F	java:S106["+Replace this use of System.out by a logger.(ğé«y8é“•å×1
-L	java:S106_"+Replace this use of System.out by a logger.(¬•ßÒşÿÿÿÿ8é“•å×1
-L	java:S106`"+Replace this use of System.out by a logger.(† ¥Åùÿÿÿÿ8ê“•å×1
-L	java:S106d"+Replace this use of System.out by a logger.(ÆÒûşÿÿÿÿ8ê“•å×1
-L	java:S106f"+Replace this use of System.out by a logger.(‡õ‡âşÿÿÿÿ8ê“•å×1
-G	java:S106h"+Replace this use of System.out by a logger.(¬’¢”8ê“•å×1
-F	java:S106m"+Replace this use of System.out by a logger.(Î „8ë“•å×1
-G	java:S106p"+Replace this use of System.out by a logger.(«á„„8ë“•å×1
-G	java:S106q"+Replace this use of System.out by a logger.(ËÅóé8ë“•å×1
-L	java:S106u"+Replace this use of System.out by a logger.(¦³‘×úÿÿÿÿ8ë“•å×1
-F	java:S106v"+Replace this use of System.out by a logger.(ğé«y8ë“•å×1
-G	java:S106y"+Replace this use of System.out by a logger.(èÁ°ü8ì“•å×1
-L	java:S106"+Replace this use of System.out by a logger.(ğã–şÿÿÿÿ8ì“•å×1
-M	java:S106ƒ"+Replace this use of System.out by a logger.(¯ßÈÅıÿÿÿÿ8ì“•å×1
-M	java:S106„"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8ì“•å×1
-H	java:S106Š"+Replace this use of System.out by a logger.(ê¶€8í“•å×1
-\
-java:S1854®">Remove this useless assignment to local variable "selecionar".(ªİİ“8í“•å×1
-\
-java:S1854É">Remove this useless assignment to local variable "selecionar".(ªİİ“8í“•å×1
+java:S1192/"ODefine a constant instead of duplicating this literal "Digite o CPF: " 4 times.(ğé«y8ıË’Ø1
+|
+java:S1192["`Define a constant instead of duplicating this literal "Cadastro realizado com sucesso!" 3 times.(Î „8ıË’Ø1
+L	java:S106."+Replace this use of System.out by a logger.(¡Ü Øûÿÿÿÿ8ÛÍ’Ø1
+F	java:S106/"+Replace this use of System.out by a logger.(ğé«y8ÛÍ’Ø1
+G	java:S1062"+Replace this use of System.out by a logger.(èÁ°ü8ÜÍ’Ø1
+L	java:S1068"+Replace this use of System.out by a logger.(ğã–şÿÿÿÿ8ÜÍ’Ø1
+L	java:S106<"+Replace this use of System.out by a logger.(¯ßÈÅıÿÿÿÿ8ÜÍ’Ø1
+L	java:S106="+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8ÜÍ’Ø1
+G	java:S106B"+Replace this use of System.out by a logger.(ƒé·ƒ8İÍ’Ø1
+L	java:S106C"+Replace this use of System.out by a logger.(‰¼Şéøÿÿÿÿ8İÍ’Ø1
+G	java:S106D"+Replace this use of System.out by a logger.(Ìöıî8İÍ’Ø1
+F	java:S106J"+Replace this use of System.out by a logger.(ğé«y8İÍ’Ø1
+L	java:S106M"+Replace this use of System.out by a logger.(åî¾Üûÿÿÿÿ8İÍ’Ø1
+L	java:S106N"+Replace this use of System.out by a logger.(† ¥Åùÿÿÿÿ8İÍ’Ø1
+L	java:S106R"+Replace this use of System.out by a logger.(ÆÒûşÿÿÿÿ8ŞÍ’Ø1
+L	java:S106T"+Replace this use of System.out by a logger.(‡õ‡âşÿÿÿÿ8ŞÍ’Ø1
+G	java:S106V"+Replace this use of System.out by a logger.(¬’¢”8ŞÍ’Ø1
+F	java:S106["+Replace this use of System.out by a logger.(Î „8ŞÍ’Ø1
+F	java:S106^"+Replace this use of System.out by a logger.(ğé«y8ßÍ’Ø1
+L	java:S106b"+Replace this use of System.out by a logger.(¬•ßÒşÿÿÿÿ8ßÍ’Ø1
+L	java:S106c"+Replace this use of System.out by a logger.(† ¥Åùÿÿÿÿ8ßÍ’Ø1
+L	java:S106g"+Replace this use of System.out by a logger.(ÆÒûşÿÿÿÿ8ßÍ’Ø1
+L	java:S106i"+Replace this use of System.out by a logger.(‡õ‡âşÿÿÿÿ8ßÍ’Ø1
+G	java:S106k"+Replace this use of System.out by a logger.(¬’¢”8ßÍ’Ø1
+F	java:S106p"+Replace this use of System.out by a logger.(Î „8àÍ’Ø1
+G	java:S106s"+Replace this use of System.out by a logger.(«á„„8àÍ’Ø1
+G	java:S106t"+Replace this use of System.out by a logger.(ËÅóé8àÍ’Ø1
+L	java:S106x"+Replace this use of System.out by a logger.(¦³‘×úÿÿÿÿ8àÍ’Ø1
+F	java:S106y"+Replace this use of System.out by a logger.(ğé«y8àÍ’Ø1
+G	java:S106|"+Replace this use of System.out by a logger.(èÁ°ü8àÍ’Ø1
+M	java:S106‚"+Replace this use of System.out by a logger.(ğã–şÿÿÿÿ8áÍ’Ø1
+M	java:S106†"+Replace this use of System.out by a logger.(¯ßÈÅıÿÿÿÿ8áÍ’Ø1
+M	java:S106‡"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8áÍ’Ø1
+H	java:S106Œ"+Replace this use of System.out by a logger.(ê¶€8áÍ’Ø1
 `
-java:S1117•"BRename "usuarioManager" which hides the field declared at line 22.(—°8î“•å×1
-^	java:S125›"<This block of commented-out lines of code should be removed.(ë×ä¸üÿÿÿÿ8ï“•å×1
-M	java:S106"+Replace this use of System.out by a logger.(îŞüÿÿÿÿ8ï“•å×1
-H	java:S106¡"+Replace this use of System.out by a logger.(½ÉÒ‰8ï“•å×1
-G	java:S106¢"+Replace this use of System.out by a logger.(ÙŠô-8ï“•å×1
-M	java:S106¥"+Replace this use of System.out by a logger.(çºíçùÿÿÿÿ8ï“•å×1
-R
-java:S2201§"/The return value of "toLowerCase" must be used.(÷­ÃÚıÿÿÿÿ8ï“•å×1
-H	java:S106±"+Replace this use of System.out by a logger.(ê¶€8ğ“•å×1
-H	java:S106¶"+Replace this use of System.out by a logger.(æ£Ö¡8ğ“•å×1
-G	java:S106·"+Replace this use of System.out by a logger.(ÙŠô-8ğ“•å×1
-H	java:S106»"+Replace this use of System.out by a logger.(Úµè 8ğ“•å×1
-M	java:S106½"+Replace this use of System.out by a logger.(ã»Êúÿÿÿÿ8ğ“•å×1
-M	java:S106À"+Replace this use of System.out by a logger.(çºíçùÿÿÿÿ8ñ“•å×1
-R
-java:S2201Â"/The return value of "toLowerCase" must be used.(÷­ÃÚıÿÿÿÿ8ñ“•å×1
-H	java:S106Ì"+Replace this use of System.out by a logger.(ê¶€8ñ“•å×1
-M	java:S106Ñ"+Replace this use of System.out by a logger.(‡‚¬†üÿÿÿÿ8ñ“•å×1
-M	java:S106Ò"+Replace this use of System.out by a logger.(Ûñ‰øÿÿÿÿ8ò“•å×1
-M	java:S106Õ"+Replace this use of System.out by a logger.(Àî§îşÿÿÿÿ8ò“•å×1
-M	java:S106Ø"+Replace this use of System.out by a logger.(ßåáûÿÿÿÿ8ò“•å×1
-H	java:S106Ü"+Replace this use of System.out by a logger.(îÛÏğ8ò“•å×1
-H	java:S106â"+Replace this use of System.out by a logger.(ê¶€8ó“•å×1
-H	java:S106æ"+Replace this use of System.out by a logger.(îıë•8ó“•å×1
-a
-java:S1854„">Remove this useless assignment to local variable "selecionar".(ŒÎƒ‹úÿÿÿÿ8ó“•å×1
-a
-java:S1854¡">Remove this useless assignment to local variable "selecionar".(ŒÎƒ‹úÿÿÿÿ8ó“•å×1
+java:S1117–"BRename "usuarioManager" which hides the field declared at line 23.(—°8âÍ’Ø1
+^	java:S125œ"<This block of commented-out lines of code should be removed.(ë×ä¸üÿÿÿÿ8ãÍ’Ø1
+M	java:S106Ÿ"+Replace this use of System.out by a logger.(îŞüÿÿÿÿ8ãÍ’Ø1
+H	java:S106¢"+Replace this use of System.out by a logger.(½ÉÒ‰8ãÍ’Ø1
+G	java:S106£"+Replace this use of System.out by a logger.(ÙŠô-8äÍ’Ø1
+H	java:S106©"+Replace this use of System.out by a logger.(æ£Ö¡8äÍ’Ø1
+G	java:S106ª"+Replace this use of System.out by a logger.(ÙŠô-8äÍ’Ø1
+H	java:S106®"+Replace this use of System.out by a logger.(Úµè 8äÍ’Ø1
+M	java:S106°"+Replace this use of System.out by a logger.(ã»Êúÿÿÿÿ8äÍ’Ø1
+M	java:S106¶"+Replace this use of System.out by a logger.(‡‚¬†üÿÿÿÿ8åÍ’Ø1
+M	java:S106·"+Replace this use of System.out by a logger.(Ûñ‰øÿÿÿÿ8åÍ’Ø1
+M	java:S106º"+Replace this use of System.out by a logger.(Àî§îşÿÿÿÿ8åÍ’Ø1
+M	java:S106½"+Replace this use of System.out by a logger.(ßåáûÿÿÿÿ8åÍ’Ø1
+H	java:S106Á"+Replace this use of System.out by a logger.(îÛÏğ8æÍ’Ø1
+H	java:S106Ç"+Replace this use of System.out by a logger.(ê¶€8æÍ’Ø1
+H	java:S106Ë"+Replace this use of System.out by a logger.(îıë•8æÍ’Ø1
+\
+java:S1854«">Remove this useless assignment to local variable "quantidade".(£Çîê8çÍ’Ø1
+X
+java:S1854©":Remove this useless assignment to local variable "codigo".(¡ü‘µ8çÍ’Ø1
 `
-java:S1117í"BRename "usuarioManager" which hides the field declared at line 22.(—°8ô“•å×1
-H	java:S106õ"+Replace this use of System.out by a logger.(Ô–€î8ô“•å×1
-H	java:S106ø"+Replace this use of System.out by a logger.(’Ñ¡8õ“•å×1
-M	java:S106ù"+Replace this use of System.out by a logger.(ÓÎÿ×üÿÿÿÿ8õ“•å×1
-H	java:S106û"+Replace this use of System.out by a logger.(İ÷ÕÑ8õ“•å×1
+java:S1117Ò"BRename "usuarioManager" which hides the field declared at line 23.(—°8çÍ’Ø1
+H	java:S106Ú"+Replace this use of System.out by a logger.(Ô–€î8èÍ’Ø1
+M	java:S106Û"+Replace this use of System.out by a logger.(’–®ùúÿÿÿÿ8èÍ’Ø1
+M	java:S106ß"+Replace this use of System.out by a logger.(˜ù´üÿÿÿÿ8èÍ’Ø1
+M	java:S106à"+Replace this use of System.out by a logger.(üú¤…üÿÿÿÿ8èÍ’Ø1
+M	java:S106ä"+Replace this use of System.out by a logger.(—ÜºÊüÿÿÿÿ8éÍ’Ø1
+M	java:S106æ"+Replace this use of System.out by a logger.(ïòüâıÿÿÿÿ8éÍ’Ø1
+H	java:S106è"+Replace this use of System.out by a logger.(Õ±áÆ8éÍ’Ø1
+G	java:S106í"+Replace this use of System.out by a logger.(Î „8êÍ’Ø1
+M	java:S106î"+Replace this use of System.out by a logger.(‘¯ıËşÿÿÿÿ8êÍ’Ø1
+H	java:S106ò"+Replace this use of System.out by a logger.(’Ñ¡8êÍ’Ø1
+M	java:S106ó"+Replace this use of System.out by a logger.(ÓÎÿ×üÿÿÿÿ8êÍ’Ø1
+M	java:S106ø"+Replace this use of System.out by a logger.(ç­È”üÿÿÿÿ8êÍ’Ø1
+M	java:S106ù"+Replace this use of System.out by a logger.(×‚ëüÿÿÿÿ8êÍ’Ø1
+M	java:S106ú"+Replace this use of System.out by a logger.(ÓÎÿ×üÿÿÿÿ8êÍ’Ø1
+H	java:S106ü"+Replace this use of System.out by a logger.(êÀß±8ëÍ’Ø1
+H	java:S106ÿ"+Replace this use of System.out by a logger.(áËøü8ëÍ’Ø1
+M	java:S106"+Replace this use of System.out by a logger.(„½Ø‘şÿÿÿÿ8ëÍ’Ø1
+H	java:S106‡"+Replace this use of System.out by a logger.(ùˆ…ê8ëÍ’Ø1
+M	java:S106ˆ"+Replace this use of System.out by a logger.(ÓÎÿ×üÿÿÿÿ8ëÍ’Ø1
+H	java:S106Š"+Replace this use of System.out by a logger.(ş ùÏ8ìÍ’Ø1
+M	java:S106"+Replace this use of System.out by a logger.(‹àİÍşÿÿÿÿ8ìÍ’Ø1
+M	java:S106’"+Replace this use of System.out by a logger.(•§¨ñÿÿÿÿÿ8ìÍ’Ø1
+H	java:S106“"+Replace this use of System.out by a logger.(ïôÄ8ìÍ’Ø1
+M	java:S106—"+Replace this use of System.out by a logger.(ÚÖòôúÿÿÿÿ8ìÍ’Ø1
+M	java:S106˜"+Replace this use of System.out by a logger.(† ¥Åùÿÿÿÿ8ìÍ’Ø1
+M	java:S106œ"+Replace this use of System.out by a logger.(­‹£úÿÿÿÿ8íÍ’Ø1
+H	java:S106"+Replace this use of System.out by a logger.(²Å¬°8íÍ’Ø1
+H	java:S106¥"+Replace this use of System.out by a logger.(ûÅ¶’8íÍ’Ø1
+M	java:S106¦"+Replace this use of System.out by a logger.(ÓÎÿ×üÿÿÿÿ8íÍ’Ø1
+H	java:S106¨"+Replace this use of System.out by a logger.(ïôÄ8îÍ’Ø1
+H	java:S106ª"+Replace this use of System.out by a logger.(«×ë8îÍ’Ø1
+M
+java:S1481«"/Remove this unused "quantidade" local variable.(£Çîê8îÍ’Ø1
+H	java:S106°"+Replace this use of System.out by a logger.(Ğ»“í8îÍ’Ø1
+H	java:S106³"+Replace this use of System.out by a logger.(—¨Ü8îÍ’Ø1
+H	java:S106¶"+Replace this use of System.out by a logger.(ê¶€8îÍ’Ø1
+H	java:S106º"+Replace this use of System.out by a logger.(îıë•8ïÍ’Ø1
+H	java:S106Â"+Replace this use of System.out by a logger.( ‚Ù­8ïÍ’Ø1
 R
-java:S2201ı"/The return value of "toLowerCase" must be used.(÷­ÃÚıÿÿÿÿ8õ“•å×1
-H	java:S106‡"+Replace this use of System.out by a logger.(ê¶€8ö“•å×1
-M	java:S106Œ"+Replace this use of System.out by a logger.(ç­È”üÿÿÿÿ8ö“•å×1
-M	java:S106"+Replace this use of System.out by a logger.(×‚ëüÿÿÿÿ8ö“•å×1
-M	java:S106"+Replace this use of System.out by a logger.(ÓÎÿ×üÿÿÿÿ8ö“•å×1
-H	java:S106"+Replace this use of System.out by a logger.(êÀß±8ö“•å×1
-H	java:S106“"+Replace this use of System.out by a logger.(áËøü8÷“•å×1
-M	java:S106•"+Replace this use of System.out by a logger.(„½Ø‘şÿÿÿÿ8÷“•å×1
-H	java:S106˜"+Replace this use of System.out by a logger.(İ÷ÕÑ8÷“•å×1
-R
-java:S2201š"/The return value of "toLowerCase" must be used.(÷­ÃÚıÿÿÿÿ8÷“•å×1
-H	java:S106¤"+Replace this use of System.out by a logger.(ê¶€8÷“•å×1
-H	java:S106©"+Replace this use of System.out by a logger.(ùˆ…ê8÷“•å×1
-M	java:S106¬"+Replace this use of System.out by a logger.(•§¨ñÿÿÿÿÿ8÷“•å×1
-M	java:S106¯"+Replace this use of System.out by a logger.(ĞÓÆÈúÿÿÿÿ8ø“•å×1
-M	java:S106²"+Replace this use of System.out by a logger.(¨¯š¤øÿÿÿÿ8ø“•å×1
-H	java:S106µ"+Replace this use of System.out by a logger.(ê¶€8í–œå×1
-H	java:S106¹"+Replace this use of System.out by a logger.(îıë•8ŸÄå×1
-Q
-java:S1128"/Remove this unused import 'java.sql.SQLOutput'.(ê¤òÃùÿÿÿÿ8ŸÄå×1
+java:S2201Å"/The return value of "toLowerCase" must be used.(÷­ÃÚıÿÿÿÿ8ğÍ’Ø1
+H	java:S106Ò"+Replace this use of System.out by a logger.(ê¶€8ğÍ’Ø1

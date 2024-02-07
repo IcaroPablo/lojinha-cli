@@ -1,0 +1,13 @@
+
+a	java:S1121"FDefine and throw a dedicated exception instead of using a generic one.(›®h8ˆ¨íŒØ1
+a	java:S112:"FDefine and throw a dedicated exception instead of using a generic one.(›®h8ˆ¨íŒØ1
+g	java:S112H"FDefine and throw a dedicated exception instead of using a generic one.(ß¯õÿÿÿÿÿ8šçğŒØ1
+a	java:S112^"FDefine and throw a dedicated exception instead of using a generic one.(¯‡b8ÚÅ€Ø1
+n
+java:S2677O"LUse or store the value returned from "readLine" instead of throwing it away.(£­—âÿÿÿÿÿ8õÅ€Ø1
+L	java:S106W"+Replace this use of System.out by a logger.(•‹‘şÿÿÿÿ8öÅ€Ø1
+G	java:S106X"+Replace this use of System.out by a logger.(ïøúı8÷Å€Ø1
+L	java:S106Y"+Replace this use of System.out by a logger.(ÈÀ›ÿÿÿÿÿ8÷Å€Ø1
+L	java:S106Z"+Replace this use of System.out by a logger.(ÓÎÿ×üÿÿÿÿ8øÅ€Ø1
+^
+java:S1128"ARemove this unused import 'src.constants.Constantes.BD_USUARIOS'.(ƒÀ™¦8¼™Ø1

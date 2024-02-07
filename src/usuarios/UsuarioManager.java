@@ -19,7 +19,6 @@ import static src.constants.Constantes.LOGIN_USUARIOS;
 
 public class UsuarioManager {
 
-
   private List<Usuario> usuarios;
 
   public UsuarioManager() throws FileNotFoundException {

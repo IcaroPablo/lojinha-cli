@@ -1,11 +1,12 @@
 package src.service;
 
+import src.produto.ProdutoManager;
 import src.usuarios.Cliente;
 import src.usuarios.Gerente;
 import src.usuarios.UsuarioManager;
 
 import java.io.FileNotFoundException;
-import java.sql.SQLOutput;
+import java.util.Objects;
 import java.util.Scanner;
 
 import static src.constants.Constantes.BD_GERENTES;
@@ -20,9 +21,11 @@ import static src.service.Menus.menuInicial;
 
 public class LojinhaService {
   private final UsuarioManager usuarioManager;
+  private final ProdutoManager produtoManager;
 
-  public LojinhaService(UsuarioManager usuarioManager) {
+  public LojinhaService(UsuarioManager usuarioManager, ProdutoManager produtoManager) {
     this.usuarioManager = usuarioManager;
+    this.produtoManager = produtoManager;
   }
 
   public void iniciar() throws FileNotFoundException {
@@ -133,10 +136,8 @@ public class LojinhaService {
             menuInicial();
           }
           break;
-
         case 4:
           System.out.println("Saindo do sistema. Até breve!");
-          scanner.close();
           return;
         default:
           return;
@@ -162,21 +163,7 @@ public class LojinhaService {
           System.out.print("Digite o CPF novamente: ");
           String cpf = scanner.next();
           usuarioManager.visualizarCadastro(cpf, BD_USUARIOS);
-          System.out.println("Retornar ao menu de cliente? S/N");
-          String resposta = scanner.next();
-          resposta.toLowerCase();
-          switch (resposta) {
-            case "s":
-              exibirMenuCliente();
-              break;
-            case "n":
-              menuInicial();
-              selecionar = 5;
-              return;
-            default:
-              System.out.println("Saindo do sistema. Até breve!");
-              return;
-          }
+          retornarAoMenu(CLIENTE);
           break;
         case 3:
           System.out.println("Opção 3 selecionada: Alterar Cadastro");
@@ -189,26 +176,12 @@ public class LojinhaService {
           System.out.println("NOVO TELEFONE: ");
           String novoTelefone = scanner.nextLine();
           usuarioManager.alterarCadastro(cpf, novoNome, novoTelefone);
-          System.out.println("Retornar ao menu de cliente? S/N");
-          resposta = scanner.next();
-          resposta.toLowerCase();
-          switch (resposta) {
-            case "s":
-              exibirMenuCliente();
-              break;
-            case "n":
-              menuInicial();
-              selecionar = 5;
-              return;
-            default:
-              System.out.println("Saindo do sistema. Até breve!");
-              return;
-          }
+          retornarAoMenu(CLIENTE);
           break;
         case 4:
           System.out.println("Opção 4 selecionada: Remover Cadastro");
           System.out.print("Tem certeza que deseja deletar o cadastro? S/N: ");
-          resposta = scanner.next();
+          String resposta = scanner.next();
           if (resposta.equalsIgnoreCase("s")) {
             System.out.println("Digite o CPF para confirmar: ");
             cpf = scanner.next();
@@ -243,26 +216,33 @@ public class LojinhaService {
       switch (selecionar) {
         case 1:
           System.out.println("Opção 1 selecionada: Cadastrar Cliente");
+          System.out.print("Digite o CPF do cliente: ");
+          String cpf = scanner.next();
+          scanner.nextLine();
+          if (usuarioManager.usuarioExiste(cpf, BD_USUARIOS)) {
+            System.out.println("Já existe um cliente com este CPF.");
+            System.out.println("Redirecionando ao menu");
+            menuGerente();
+            return;
+          }
+          System.out.print("Digite o NOME do cliente: ");
+          String nome = scanner.next();
+          System.out.print("Digite o TELEFONE do cliente: ");
+          String telefone = scanner.next();
+          System.out.print("Digite a SENHA DE ACESSO do cliente: ");
+          String senha = scanner.next();
+          Cliente cliente = new Cliente(cpf, nome, telefone);
+          usuarioManager.salvarUsuario(cpf, nome, telefone, CLIENTE, BD_USUARIOS);
+          usuarioManager.salvarDadosAcessoUsuario(cliente.getCpf(), senha, CLIENTE, LOGIN_USUARIOS);
+          System.out.println("Cadastro realizado com sucesso!");
+          System.out.println("Retornando ao menu");
+          menuGerente();
           break;
         case 2:
           System.out.println("Opção 2 selecionada: Ver cadastros de clientes");
           System.out.println("=".repeat(70));
           usuarioManager.visualizarCadastros();
-          System.out.println("Retornar ao menu de gerente? S/N");
-          String resposta = scanner.next();
-          resposta.toLowerCase();
-          switch (resposta) {
-            case "s":
-              exibirMenuGerente();
-              break;
-            case "n":
-              menuInicial();
-              selecionar = 8;
-              return;
-            default:
-              System.out.println("Saindo do sistema. Até breve!");
-              return;
-          }
+          retornarAoMenu(GERENTE);
           break;
         case 3:
           System.out.println("Opção 3 selecionada: Alterar cadastro de cliente");
@@ -270,42 +250,63 @@ public class LojinhaService {
           System.out.println("=".repeat(70));
           usuarioManager.visualizarCadastros();
           System.out.print("Digite o CPF do CLIENTE que deseja alterar: ");
-          String cpf = scanner.next();
+          cpf = scanner.next();
           scanner.nextLine();
           System.out.println("DIGITE O NOVO NOME: ");
           String novoNome = scanner.nextLine();
           System.out.println("DIGITE O NOVO TELEFONE: ");
           String novoTelefone = scanner.nextLine();
           usuarioManager.alterarCadastro(cpf, novoNome, novoTelefone);
-          System.out.println("Retornar ao menu de gerente? S/N");
-          resposta = scanner.next();
-          resposta.toLowerCase();
-          switch (resposta) {
-            case "s":
-              exibirMenuGerente();
-              break;
-            case "n":
-              menuInicial();
-              selecionar = 8;
-              return;
-            default:
-              System.out.println("Saindo do sistema. Até breve!");
-              return;
-          }
+          retornarAoMenu(GERENTE);
           break;
         case 4:
           System.out.println("Opção 4 selecionada: Excluir Cadastro de Cliente");
+          System.out.println("=".repeat(70));
+          usuarioManager.visualizarCadastros();
+          System.out.print("Digite o CPF do cliente que deseja excluir: ");
+          cpf = scanner.next();
+          scanner.nextLine();
+          usuarioManager.removerCadastro(cpf);
+          System.out.println("Voltando ao menu.");
+          menuGerente();
           break;
         case 5:
           System.out.println("Opção 5 selecionada: Cadastrar Produto");
+          System.out.print("Digite o código do produto: ");
+          String codigo = scanner.next();
+          scanner.nextLine();
+          if (produtoManager.produtoExiste(codigo)) {
+          System.out.println("Já existe um produto com este código");
+          System.out.println("Redirecionando ao menu principal");
+          menuGerente();
+          return;
+          }
+          System.out.print("Digite a descrição do produto: ");
+          String descricaoProduto = scanner.nextLine();
+          System.out.print("Digite o valor do produto: ");
+          Double valor = scanner.nextDouble();
+          scanner.nextLine();
+          produtoManager.cadastrarProduto(codigo, descricaoProduto, valor);
+          retornarAoMenu(GERENTE);
           break;
         case 6:
-          System.out.println("Opção 6 selecionada: Ver estoque");
+          System.out.println("Opção 6 selecionada: Inserir produto no estoque");
+          System.out.println("=".repeat(70));
+          produtoManager.visualizarProdutos();
+          System.out.print("Digite o código do produto: ");
+          codigo = scanner.next();
+          System.out.print("Digite a quantidade do produto no estoque: ");
+          Integer quantidade = scanner.nextInt();
+          // ADICIONAR LÓGICA PARA SOMAR QUANTIDADE NO ESTOQUE, CASO JÁ EXISTA.
+          retornarAoMenu(GERENTE);
           break;
         case 7:
-          System.out.println("Opção 7 selecionada: Excluir Cadastro de Produto");
+          System.out.println("Opção 7 selecionada: Ver estoque");
           break;
         case 8:
+          System.out.println("Opção 8 selecionada: Excluir produto do estoque");
+          break;
+        case 9:
           System.out.println("Saindo do sistema. Até breve!");
           iniciar();
           break;
@@ -314,5 +315,28 @@ public class LojinhaService {
       }
     }
     scanner.close();
+  }
+
+  public void retornarAoMenu(String userType) throws FileNotFoundException {
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("Retornar ao menu? S/N");
+    String resposta = scanner.next();
+    scanner.nextLine();
+    resposta.toLowerCase();
+    switch (resposta) {
+      case "s":
+        if (Objects.equals(userType, CLIENTE)) {
+          exibirMenuCliente();
+        } else {
+          exibirMenuGerente();
+        }
+        break;
+      case "n":
+        menuInicial();
+        return;
+      default:
+        System.out.println("Saindo do sistema. Até breve!");
+        return;
+    }
   }
 }

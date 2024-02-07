@@ -27,3 +27,7 @@ F
 LICENSE,0/3/0398ccd0f49298b10a3d76a47800d2ebecd49859
 ?
 bd_gerentes.csv,2/2/22f6f8ee34652d61dad574aba2be6a772c401751
+M
+src/constants/Constantes.java,d/4/d4a8a9bba207be4969ef34807add15a5ead6b3b3
+B
+login_gerentes.csv,7/9/79714d151bb3ce9155615189d0102f1119807db4

@@ -1,44 +1,40 @@
 
-g	java:S112&"FDefine and throw a dedicated exception instead of using a generic one.(¦Ñşšûÿÿÿÿ8¯¹°¬×1
-b	java:S112/"FDefine and throw a dedicated exception instead of using a generic one.(Õ¸õ·8°¹°¬×1
-b	java:S1128"FDefine and throw a dedicated exception instead of using a generic one.(Õ¸õ·8°¹°¬×1
-b	java:S112A"FDefine and throw a dedicated exception instead of using a generic one.(Õ¸õ·8°¹°¬×1
-g	java:S112R"FDefine and throw a dedicated exception instead of using a generic one.(—êı†ùÿÿÿÿ8°¹°¬×1
-g	java:S112d"FDefine and throw a dedicated exception instead of using a generic one.(ß¯õÿÿÿÿÿ8°¹°¬×1
-g	java:S112s"FDefine and throw a dedicated exception instead of using a generic one.(ß¯õÿÿÿÿÿ8°¹°¬×1
-c	java:S112¥"FDefine and throw a dedicated exception instead of using a generic one.(•ª¹Á8°¹°¬×1
-c	java:S112³"FDefine and throw a dedicated exception instead of using a generic one.(–Ä¯8°¹°¬×1
-b	java:S112Ê"FDefine and throw a dedicated exception instead of using a generic one.(¯‡b8°¹°¬×1
-b	java:S112ã"FDefine and throw a dedicated exception instead of using a generic one.(¯‡b8°¹°¬×1
-h	java:S112ö"FDefine and throw a dedicated exception instead of using a generic one.(ôêØúÿÿÿÿ8°¹°¬×1
-c	java:S112ş"FDefine and throw a dedicated exception instead of using a generic one.(»Á«8°¹°¬×1
-c	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(ã¼ç8°¹°¬×1
-h	java:S112–"FDefine and throw a dedicated exception instead of using a generic one.(Íó‚ùÿÿÿÿ8°¹°¬×1
-c	java:S112¦"FDefine and throw a dedicated exception instead of using a generic one.(âòÖ8°¹°¬×1
-b	java:S112¬"FDefine and throw a dedicated exception instead of using a generic one.(§šK8«ğ±¬×1
-v
-java:S1192/"YDefine a constant instead of duplicating this literal "Erro ao salvar usuÃ¡rio " 3 times.(Õ¸õ·8±¹°¬×1
-†
-java:S1192ƒ"cDefine a constant instead of duplicating this literal "CPF, NOME, TELEFONE, ADMINISTRADOR" 3 times.(ÂÁÛüÿÿÿÿ8©ÌÃ¬×1
+g	java:S112,"FDefine and throw a dedicated exception instead of using a generic one.(¦Ñşšûÿÿÿÿ8°§ä×1
+b	java:S1125"FDefine and throw a dedicated exception instead of using a generic one.(Õ¸õ·8°§ä×1
+b	java:S112>"FDefine and throw a dedicated exception instead of using a generic one.(Õ¸õ·8°§ä×1
+g	java:S112O"FDefine and throw a dedicated exception instead of using a generic one.(—êı†ùÿÿÿÿ8°§ä×1
+g	java:S112a"FDefine and throw a dedicated exception instead of using a generic one.(ß¯õÿÿÿÿÿ8‘°§ä×1
+c	java:S112˜"FDefine and throw a dedicated exception instead of using a generic one.(•ª¹Á8‘°§ä×1
+c	java:S112¦"FDefine and throw a dedicated exception instead of using a generic one.(–Ä¯8‘°§ä×1
+b	java:S112¾"FDefine and throw a dedicated exception instead of using a generic one.(¯‡b8‘°§ä×1
+b	java:S112×"FDefine and throw a dedicated exception instead of using a generic one.(¯‡b8‘°§ä×1
+h	java:S112ê"FDefine and throw a dedicated exception instead of using a generic one.(ôêØúÿÿÿÿ8‘°§ä×1
+c	java:S112ò"FDefine and throw a dedicated exception instead of using a generic one.(»Á«8‘°§ä×1
+c	java:S112„"FDefine and throw a dedicated exception instead of using a generic one.(ã¼ç8‘°§ä×1
+h	java:S112Š"FDefine and throw a dedicated exception instead of using a generic one.(Íó‚ùÿÿÿÿ8‘°§ä×1
+c	java:S112š"FDefine and throw a dedicated exception instead of using a generic one.(âòÖ8‘°§ä×1
+b	java:S112 "FDefine and throw a dedicated exception instead of using a generic one.(§šK8‘°§ä×1
+…
+java:S1192p"cDefine a constant instead of duplicating this literal "CPF, NOME, TELEFONE, ADMINISTRADOR" 3 times.(ÂÁÛüÿÿÿÿ8’°§ä×1
 R
-java:S1066Ô"/Merge this if statement with the enclosing one.(½„»ìşÿÿÿÿ8±¹°¬×1
-L	java:S106K"+Replace this use of System.out by a logger.(ºÙØıÿÿÿÿ8Áº°¬×1
-G	java:S106L"+Replace this use of System.out by a logger.(ŠªæÆ8Âº°¬×1
-L	java:S106M"+Replace this use of System.out by a logger.(ºÙØıÿÿÿÿ8Âº°¬×1
-L	java:S106N"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8Âº°¬×1
-H	java:S106£"+Replace this use of System.out by a logger.(ãä¹Í8Æº°¬×1
-H	java:S106Â"+Replace this use of System.out by a logger.(¼Ñ³8Èº°¬×1
-M	java:S106Ã"+Replace this use of System.out by a logger.(œ‹­—øÿÿÿÿ8Èº°¬×1
-M	java:S106Ä"+Replace this use of System.out by a logger.(”½±Ğùÿÿÿÿ8Èº°¬×1
-H	java:S106Å"+Replace this use of System.out by a logger.(Å´ıÄ8Èº°¬×1
-M	java:S106Æ"+Replace this use of System.out by a logger.(ÓÎÿ×üÿÿÿÿ8Èº°¬×1
-M	java:S106Ù"+Replace this use of System.out by a logger.(ÓÎÿ×üÿÿÿÿ8Éº°¬×1
-H	java:S106Ú"+Replace this use of System.out by a logger.(¼Ñ³8Éº°¬×1
-M	java:S106Û"+Replace this use of System.out by a logger.(œ‹­—øÿÿÿÿ8Éº°¬×1
-M	java:S106Ü"+Replace this use of System.out by a logger.(”½±Ğùÿÿÿÿ8Éº°¬×1
-M	java:S106İ"+Replace this use of System.out by a logger.(Ø††Ëıÿÿÿÿ8Êº°¬×1
-M	java:S106Ş"+Replace this use of System.out by a logger.(ÓÎÿ×üÿÿÿÿ8Êº°¬×1
-M	java:S106ü"+Replace this use of System.out by a logger.(‹³üøøÿÿÿÿ8Ëº°¬×1
-H	java:S106¯"+Replace this use of System.out by a logger.(ÕøÌÔ8Îº°¬×1
-W
-java:S1128"5Remove this unused import 'com.sun.tools.javac.Main'.( ƒ™şüÿÿÿÿ8à´²¬×1
+java:S1066È"/Merge this if statement with the enclosing one.(½„»ìşÿÿÿÿ8“°§ä×1
+L	java:S106H"+Replace this use of System.out by a logger.(ºÙØıÿÿÿÿ8¨°§ä×1
+G	java:S106I"+Replace this use of System.out by a logger.(ŠªæÆ8©°§ä×1
+L	java:S106J"+Replace this use of System.out by a logger.(ºÙØıÿÿÿÿ8©°§ä×1
+L	java:S106K"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8©°§ä×1
+H	java:S106–"+Replace this use of System.out by a logger.(ãä¹Í8²°§ä×1
+o
+java:S2677­"LUse or store the value returned from "readLine" instead of throwing it away.(£­—âÿÿÿÿÿ8ò©ÿä×1
+H	java:S106¶"+Replace this use of System.out by a logger.(¼Ñ³8µ°§ä×1
+M	java:S106·"+Replace this use of System.out by a logger.(œ‹­—øÿÿÿÿ8µ°§ä×1
+M	java:S106¸"+Replace this use of System.out by a logger.(”½±Ğùÿÿÿÿ8µ°§ä×1
+H	java:S106¹"+Replace this use of System.out by a logger.(Å´ıÄ8µ°§ä×1
+M	java:S106º"+Replace this use of System.out by a logger.(ÓÎÿ×üÿÿÿÿ8µ°§ä×1
+M	java:S106Í"+Replace this use of System.out by a logger.(ÓÎÿ×üÿÿÿÿ8·°§ä×1
+H	java:S106Î"+Replace this use of System.out by a logger.(¼Ñ³8·°§ä×1
+M	java:S106Ï"+Replace this use of System.out by a logger.(œ‹­—øÿÿÿÿ8·°§ä×1
+M	java:S106Ğ"+Replace this use of System.out by a logger.(”½±Ğùÿÿÿÿ8·°§ä×1
+M	java:S106Ñ"+Replace this use of System.out by a logger.(Ø††Ëıÿÿÿÿ8·°§ä×1
+M	java:S106Ò"+Replace this use of System.out by a logger.(ÓÎÿ×üÿÿÿÿ8·°§ä×1
+M	java:S106ğ"+Replace this use of System.out by a logger.(‹³üøøÿÿÿÿ8º°§ä×1
+H	java:S106£"+Replace this use of System.out by a logger.(ÕøÌÔ8½°§ä×1

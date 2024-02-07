@@ -21,10 +21,11 @@ L	java:S106("+Replace this use of System.out by a logger.(ƒÉçäşÿÿÿÿ8¶¸Å¬×1
 L	java:S106)"+Replace this use of System.out by a logger.(®°æ´ÿÿÿÿÿ8Ìœß¬×1
 G	java:S106*"+Replace this use of System.out by a logger.(æä˜ã8µ´Æâ×1
 F	java:S106+"+Replace this use of System.out by a logger.(Ø­Ã18Åøëâ×1
-G	java:S106,"+Replace this use of System.out by a logger.(şä‹ß8ô¥ìâ×1
-G	java:S106-"+Replace this use of System.out by a logger.(îºãğ8ßßìâ×1
-L	java:S106."+Replace this use of System.out by a logger.(ÕØšâÿÿÿÿÿ8³íâ×1
+G	java:S106,"+Replace this use of System.out by a logger.(©÷ƒŸ8ô¥ìâ×1
+G	java:S106-"+Replace this use of System.out by a logger.(»‹ˆ8ßßìâ×1
+G	java:S106."+Replace this use of System.out by a logger.(ä¯µì8³íâ×1
+L	java:S106/"+Replace this use of System.out by a logger.(ÕØšâÿÿÿÿÿ8Ø¶šØ1
 P
-java:S1128".Remove this unused import 'java.util.Scanner'.(ÒÜÅ¸úÿÿÿÿ8ÈĞÃã×1
+java:S1128".Remove this unused import 'java.util.Scanner'.(ÒÜÅ¸úÿÿÿÿ8óÏ½‰Ø1
 O
 java:S1068	"2Remove this unused "usuarioManager" private field.(ÕÜş¶8’Åú«×1
