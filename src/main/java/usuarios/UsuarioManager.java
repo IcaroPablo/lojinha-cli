@@ -1,4 +1,4 @@
-package src.usuarios;
+package src.main.java.usuarios;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -10,12 +10,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static src.constants.Constantes.BD_GERENTES;
-import static src.constants.Constantes.BD_USUARIOS;
-import static src.constants.Constantes.CLIENTE;
-import static src.constants.Constantes.GERENTE;
-import static src.constants.Constantes.LOGIN_GERENTES;
-import static src.constants.Constantes.LOGIN_USUARIOS;
+import static src.main.java.constants.Constantes.BD_GERENTES;
+import static src.main.java.constants.Constantes.BD_USUARIOS;
+import static src.main.java.constants.Constantes.CLIENTE;
+import static src.main.java.constants.Constantes.GERENTE;
+import static src.main.java.constants.Constantes.LOGIN_GERENTES;
+import static src.main.java.constants.Constantes.LOGIN_USUARIOS;
 
 public class UsuarioManager {
 
@@ -36,7 +36,6 @@ public class UsuarioManager {
         } else if(LOGIN_GERENTES.equals(fileName) && dados.length == 3 && dados[0].equals(cpf) && dados[1].equals(senha)) {
           return dados[2].equals(GERENTE);
         }
-
       }
       return false;
     } catch (IOException e) {

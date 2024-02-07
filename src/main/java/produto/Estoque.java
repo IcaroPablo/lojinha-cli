@@ -1,4 +1,4 @@
-package src.produto;
+package src.main.java.produto;
 
 import java.util.Map;
 

@@ -31,3 +31,9 @@ M
 src/constants/Constantes.java,d/4/d4a8a9bba207be4969ef34807add15a5ead6b3b3
 B
 login_gerentes.csv,7/9/79714d151bb3ce9155615189d0102f1119807db4
+O
+src/produto/ProdutoManager.java,c/e/ce3bf4d3117ce66377edeb1d76d290e1bd967ee0
+?
+bd_produtos.csv,f/5/f5c41e384d51c01906df44308753e293d4d95bba
+>
+bd_estoque.csv,2/5/25db30915bfa23adebf40e101f8ab3eca97d39d4

@@ -1,4 +1,4 @@
-package src.usuarios;
+package src.main.java.usuarios;
 
 public class Gerente extends Usuario {
 

@@ -1,8 +1,6 @@
-package src.service;
+package src.main.java.service;
 
-import src.usuarios.UsuarioManager;
-
-import java.util.Scanner;
+import src.main.java.usuarios.UsuarioManager;
 
 public class Menus {
 
@@ -40,10 +38,15 @@ public class Menus {
     System.out.println("2. Ver cadastros de clientes");
     System.out.println("3. Alterar cadastro de cliente");
     System.out.println("4. Excluir Cadastro de Cliente");
-    System.out.println("5. Cadastrar Produto");
-    System.out.println("6. Inserir Produto no estoque");
-    System.out.println("7. Ver Estoque");
-    System.out.println("8. Excluir Cadastro de Produto");
-    System.out.println("8. Sair");
+    System.out.println("5. Cadastrar Produto"); // para implementar depois (usando a quantidade do estoque)
+    System.out.println("5. Visualizar cadastro de Produto");
+    System.out.println("6. Alterar Cadastro de Produto");
+    System.out.println("7. Alterar Preço de Produto");
+    System.out.println("8. Inserir Produto no Estoque");
+    System.out.println("9. Ver Estoque");
+    System.out.println("10. Excluir Cadastro de Produto");
+    System.out.println("11. Sair");
+    System.out.println("=".repeat(50));
+    System.out.print("OPÇÃO: ");
   }
 }

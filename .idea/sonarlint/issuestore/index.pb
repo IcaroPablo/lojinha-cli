@@ -35,3 +35,19 @@ O
 src/produto/ProdutoManager.java,c/e/ce3bf4d3117ce66377edeb1d76d290e1bd967ee0
 ?
 bd_produtos.csv,f/5/f5c41e384d51c01906df44308753e293d4d95bba
+>
+bd_estoque.csv,2/5/25db30915bfa23adebf40e101f8ab3eca97d39d4
+>
+src/.gitignore,9/3/93cbdd0973c9a7b59e5cef90a94300ab95fd66e5
+Y
+)src/main/java/produto/ProdutoManager.java,1/3/134f7adb6677cea363655644ced329e900bf7dcc
+P
+ src/main/java/service/Menus.java,2/b/2b31070404f4d5de604a908f4519d14389edf84e
+Y
+)src/main/java/service/LojinhaService.java,b/e/bed22f7a9f7414a10842a0b221bb90fb1379a964
+Z
+*src/main/java/usuarios/UsuarioManager.java,a/c/acd6193e63abd9c8b0216b15aa015fb3ee8e5235
+W
+'src/main/java/constants/Constantes.java,9/a/9a3cdd26b6f40bb15e5d8d1080e4ac68c7bcd133
+J
+src/main/java/Lojinha.java,7/d/7db558d565c2b232007842f782bc09fd870b544c

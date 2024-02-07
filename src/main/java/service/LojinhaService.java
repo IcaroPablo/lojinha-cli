@@ -1,23 +1,25 @@
-package src.service;
+package src.main.java.service;
 
-import src.produto.ProdutoManager;
-import src.usuarios.Cliente;
-import src.usuarios.Gerente;
-import src.usuarios.UsuarioManager;
+import src.main.java.produto.ProdutoManager;
+import src.main.java.usuarios.Cliente;
+import src.main.java.usuarios.Gerente;
+import src.main.java.usuarios.UsuarioManager;
 
 import java.io.FileNotFoundException;
 import java.util.Objects;
 import java.util.Scanner;
 
-import static src.constants.Constantes.BD_GERENTES;
-import static src.constants.Constantes.BD_USUARIOS;
-import static src.constants.Constantes.CLIENTE;
-import static src.constants.Constantes.GERENTE;
-import static src.constants.Constantes.LOGIN_GERENTES;
-import static src.constants.Constantes.LOGIN_USUARIOS;
-import static src.service.Menus.menuCliente;
-import static src.service.Menus.menuGerente;
-import static src.service.Menus.menuInicial;
+import static src.main.java.constants.Constantes.BD_ESTOQUE;
+import static src.main.java.constants.Constantes.BD_GERENTES;
+import static src.main.java.constants.Constantes.BD_PRODUTOS;
+import static src.main.java.constants.Constantes.BD_USUARIOS;
+import static src.main.java.constants.Constantes.CLIENTE;
+import static src.main.java.constants.Constantes.GERENTE;
+import static src.main.java.constants.Constantes.LOGIN_GERENTES;
+import static src.main.java.constants.Constantes.LOGIN_USUARIOS;
+import static src.main.java.service.Menus.menuCliente;
+import static src.main.java.service.Menus.menuGerente;
+import static src.main.java.service.Menus.menuInicial;
 
 public class LojinhaService {
   private final UsuarioManager usuarioManager;
@@ -198,7 +200,7 @@ public class LojinhaService {
         case 5:
           System.out.println("Saindo do sistema. Até breve!");
           iniciar();
-          break;
+          return;
         default:
           System.out.println("Opção inválida. Tente novamente.");
       }
@@ -275,7 +277,7 @@ public class LojinhaService {
           System.out.print("Digite o código do produto: ");
           String codigo = scanner.next();
           scanner.nextLine();
-          if (produtoManager.produtoExiste(codigo)) {
+          if (produtoManager.produtoExiste(codigo, BD_PRODUTOS)) {
           System.out.println("Já existe um produto com este código");
           System.out.println("Redirecionando ao menu principal");
           menuGerente();
@@ -290,23 +292,41 @@ public class LojinhaService {
           retornarAoMenu(GERENTE);
           break;
         case 6:
-          System.out.println("Opção 6 selecionada: Inserir produto no estoque");
+          System.out.println("Opção 6 selecionada: Alterar cadastro de produto");
+          System.out.println("=".repeat(70));
+          produtoManager.visualizarProdutos();
+          System.out.print("Digite o código do produto: ");
+          codigo = scanner.next();
+          System.out.print("Digite a nova descrição: ");
+          String novaDescricao = scanner.next();
+          System.out.println("Digite o novo valor: ");
+          Double novoValor = scanner.nextDouble();
+          produtoManager.alterarCadastroDeProduto(codigo, novaDescricao, novoValor);
+          retornarAoMenu(GERENTE);
+          break;
+        case 7:
+          System.out.println("Opção 7 selecionada: Alterar preço de produto");
+          break;
+        case 8:
+          System.out.println("Opção 8 selecionada: Inserir produto no estoque");
           System.out.println("=".repeat(70));
           produtoManager.visualizarProdutos();
           System.out.print("Digite o código do produto: ");
           codigo = scanner.next();
           System.out.print("Digite a quantidade do produto no estoque: ");
           Integer quantidade = scanner.nextInt();
-          // ADICIONAR LÓGICA PARA SOMAR QUANTIDADE NO ESTOQUE, CASO JÁ EXISTA.
+          if (produtoManager.produtoExiste(codigo, BD_ESTOQUE)) produtoManager.adicionarQuantidadeProduto(codigo, quantidade);
+          else produtoManager.cadastrarProdutoNoEstoque(codigo, quantidade);
+          // também ver funcionalidade de alterar o valor de um produto.
           retornarAoMenu(GERENTE);
           break;
-        case 7:
-          System.out.println("Opção 7 selecionada: Ver estoque");
-          break;
-        case 8:
-          System.out.println("Opção 8 selecionada: Excluir produto do estoque");
-          break;
         case 9:
+          System.out.println("Opção 9 selecionada: Ver estoque");
+          break;
+        case 10:
+          System.out.println("Opção 10 selecionada: Excluir produto do estoque");
+          break;
+        case 11:
           System.out.println("Saindo do sistema. Até breve!");
           iniciar();
           break;
@@ -322,8 +342,8 @@ public class LojinhaService {
     System.out.println("Retornar ao menu? S/N");
     String resposta = scanner.next();
     scanner.nextLine();
-    resposta.toLowerCase();
-    switch (resposta) {
+    String lower = resposta.toLowerCase();
+    switch (lower) {
       case "s":
         if (Objects.equals(userType, CLIENTE)) {
           exibirMenuCliente();
@@ -332,11 +352,10 @@ public class LojinhaService {
         }
         break;
       case "n":
-        menuInicial();
+        menuInicial();// retorno ao menu na visualização de cadastro
         return;
       default:
         System.out.println("Saindo do sistema. Até breve!");
-        return;
     }
   }
 }

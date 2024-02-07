@@ -1,4 +1,4 @@
-package src.produto;
+package src.main.java.produto;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -8,9 +8,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import static src.constants.Constantes.BD_ESTOQUE;
-import static src.constants.Constantes.BD_PRODUTOS;
-import static src.constants.Constantes.BD_USUARIOS;
+import static src.main.java.constants.Constantes.BD_ESTOQUE;
+import static src.main.java.constants.Constantes.BD_PRODUTOS;
 
 public class ProdutoManager {
 
@@ -28,7 +27,7 @@ public class ProdutoManager {
       }
       if (!arquivoExiste(BD_ESTOQUE)) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(BD_ESTOQUE))) {
-          writer.write("CÓDIGO, DESCRIÇAO, VALOR, QUANTIDADE");
+          writer.write("CÓDIGO, QUANTIDADE");
           writer.newLine();
         }
       }
@@ -59,8 +58,8 @@ public class ProdutoManager {
     }
   }
 
-  public boolean produtoExiste(String codigo) {
-    try (BufferedReader reader = new BufferedReader(new FileReader(BD_PRODUTOS))) {
+  public boolean produtoExiste(String codigo, String fileName) {
+    try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
       String linha;
       while ((linha = reader.readLine()) != null) {
         String[] dados = linha.split(",");
@@ -69,9 +68,26 @@ public class ProdutoManager {
         }
       }
     } catch (IOException e) {
-      throw new RuntimeException("Erro ao verificar se o usuário existe", e);
+      throw new RuntimeException("Erro ao verificar se o produto existe", e);
     }
     return false;
+  }
+
+  public void adicionarQuantidadeProduto(String codigo, Integer quantidade) {
+    try (BufferedReader reader = new BufferedReader(new FileReader(BD_ESTOQUE))) {
+      String linha;
+      while ((linha = reader.readLine()) != null) {
+        String[] dados = linha.split(",");
+        if (dados.length > 0 && dados[0].equals(codigo)) {
+          codigo = dados[0];
+          Integer quantidadeEstoque = Integer.parseInt(dados[1]);
+          int novaquantidade = quantidadeEstoque + quantidade;
+          cadastrarProdutoNoEstoque(codigo, novaquantidade);
+        }
+      }
+    } catch (IOException e) {
+      throw new RuntimeException("Erro ao verificar se o produto existe", e);
+    }
   }
 
   public void visualizarProdutos() {
@@ -92,6 +108,33 @@ public class ProdutoManager {
       }
     } catch (IOException e) {
       throw new RuntimeException("Erro ao visualizar cadastro de usuários", e);
+    }
+  }
+
+  public void alterarCadastroDeProduto(String codigo, String novaDescricao, Double novoValor) {
+    try (BufferedReader reader = new BufferedReader(new FileReader(BD_PRODUTOS));
+         BufferedWriter writer = new BufferedWriter(new FileWriter("temp.txt"))) {
+
+      String linha;
+      while ((linha = reader.readLine()) != null) {
+        String[] dados = linha.split(",");
+        if (dados.length >= 3 && codigo.equals(dados[0])) {
+          dados[1] = novaDescricao;
+          dados[2] = String.valueOf(novoValor);
+        }
+        writer.write(String.join(",", dados));
+        writer.newLine();
+      }
+    } catch (IOException e) {
+      throw new RuntimeException("Erro ao alterar cadastro de produto", e);
+    }
+
+    File file = new File(BD_PRODUTOS);
+    File tempFile = new File("temp.txt");
+    if (tempFile.renameTo(file)) {
+      System.out.println("Cadastro alterado com sucesso.");
+    } else {
+      throw new RuntimeException("Erro ao renomear o arquivo temporário.");
     }
   }
 }

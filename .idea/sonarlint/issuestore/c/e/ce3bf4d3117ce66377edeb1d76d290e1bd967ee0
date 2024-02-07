@@ -1,13 +1,15 @@
 
-a	java:S1121"FDefine and throw a dedicated exception instead of using a generic one.(›®h8ˆ¨íŒØ1
-a	java:S112:"FDefine and throw a dedicated exception instead of using a generic one.(›®h8ˆ¨íŒØ1
-g	java:S112H"FDefine and throw a dedicated exception instead of using a generic one.(ß¯õÿÿÿÿÿ8šçğŒØ1
-a	java:S112^"FDefine and throw a dedicated exception instead of using a generic one.(¯‡b8ÚÅ€Ø1
+a	java:S1120"FDefine and throw a dedicated exception instead of using a generic one.(›®h8À™Î›Ø1
+a	java:S1129"FDefine and throw a dedicated exception instead of using a generic one.(›®h8À™Î›Ø1
+g	java:S112G"FDefine and throw a dedicated exception instead of using a generic one.(¸´÷ıÿÿÿÿ8À™Î›Ø1
+g	java:S112Y"FDefine and throw a dedicated exception instead of using a generic one.(¸´÷ıÿÿÿÿ8Á™Î›Ø1
+a	java:S112n"FDefine and throw a dedicated exception instead of using a generic one.(¯‡b8Á™Î›Ø1
+h	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(ßØ×ƒüÿÿÿÿ8Á™Î›Ø1
+c	java:S112‰"FDefine and throw a dedicated exception instead of using a generic one.(»Á«8Á™Î›Ø1
 n
-java:S2677O"LUse or store the value returned from "readLine" instead of throwing it away.(£­—âÿÿÿÿÿ8õÅ€Ø1
-L	java:S106W"+Replace this use of System.out by a logger.(•‹‘şÿÿÿÿ8öÅ€Ø1
-G	java:S106X"+Replace this use of System.out by a logger.(ïøúı8÷Å€Ø1
-L	java:S106Y"+Replace this use of System.out by a logger.(ÈÀ›ÿÿÿÿÿ8÷Å€Ø1
-L	java:S106Z"+Replace this use of System.out by a logger.(ÓÎÿ×üÿÿÿÿ8øÅ€Ø1
-^
-java:S1128"ARemove this unused import 'src.constants.Constantes.BD_USUARIOS'.(ƒÀ™¦8¼™Ø1
+java:S2677_"LUse or store the value returned from "readLine" instead of throwing it away.(£­—âÿÿÿÿÿ8ë™Î›Ø1
+L	java:S106g"+Replace this use of System.out by a logger.(•‹‘şÿÿÿÿ8ì™Î›Ø1
+G	java:S106h"+Replace this use of System.out by a logger.(ïøúı8ì™Î›Ø1
+L	java:S106i"+Replace this use of System.out by a logger.(ÈÀ›ÿÿÿÿÿ8ì™Î›Ø1
+L	java:S106j"+Replace this use of System.out by a logger.(ÓÎÿ×üÿÿÿÿ8ì™Î›Ø1
+M	java:S106‡"+Replace this use of System.out by a logger.(‹³üøøÿÿÿÿ8ï™Î›Ø1

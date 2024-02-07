@@ -1,9 +1,8 @@
-package src.main;
+package src.main.java;
 
-import src.produto.Produto;
-import src.produto.ProdutoManager;
-import src.service.LojinhaService;
-import src.usuarios.UsuarioManager;
+import src.main.java.produto.ProdutoManager;
+import src.main.java.service.LojinhaService;
+import src.main.java.usuarios.UsuarioManager;
 
 import java.io.FileNotFoundException;
 
