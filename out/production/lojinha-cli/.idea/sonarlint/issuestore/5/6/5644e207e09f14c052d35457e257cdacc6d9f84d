@@ -1,35 +1,0 @@
-
-L	java:S106"+Replace this use of System.out by a logger.(³ºçŸúÿÿÿÿ8Åú«×1
-G	java:S106"+Replace this use of System.out by a logger.(­ÂÊô8Åú«×1
-L	java:S106"+Replace this use of System.out by a logger.(Ğü¢ìÿÿÿÿÿ8Åú«×1
-G	java:S106"+Replace this use of System.out by a logger.(ë»§8Åú«×1
-F	java:S106"+Replace this use of System.out by a logger.(Ì£Ö8Åú«×1
-G	java:S106"+Replace this use of System.out by a logger.(øİ«–8Åú«×1
-L	java:S106"+Replace this use of System.out by a logger.(Á†‡úÿÿÿÿ8Åú«×1
-G	java:S106"+Replace this use of System.out by a logger.(íİôÄ8Åú«×1
-L	java:S106"+Replace this use of System.out by a logger.(ÓâÛØıÿÿÿÿ8Åú«×1
-L	java:S106"+Replace this use of System.out by a logger.(‹Ç¦úÿÿÿÿ8‘Åú«×1
-F	java:S106"+Replace this use of System.out by a logger.(ßÖ³X8‘Åú«×1
-G	java:S106"+Replace this use of System.out by a logger.(ˆÉÿ8‘Åú«×1
-G	java:S106"+Replace this use of System.out by a logger.(Ù Şä8‘Åú«×1
-G	java:S106 "+Replace this use of System.out by a logger.(ÎÃõı8‘Åú«×1
-L	java:S106!"+Replace this use of System.out by a logger.(µÖÛûÿÿÿÿ8’Åú«×1
-F	java:S106""+Replace this use of System.out by a logger.(ı‘·?8’Åú«×1
-F	java:S106&"+Replace this use of System.out by a logger.(ßÖ³X8’Åú«×1
-F	java:S106'"+Replace this use of System.out by a logger.(Åö¢f8’Åú«×1
-L	java:S106("+Replace this use of System.out by a logger.(ƒÉçäşÿÿÿÿ8¶¸Å¬×1
-L	java:S106)"+Replace this use of System.out by a logger.(®°æ´ÿÿÿÿÿ8Ìœß¬×1
-G	java:S106*"+Replace this use of System.out by a logger.(æä˜ã8µ´Æâ×1
-F	java:S106+"+Replace this use of System.out by a logger.(Ø­Ã18Åøëâ×1
-L	java:S106,"+Replace this use of System.out by a logger.(ÕĞ¹ÿÿÿÿÿ8ô¥ìâ×1
-F	java:S106-"+Replace this use of System.out by a logger.(å£åW8ßßìâ×1
-G	java:S106."+Replace this use of System.out by a logger.(Öç¸¾8³íâ×1
-F	java:S106/"+Replace this use of System.out by a logger.(ÈÏÕ8Ø¶šØ1
-L	java:S1060"+Replace this use of System.out by a logger.(››§­şÿÿÿÿ8åƒ°›Ø1
-L	java:S1061"+Replace this use of System.out by a logger.(ù·«²ÿÿÿÿÿ8ˆºµ›Ø1
-G	java:S1062"+Replace this use of System.out by a logger.(ÑëÑö8çÜ¿›Ø1
-G	java:S1063"+Replace this use of System.out by a logger.(ßÌüÍ8…–Å›Ø1
-P
-java:S1128".Remove this unused import 'java.util.Scanner'.(ÒÜÅ¸úÿÿÿÿ8óÏ½‰Ø1
-O
-java:S1068	"2Remove this unused "usuarioManager" private field.(ÕÜş¶8’Åú«×1

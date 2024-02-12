@@ -1,16 +1,22 @@
 package src.main.java;
 
-import src.main.java.produto.ProdutoManager;
-import src.main.java.service.LojinhaService;
-import src.main.java.usuarios.UsuarioManager;
+import src.main.java.repositories.repository.ProdutoRepository;
+import src.main.java.repositories.repository.UserRepository;
+import src.main.java.service.ProdutoService;
+import src.main.java.rest.LojinhaController;
+import src.main.java.service.UsuarioService;
+import src.main.java.utils.FileUtils;
+import src.main.java.view.Menus;
 
 import java.io.FileNotFoundException;
 
 public class Lojinha {
   public static void main(String[] args) throws FileNotFoundException {
-    UsuarioManager usuarioManager = new UsuarioManager();
-    ProdutoManager produtoManager = new ProdutoManager();
-    LojinhaService lojinhaService = new LojinhaService(usuarioManager, produtoManager);
-    lojinhaService.iniciar();
+    UsuarioService usuarioService = new UsuarioService(new FileUtils(), new UserRepository());
+    ProdutoService produtoService = new ProdutoService(new FileUtils(), new ProdutoRepository());
+    LojinhaController lojinhaController = new LojinhaController(new Menus());
+    Menus menus = new Menus(usuarioService, produtoService, lojinhaController);
+    lojinhaController = new LojinhaController(menus);
+    lojinhaController.iniciar();
   }
 }
