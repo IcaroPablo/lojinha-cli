@@ -24,7 +24,8 @@ Um mini projeto para praticar conceitos básicos de programação orientada a ob
 
 ## V1.0.0
 
-A aplicação deve ter uma interface em linha de comando apenas, não devem ser usados frameworks ou bibliotecas para a implementação de quaisquer funcionalidades
+- A aplicação deve ter uma interface em linha de comando apenas
+- Não devem ser usados frameworks ou bibliotecas para a implementação de quaisquer funcionalidades
 
 ## Material de referência
 
