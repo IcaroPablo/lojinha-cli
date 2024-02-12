@@ -1,5 +1,7 @@
 # lojinha-cli
 
+Um mini projeto para praticar conceitos básicos de programação orientada a objetos
+
 ## Requisitos
 - Gerenciamento de usuários
     - Deve haver um sistema de autenticação para os usuários
@@ -20,7 +22,13 @@
     - Exibir uma nota fiscal (e gerar um arquivo) com os itens escolhidos, as quantidades de cada item e o valor a ser pago
     - Itens comprados devem ser removidos do estoque
 
-## TO DO
+## Material de referência
+
+- [Orientação a objetos com Java](https://www.alura.com.br/apostila-java-orientacao-objetos)
+- [SOLID](https://www.alura.com.br/artigos/solid)
+- [MVC](https://www.alura.com.br/apostila-java-web/mvc-model-view-controller)
+
+## Bônus
 - Modelagem com UML e diagrama de casos de uso
 
 V1.0.0
