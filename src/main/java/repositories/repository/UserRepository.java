@@ -1,6 +1,7 @@
 package src.main.java.repositories.repository;
 
 import src.main.java.entities.Usuario;
+import src.main.java.infrastructure.exception.BusinessException;
 import src.main.java.repositories.UserRepositoryView;
 
 import java.io.BufferedReader;
@@ -15,11 +16,18 @@ import java.util.List;
 import static src.main.java.constants.Constantes.BD_USER_CABECALHO;
 import static src.main.java.constants.Constantes.BD_USUARIOS;
 import static src.main.java.constants.Constantes.CLIENTE;
+import static src.main.java.constants.Constantes.ERROR_CREATE_USER;
+import static src.main.java.constants.Constantes.ERROR_DELETE_USER;
+import static src.main.java.constants.Constantes.ERROR_READ_FILE;
+import static src.main.java.constants.Constantes.ERROR_RETRIEVE_USER;
+import static src.main.java.constants.Constantes.ERROR_TEMP_FILE;
+import static src.main.java.constants.Constantes.ERROR_UPDATE_USER;
+import static src.main.java.constants.Constantes.ERROR_USER_EXISTS;
 import static src.main.java.constants.Constantes.GERENTE;
 import static src.main.java.constants.Constantes.LOGIN_GERENTES;
 import static src.main.java.constants.Constantes.LOGIN_USUARIOS;
-import static src.main.java.utils.Present.print;
-import static src.main.java.utils.Present.println;
+import static src.main.java.infrastructure.utils.Present.print;
+import static src.main.java.infrastructure.utils.Present.println;
 
 public class UserRepository implements UserRepositoryView {
   private List<Usuario> usuarios;
@@ -38,7 +46,7 @@ public class UserRepository implements UserRepositoryView {
       }
       return false;
     } catch (IOException e) {
-      throw new RuntimeException("Erro ao carregar usuários ", e);
+      throw new BusinessException(ERROR_READ_FILE);
     }
   }
 
@@ -53,7 +61,7 @@ public class UserRepository implements UserRepositoryView {
         }
       }
     } catch (IOException e) {
-      throw new RuntimeException("Erro ao verificar se o usuário existe", e);
+      throw new BusinessException(ERROR_USER_EXISTS);
     }
     return false;
   }
@@ -69,7 +77,7 @@ public class UserRepository implements UserRepositoryView {
         }
       }
     } catch (IOException e) {
-      throw new RuntimeException("Erro ao buscar o nome do usuário. ", e);
+      throw new BusinessException(ERROR_READ_FILE);
     }
     return null;
   }
@@ -97,7 +105,7 @@ public class UserRepository implements UserRepositoryView {
         }
       }
     } catch (IOException e) {
-      throw new RuntimeException("Erro ao visualizar cadastro de usuários", e);
+      throw new BusinessException(ERROR_READ_FILE);
     }
   }
 
@@ -117,7 +125,7 @@ public class UserRepository implements UserRepositoryView {
         writer.newLine();
       }
     } catch (IOException e) {
-      throw new RuntimeException("Erro ao alterar cadastro de usuário", e);
+      throw new BusinessException(ERROR_UPDATE_USER);
     }
 
     File file = new File(BD_USUARIOS);
@@ -125,7 +133,7 @@ public class UserRepository implements UserRepositoryView {
     if (tempFile.renameTo(file)) {
       println("Cadastro alterado com sucesso.");
     } else {
-      throw new RuntimeException("Erro ao renomear o arquivo temporário.");
+      throw new BusinessException(ERROR_TEMP_FILE);
     }
   }
 
@@ -135,7 +143,7 @@ public class UserRepository implements UserRepositoryView {
       writer.write(cpf + "," + senha + "," + userType);
       writer.newLine();
     } catch (IOException e) {
-      throw new RuntimeException("Erro ao salvar usuário ", e);
+      throw new BusinessException(ERROR_CREATE_USER);
     }
   }
 
@@ -145,7 +153,7 @@ public class UserRepository implements UserRepositoryView {
       writer.write(cpf + "," + nome + "," + telefone + "," + userType);
       writer.newLine();
     } catch (IOException e) {
-      throw new RuntimeException("Erro ao salvar usuário ", e);
+      throw new BusinessException(ERROR_CREATE_USER);
     }
   }
 
@@ -169,7 +177,7 @@ public class UserRepository implements UserRepositoryView {
       }
       println("Usuário removido com sucesso.");
     } catch (IOException e) {
-      throw new RuntimeException("Erro ao remover usuário.", e);
+      throw new BusinessException(ERROR_DELETE_USER);
     }
   }
 
@@ -188,13 +196,13 @@ public class UserRepository implements UserRepositoryView {
         writer.newLine();
       }
     } catch (IOException e) {
-      throw new RuntimeException("Erro ao remover cadastro de usuário do arquivo BD_USUARIOS", e);
+      throw new BusinessException(ERROR_DELETE_USER);
     }
 
     File fileBD = new File(BD_USUARIOS);
     File tempFileBD = new File("temp_bd.txt");
     if (!tempFileBD.renameTo(fileBD)) {
-      throw new RuntimeException("Erro ao renomear o arquivo temporário para BD_USUARIOS.");
+      throw new BusinessException(ERROR_TEMP_FILE);
     }
 
     try (BufferedReader reader = new BufferedReader(new FileReader(LOGIN_USUARIOS));
@@ -210,13 +218,13 @@ public class UserRepository implements UserRepositoryView {
         writer.newLine();
       }
     } catch (IOException e) {
-      throw new RuntimeException("Erro ao remover cadastro de usuário do arquivo LOGIN_USUARIOS", e);
+      throw new BusinessException(ERROR_DELETE_USER);
     }
 
     File fileLogin = new File(LOGIN_USUARIOS);
     File tempFileLogin = new File("temp_login.txt");
     if (!tempFileLogin.renameTo(fileLogin)) {
-      throw new RuntimeException("Erro ao renomear o arquivo temporário para LOGIN_USUARIOS.");
+      throw new BusinessException(ERROR_TEMP_FILE);
     }
 
     println("Cadastro removido com sucesso.");
@@ -247,7 +255,7 @@ public class UserRepository implements UserRepositoryView {
         }
       }
     } catch (IOException e) {
-      throw new RuntimeException("Erro ao visualizar cadastro de usuários", e);
+      throw new BusinessException(ERROR_RETRIEVE_USER);
     }
   }
 }

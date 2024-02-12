@@ -1,7 +1,9 @@
 package src.main.java.service;
 
+import src.main.java.infrastructure.exception.BusinessException;
+import src.main.java.repositories.UserRepositoryView;
 import src.main.java.repositories.repository.UserRepository;
-import src.main.java.utils.FileUtils;
+import src.main.java.infrastructure.utils.FileUtils;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -12,14 +14,16 @@ import static src.main.java.constants.Constantes.BD_GERENTES;
 import static src.main.java.constants.Constantes.BD_GERENTES_CABECALHO;
 import static src.main.java.constants.Constantes.BD_USER_CABECALHO;
 import static src.main.java.constants.Constantes.BD_USUARIOS;
+import static src.main.java.constants.Constantes.ERROR_READ_FILE;
 import static src.main.java.constants.Constantes.LOGIN_GERENTES;
 import static src.main.java.constants.Constantes.LOGIN_GERENTES_CABECALHO;
 import static src.main.java.constants.Constantes.LOGIN_USER_CABECALHO;
 import static src.main.java.constants.Constantes.LOGIN_USUARIOS;
+import static src.main.java.constants.Constantes.NAO_EXISTE_USUARIO;
 
 public class UsuarioService {
   private FileUtils fileUtils;
-  private final UserRepository repository;
+  private final UserRepositoryView repository;
 
   public UsuarioService(FileUtils fileUtils, UserRepository repository) throws FileNotFoundException {
     this.fileUtils = fileUtils;
@@ -64,7 +68,7 @@ public class UsuarioService {
         }
       }
     } catch (IOException e) {
-      throw new RuntimeException("Erro ao verificar se o usuário é administrador", e);
+      throw new BusinessException(ERROR_READ_FILE);
     }
     return false;
   }
@@ -74,14 +78,17 @@ public class UsuarioService {
   }
 
   public void verCadastro(String cpf, String fileName) {
+    if (!usuarioExiste(cpf, BD_USUARIOS)) throw new BusinessException(NAO_EXISTE_USUARIO);
     repository.visualizarCadastro(cpf, fileName);
   }
 
   public void alterarCadastro(String cpf, String novoNome, String novoTelefone) {
+    if (!usuarioExiste(cpf, BD_USUARIOS)) throw new BusinessException(NAO_EXISTE_USUARIO);
     repository.alterarCadastro(cpf, novoNome, novoTelefone);
   }
 
   public void excluirCadastro(String cpf) {
+    if (!usuarioExiste(cpf, BD_USUARIOS)) throw new BusinessException(NAO_EXISTE_USUARIO);
     repository.removerCadastro(cpf);
   }
 }

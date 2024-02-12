@@ -1,7 +1,7 @@
 package src.main.java.service;
 
 import src.main.java.repositories.repository.ProdutoRepository;
-import src.main.java.utils.FileUtils;
+import src.main.java.infrastructure.utils.FileUtils;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

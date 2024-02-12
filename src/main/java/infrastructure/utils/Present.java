@@ -1,4 +1,4 @@
-package src.main.java.utils;
+package src.main.java.infrastructure.utils;
 
 public class Present {
   public static void print(String string) {

@@ -6,7 +6,6 @@ import src.main.java.rest.LojinhaController;
 import src.main.java.service.ProdutoService;
 import src.main.java.service.UsuarioService;
 
-import java.io.FileNotFoundException;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -20,9 +19,9 @@ import static src.main.java.constants.Constantes.GERENTE;
 import static src.main.java.constants.Constantes.LOGIN_GERENTES;
 import static src.main.java.constants.Constantes.LOGIN_USUARIOS;
 import static src.main.java.constants.Constantes.SAINDO;
-import static src.main.java.utils.Present.print;
-import static src.main.java.utils.Present.printf;
-import static src.main.java.utils.Present.println;
+import static src.main.java.infrastructure.utils.Present.print;
+import static src.main.java.infrastructure.utils.Present.printf;
+import static src.main.java.infrastructure.utils.Present.println;
 
 public class Menus {
   private final UsuarioService usuarioService;
@@ -58,15 +57,19 @@ public class Menus {
         case 1 -> loginUsuario();
         case 2 -> fazerCadastro();
         case 3 -> loginAdministrador();
-        default -> print("Escolha uma opção válida");
+        default -> {
+          print("Escolha uma opção válida \n");
+          menuInicial();
+          return;
+        }
       }
     }
     print(SAINDO);
-    scanner.close();
+    System.exit(0);
   }
 
   public void loginUsuario() {
-    print("Opção 1 selecionada: FAZER LOGIN DE CLIENTE \n Digite o CPF: ");
+    print("Opção 1 selecionada: FAZER LOGIN DE CLIENTE \nDigite o CPF: ");
     String cpf = scanner.next();
     scanner.nextLine();
     if (usuarioService.usuarioExiste(cpf, BD_USUARIOS)) {

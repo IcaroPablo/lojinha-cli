@@ -5,7 +5,7 @@ import src.main.java.repositories.repository.UserRepository;
 import src.main.java.service.ProdutoService;
 import src.main.java.rest.LojinhaController;
 import src.main.java.service.UsuarioService;
-import src.main.java.utils.FileUtils;
+import src.main.java.infrastructure.utils.FileUtils;
 import src.main.java.view.Menus;
 
 import java.io.FileNotFoundException;
