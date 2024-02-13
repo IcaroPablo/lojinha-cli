@@ -55,23 +55,8 @@ public class UsuarioService {
   }
 
   public boolean usuarioExiste(String cpf, String fileName) throws BusinessException {
-//    if(!validator.cpfValidator(cpf)) throw new BusinessException("O CPF não é válido.");
+    if(!valid.isValidCpf(cpf)) throw new BusinessException("O CPF não é válido.");
     return repository.usuarioExiste(cpf, fileName);
-  }
-
-  public boolean isAdministrador(String cpf) throws BusinessException {
-    try (BufferedReader reader = new BufferedReader(new FileReader(BD_USUARIOS))) {
-      String linha;
-      while ((linha = reader.readLine()) != null) {
-        String[] dados = linha.split(",");
-        if (dados.length > 0 && dados[0].equals(cpf)) {
-          return Boolean.parseBoolean(dados[3]);
-        }
-      }
-    } catch (IOException e) {
-      throw new BusinessException(ERROR_READ_FILE);
-    }
-    return false;
   }
 
   public void recuperarCadastros() throws BusinessException {

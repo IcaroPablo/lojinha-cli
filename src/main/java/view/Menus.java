@@ -13,7 +13,6 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Scanner;
@@ -119,12 +118,13 @@ public class Menus {
         menuInicial();
         return;
       }
+      scanner.nextLine();
       print("Digite o nome: ");
       String nome = scanner.nextLine();
-      scanner.nextLine();
+      if(nome.isBlank()) throw new BusinessException("O nome não pode ser vazio");
       print("Digite o telefone: ");
       String telefone = scanner.next();
-//      if(!valid.isValidTelefone(telefone)) throw new BusinessException("O número do celular é inválido.");
+      if(!valid.isValidTelefone(telefone)) throw new BusinessException("O número do celular é inválido.");
       print("Digite a senha de acesso: ");
       String senha = scanner.next();
       Cliente cliente = new Cliente(cpf, nome, telefone);
@@ -141,10 +141,13 @@ public class Menus {
         menuInicial();
         return;
       }
+      scanner.nextLine();
       print("Digite o nome: ");
       String nome = scanner.nextLine();
+      if(nome.isBlank()) throw new BusinessException("O nome não pode ser vazio");
       print("Digite o telefone: ");
       String telefone = scanner.next();
+      if(!valid.isValidTelefone(telefone)) throw new BusinessException("O número do celular é inválido.");
       print("Digite a senha de acesso: ");
       String senha = scanner.next();
       Gerente gerente = new Gerente(cpf, nome, telefone);
@@ -153,7 +156,7 @@ public class Menus {
       println("Cadastro realizado com sucesso!");
     }
 
-    print("Redirecionando para o Menu Inicial \n Faça login, por favor.");
+    print("Redirecionando para o Menu Inicial \n Faça login, por favor.\n");
     menuInicial();
   }
 
