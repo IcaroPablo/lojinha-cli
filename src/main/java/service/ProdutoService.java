@@ -1,93 +1,59 @@
 package src.main.java.service;
 
-import src.main.java.repositories.repository.ProdutoRepository;
+import src.main.java.infrastructure.exception.BusinessException;
 import src.main.java.infrastructure.utils.FileUtils;
+import src.main.java.repositories.ProdutoRepositoryVIew;
+import src.main.java.repositories.repository.ProdutoRepository;
+import src.main.java.rest.dtos.ProdutoDto;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 
-import static src.main.java.constants.Constantes.BD_ESTOQUE;
-import static src.main.java.constants.Constantes.BD_ESTOQUE_CABECALHO;
 import static src.main.java.constants.Constantes.BD_PRODUTOS;
 import static src.main.java.constants.Constantes.BD_PRODUTOS_CABECALHO;
 
 public class ProdutoService {
 
-  private FileUtils fileUtils;
-  private final ProdutoRepository repository;
+  private final ProdutoRepositoryVIew repository;
 
-  public ProdutoService(FileUtils fileUtils, ProdutoRepository repository) throws FileNotFoundException {
+  public ProdutoService(FileUtils fileUtils, ProdutoRepository repository) {
     this.repository = repository;
     fileUtils.createIfNotExists(BD_PRODUTOS, BD_PRODUTOS_CABECALHO);
-    fileUtils.createIfNotExists(BD_ESTOQUE, BD_ESTOQUE_CABECALHO);
   }
 
-  public void cadastrarProduto(String codigo, String descricaoProduto, Double valor) {
-    repository.cadastrarProduto(codigo, descricaoProduto, valor);
+  public void cadastrarProduto(String codigo, String descricaoProduto, Double valor, int quantidade) throws BusinessException {
+    repository.cadastrarProduto(codigo, descricaoProduto, valor, quantidade);
   }
 
-  public void cadastrarProdutoNoEstoque(String codigo, int quantidade) {
-    repository.cadastrarProdutoNoEstoque(codigo, quantidade);
-  }
-
-  public boolean produtoExiste(String codigo, String fileName) {
+  public boolean produtoExiste(String codigo, String fileName) throws BusinessException {
     return repository.produtoExiste(codigo, fileName);
   }
 
-  public void alterarQuantidadeProduto(String codigo, Integer quantidade, String metodo) {
+  public boolean isAvailableQuantity(String codigo, int quantidade) throws FileNotFoundException {
+    return repository.haQuantidadeDisponivel(codigo, quantidade);
+  }
+
+  public void alterarQuantidadeProduto(String codigo, Integer quantidade, String metodo) throws BusinessException {
     repository.changeQuantity(codigo, quantidade, metodo);
   }
 
-  public void visualizarProdutos() {
-    try (BufferedReader reader = new BufferedReader(new FileReader(BD_PRODUTOS))) {
-      reader.readLine();
-      String linha;
-      while ((linha = reader.readLine()) != null) {
-        String[] dados = linha.split(",");
-        if (dados.length >= 3) {
-          String codigo = dados[0];
-          String descricaoProduto = dados[1];
-          String valor = dados[2];
-          System.out.println("CÓDIGO: " + codigo);
-          System.out.println("DESCRIÇÃO: " + descricaoProduto);
-          System.out.println("VALOR: " + valor);
-          System.out.println("=".repeat(70));
-        }
-      }
-    } catch (IOException e) {
-      throw new RuntimeException("Erro ao visualizar cadastro de usuários", e);
-    }
+  public void visualizarProdutos() throws BusinessException {
+    repository.visualizarCadastroProdutos();
   }
 
-  public void alterarCadastroDeProduto(String codigo, String novaDescricao, Double novoValor) {
-    try (BufferedReader reader = new BufferedReader(new FileReader(BD_PRODUTOS));
-         BufferedWriter writer = new BufferedWriter(new FileWriter("temp.txt"))) {
-
-      String linha;
-      while ((linha = reader.readLine()) != null) {
-        String[] dados = linha.split(",");
-        if (dados.length >= 3 && codigo.equals(dados[0])) {
-          dados[1] = novaDescricao;
-          dados[2] = String.valueOf(novoValor);
-        }
-        writer.write(String.join(",", dados));
-        writer.newLine();
-      }
-    } catch (IOException e) {
-      throw new RuntimeException("Erro ao alterar cadastro de produto", e);
-    }
-
-    File file = new File(BD_PRODUTOS);
-    File tempFile = new File("temp.txt");
-    if (tempFile.renameTo(file)) {
-      System.out.println("Cadastro alterado com sucesso.");
-    } else {
-      throw new RuntimeException("Erro ao renomear o arquivo temporário.");
-    }
+  public void alterarPrecoProduto(String codigo, Double novoValor) throws BusinessException {
+    repository.alterarCadastroDeProduto(codigo, null, novoValor, null);
   }
+
+  public void alterarCadastroProduto(String codigo, String novaDescricao, Double novoValor, Integer novaQuantidade) throws BusinessException {
+    repository.alterarCadastroDeProduto(codigo, novaDescricao, novoValor, novaQuantidade);
+  }
+
+  public void excluirProduto(String codigo) throws BusinessException {
+    repository.excluirProduto(codigo);
+  }
+
+  public ProdutoDto getProduto(String codigo) {
+    return repository.getProduto(codigo);
+  }
+
 }

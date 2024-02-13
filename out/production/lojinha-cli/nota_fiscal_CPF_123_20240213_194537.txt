@@ -1,0 +1,15 @@
+Nota fiscal: nota_fiscal_CPF_123_20240213_194537.txt
+Data: 2024-02-13
+CPF do cliente: 123
+NOME: JV
+TELEFONE: 1234.0
+Forma de pagamento: dinheiro
+Itens:
+======================================================================
+CÓDIGO     | DESCRIÇÃO            | R$ UNIT  | QUANTIDADE | R$ TOTAL   |
+======================================================================
+
+123        | Parafuso             | 0,50     | 10         | 5,00       |
+======================================================================
+VALOR DO DESCONTO:        | 0,50      
+TOTAL COM DESCONTO:       | 4,50      

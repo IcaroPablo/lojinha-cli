@@ -13,24 +13,22 @@ public class Constantes {
   public static final String BD_USUARIOS = properties.getProperty("bd_usuarios");
   public static final String BD_GERENTES = properties.getProperty("bd_gerentes");
   public static final String BD_PRODUTOS = properties.getProperty("bd_produtos");
-  public static final String BD_ESTOQUE = properties.getProperty("bd_estoque");
-
-//  public static final String LOGIN_USUARIOS = "/home/joao/Documentos/JV/lojinha-arquivos/login_user.csv";
-//  public static final String LOGIN_GERENTES = "/home/joao/Documentos/JV/lojinha-arquivos/login_gerente.csv";
-//  public static final String BD_USUARIOS = "/home/joao/Documentos/JV/lojinha-arquivos/bd_usuarios.csv";
-//  public static final String BD_GERENTES = "/home/joao/Documentos/JV/lojinha-arquivos/bd_gerente.csv";
-//  public static final String BD_PRODUTOS = "/home/joao/Documentos/JV/lojinha-arquivos/bd_produtos.csv";
-//  public static final String BD_ESTOQUE = "/home/joao/Documentos/JV/lojinha-arquivos/bd_estoque.csv";
+  public static final String CARRINHO = properties.getProperty("carrinho_compras");
+  public static final String MINHAS_COMPRAS = properties.getProperty("minhas_compras");
+  public static final String COMPRAS_CLIENTES = properties.getProperty("compras_clientes");
   public static final String GERENTE = "Gerente";
   public static final String CLIENTE = "Cliente";
   public static final String ADICIONAR = "adicionar";
   public static final String SUBTRAIR = "subtrair";
+  public static final String SUBSTITUIR = "substituir";
+  public static final String DINHEIRO = "dinheiro";
+  public static final String CARTAO = "cartão";
   public static final String LOGIN_USER_CABECALHO = "CPF, SENHA, ADMINISTRADOR";
+  public static final String CARRINHO_CABECALHO = "CPF, STATUS, ITENS";
   public static final String BD_USER_CABECALHO = "CPF, NOME, TELEFONE, ADMINISTRADOR";
   public static final String BD_GERENTES_CABECALHO = "CPF, NOME, TELEFONE, ADMINISTRADOR";
   public static final String LOGIN_GERENTES_CABECALHO = "CPF, SENHA, ADMINISTRADOR";
-  public static final String BD_PRODUTOS_CABECALHO = "CÓDIGO, DESCRIÇAO, VALOR";
-  public static final String BD_ESTOQUE_CABECALHO = "CÓDIGO, DESCRIÇAO, VALOR";
+  public static final String BD_PRODUTOS_CABECALHO = "CÓDIGO, DESCRIÇAO, VALOR, QUANTIDADE";
   public static final String SAINDO = "Saindo do sistema. Até breve! \n ";
   public static final String NAO_EXISTE_USUARIO = "Não existe um usuário com o CPF informado";
   public static final String ERROR_READ_FILE = "Houve um erro ao tentar ler os dados do arquivo";
@@ -40,6 +38,10 @@ public class Constantes {
   public static final String ERROR_CREATE_USER = "Erro ao tentar criar cadastro de usuário";
   public static final String ERROR_DELETE_USER = "Erro ao remover usuário";
   public static final String ERROR_RETRIEVE_USER = "Erro ao tentar recuperar cadastros de usuários";
+  public static final String ERROR_RETRIEVE_PRODUCTS = "Erro ao visualizar cadastro de produtos";
+  public static final String ERROR_CREATE_PRODUCTS = "Erro ao cadastrar produto ";
+  public static final String ERROR_DELETE_PRODUCT = "Erro ao excluir produto ";
+  public static final String QUANTIDADE_INDISPONIVEL = "Não há quantidade disponível";
 
   public Constantes() throws IOException {
   }

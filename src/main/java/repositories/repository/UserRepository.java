@@ -3,6 +3,7 @@ package src.main.java.repositories.repository;
 import src.main.java.entities.Usuario;
 import src.main.java.infrastructure.exception.BusinessException;
 import src.main.java.repositories.UserRepositoryView;
+import src.main.java.rest.dtos.ClienteDto;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -30,10 +31,9 @@ import static src.main.java.infrastructure.utils.Present.print;
 import static src.main.java.infrastructure.utils.Present.println;
 
 public class UserRepository implements UserRepositoryView {
-  private List<Usuario> usuarios;
 
   @Override
-  public boolean login(String cpf, String senha, String fileName) {
+  public boolean login(String cpf, String senha, String fileName) throws BusinessException {
     try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
       String linha;
       while ((linha = reader.readLine()) != null) {
@@ -51,7 +51,7 @@ public class UserRepository implements UserRepositoryView {
   }
 
   @Override
-  public boolean usuarioExiste(String cpf, String fileName) {
+  public boolean usuarioExiste(String cpf, String fileName) throws BusinessException {
     try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
       String linha;
       while ((linha = reader.readLine()) != null) {
@@ -67,7 +67,7 @@ public class UserRepository implements UserRepositoryView {
   }
 
   @Override
-  public String bemVindoUsuario(String cpf, String fileName) {
+  public String bemVindoUsuario(String cpf, String fileName) throws BusinessException {
     try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
       String linha;
       while ((linha = reader.readLine()) != null) {
@@ -83,7 +83,7 @@ public class UserRepository implements UserRepositoryView {
   }
 
   @Override
-  public void visualizarCadastro(String cpf, String fileName) {
+  public void visualizarCadastro(String cpf, String fileName) throws BusinessException {
     try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
       String linha;
       while ((linha = reader.readLine()) != null) {
@@ -110,7 +110,7 @@ public class UserRepository implements UserRepositoryView {
   }
 
   @Override
-  public void alterarCadastro(String cpf, String novoNome, String novoTelefone) {
+  public void alterarCadastro(String cpf, String novoNome, String novoTelefone) throws BusinessException {
     try (BufferedReader reader = new BufferedReader(new FileReader(BD_USUARIOS));
          BufferedWriter writer = new BufferedWriter(new FileWriter("temp.txt"))) {
 
@@ -138,7 +138,7 @@ public class UserRepository implements UserRepositoryView {
   }
 
   @Override
-  public void salvarDadosUsuario(String cpf, String senha, String userType, String fileName) {
+  public void salvarDadosUsuario(String cpf, String senha, String userType, String fileName) throws BusinessException {
     try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
       writer.write(cpf + "," + senha + "," + userType);
       writer.newLine();
@@ -148,7 +148,7 @@ public class UserRepository implements UserRepositoryView {
   }
 
   @Override
-  public void salvarUsuario(String cpf, String nome, String telefone, String userType, String fileName) {
+  public void salvarUsuario(String cpf, String nome, String telefone, String userType, String fileName) throws BusinessException {
     try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
       writer.write(cpf + "," + nome + "," + telefone + "," + userType);
       writer.newLine();
@@ -158,31 +158,7 @@ public class UserRepository implements UserRepositoryView {
   }
 
   @Override
-  public void removerUsuario(String cpf) {
-    List<Usuario> listaUsuarios = new ArrayList<>();
-
-    for (Usuario usuario : usuarios) {
-      if (!usuario.getCpf().equals(cpf)) {
-        listaUsuarios.add(usuario);
-      }
-    }
-
-    try (BufferedWriter writer = new BufferedWriter(new FileWriter(BD_USUARIOS))) {
-      writer.write(BD_USER_CABECALHO);
-      writer.newLine();
-
-      for (Usuario usuario : listaUsuarios) {
-        writer.write(usuario.getCpf() + "," + usuario.getNome() + "," + usuario.getTelefone() + "," + usuario.getAdministrador());
-        writer.newLine();
-      }
-      println("Usuário removido com sucesso.");
-    } catch (IOException e) {
-      throw new BusinessException(ERROR_DELETE_USER);
-    }
-  }
-
-  @Override
-  public void removerCadastro(String cpf) {
+  public void removerCadastro(String cpf) throws BusinessException {
     try (BufferedReader reader = new BufferedReader(new FileReader(BD_USUARIOS));
          BufferedWriter writer = new BufferedWriter(new FileWriter("temp_bd.txt"))) {
 
@@ -231,7 +207,7 @@ public class UserRepository implements UserRepositoryView {
   }
 
   @Override
-  public void visualizarCadastros() {
+  public void visualizarCadastros() throws BusinessException {
     try (BufferedReader reader = new BufferedReader(new FileReader(BD_USUARIOS))) {
       reader.readLine();
       String linha;
@@ -258,4 +234,25 @@ public class UserRepository implements UserRepositoryView {
       throw new BusinessException(ERROR_RETRIEVE_USER);
     }
   }
+
+  @Override
+  public ClienteDto getCliente(String cpf) {
+    ClienteDto clienteDto = null;
+    try (BufferedReader reader = new BufferedReader(new FileReader(BD_USUARIOS))) {
+      String line;
+      while ((line = reader.readLine()) != null) {
+        String[] dados = line.split(",");
+        if (dados[0].equals(cpf)) {
+          String nome = dados[1];
+          String telefone = dados[2];
+          clienteDto = new ClienteDto(cpf, nome, telefone);
+          break;
+        }
+      }
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    return clienteDto;
+  }
+
 }

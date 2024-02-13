@@ -1,0 +1,18 @@
+Data: Tue Feb 13 18:14:43 BRT 2024
+CPF do cliente: 123
+Forma de pagamento: dinheiro
+Itens:
+Código: 123
+Descrição: Parafuso
+Valor unitário: 0.5
+Quantidade: 10
+Subtotal: 5.0
+--------------------
+Código: 1234
+Descrição: Coffee
+Valor unitário: 6.0
+Quantidade: 5
+Subtotal: 30.0
+--------------------
+Valor do desconto: 3.1500000000000004
+Total: 28.35

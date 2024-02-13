@@ -1,0 +1,11 @@
+Data: Tue Feb 13 17:36:05 BRT 2024
+CPF do cliente: 123
+Forma de pagamento: dinheiro
+Itens:
+Código: 123
+Descrição: Teste
+Valor unitário: 10.0
+Quantidade: 1
+Subtotal: 10.0
+--------------------
+Total: 10.0
