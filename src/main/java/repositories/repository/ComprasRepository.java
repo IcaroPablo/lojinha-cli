@@ -194,7 +194,6 @@ public class ComprasRepository implements ComprasRepositoryView {
       writer.println("=".repeat(70));
       writer.printf("%-10s | %-20s | %-8s | %-10s | %-10s |%n",
           "CÓDIGO", "DESCRIÇÃO", "R$ UNIT", "QUANTIDADE", "R$ TOTAL");
-      writer.println("=".repeat(70) + "\n");
 
       for (CarrinhoDto item : carrinho) {
         writer.printf("%-10s | %-20s | R$ %-6.2f | %-10d | R$ %-7.2f |%n",

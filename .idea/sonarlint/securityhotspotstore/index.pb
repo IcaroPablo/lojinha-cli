@@ -62,3 +62,5 @@ S
 #src/main/java/entities/Usuario.java,c/4/c45381e2ae9969a7f344833fb9ce0a2d3703dbbc
 _
 /src/main/java/infrastructure/utils/Present.java,0/b/0b09965a66dd39aea698d8e478d2ef54544fc6fa
+_
+/nota_fiscal_CPF_01489404473_20240214_110748.txt,9/f/9fb5029454e3462e902af037e8776b6d2e563b51
