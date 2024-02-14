@@ -43,12 +43,6 @@ public class Menus {
   private final ComprasService comprasService;
   private final Valid valid;
 
-  public Menus() {
-    this.comprasService = null;
-    this.valid = null;
-    this.usuarioService = null;
-    this.produtoService = null;
-  }
   public Menus(UsuarioService usuarioService, ProdutoService produtoService, ComprasService comprasService, Valid valid) {
     this.usuarioService = usuarioService;
     this.produtoService = produtoService;
@@ -107,9 +101,10 @@ public class Menus {
   }
 
   public void fazerCadastro() throws BusinessException, FileNotFoundException {
-    print("Opção selecionada: FAZER CADASTRO \n " +
-        "Você deseja fazer o cadastro de cliente ou administrador? \n " +
-        "Digite 1 para Cliente ou 2 para Administrador: ");
+    print("""
+        Opção selecionada: FAZER CADASTRO\s
+         Você deseja fazer o cadastro de cliente ou administrador?\s
+         Digite 1 para Cliente ou 2 para Administrador:\s""");
     int tipoCadastro = scanner.nextInt();
     scanner.nextLine();
 
@@ -168,7 +163,6 @@ public class Menus {
         menuGerente();
       } else {
         println("Não foi possível fazer login. Por favor tente novamente.");
-        return;
       }
     } else {
       printf("O usuário com o CPF %s não existe. Retornando ao menu inicial. \n", cpf);
@@ -177,13 +171,14 @@ public class Menus {
   }
 
   public void menuCliente() throws BusinessException, FileNotFoundException {
-    print("Selecione uma opção: \n " +
-            "1. Nova Compra \n " +
-            "2. Visualizar Cadastro \n " +
-            "3. Alterar Cadastro \n " +
-            "4. Remover Cadastro \n " +
-            "5. Sair \n " +
-            "DIGITE SUA OPÇÃO: ");
+    print("""
+        Selecione uma opção:\s
+         1. Nova Compra\s
+         2. Visualizar Cadastro\s
+         3. Alterar Cadastro\s
+         4. Remover Cadastro\s
+         5. Sair\s
+         DIGITE SUA OPÇÃO:\s""");
     int option = scanner.nextInt();
     while (option != 5) {
       switch (option) {
@@ -328,21 +323,21 @@ public class Menus {
   }
 
   public void menuGerente() throws BusinessException, FileNotFoundException {
-    print("=".repeat(50).concat("\n") +
-        "Selecione uma opção: \n " +
-        " 1. Cadastrar Cliente \n " +
-        " 2. Ver cadastros de clientes \n " +
-        " 3. Alterar cadastro de cliente \n " +
-        " 4. Excluir Cadastro de Cliente \n " +
-        " 5. Cadastrar Produto \n " +
-        " 6. Visualizar cadastro de Produto \n " +
-        " 7. Alterar Cadastro de Produto \n " +
-        " 8. Alterar Preço de Produto \n " +
-        " 9. Inserir Produto no Estoque \n " +
-        " 10. Excluir Cadastro de Produto \n " +
-        " 11. Sair" + "\n " +
-        "=".repeat(50));
-    print("\n OPÇÃO: ");
+    print("=".repeat(50));
+    print("""
+    Selecione uma opção:\s
+    1. Cadastrar Cliente\s
+    2. Ver cadastros de clientes\s
+    3. Alterar cadastro de cliente\s
+    4. Excluir Cadastro de Cliente\s
+    5. Cadastrar Produto\s
+    6. Visualizar cadastro de Produto\s
+    7. Alterar Cadastro de Produto\s
+    8. Alterar Preço de Produto\s
+    9. Inserir Produto no Estoque\s
+    10. Excluir Cadastro de Produto\s
+    11. Sair\s
+    OPÇÃO: \s""");
     int option = scanner.nextInt();
     while (option != 11) {
       switch (option) {
