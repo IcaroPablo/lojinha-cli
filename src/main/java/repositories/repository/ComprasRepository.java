@@ -116,7 +116,7 @@ public class ComprasRepository implements ComprasRepositoryView {
       writer.newLine();
       print("Carrinho salvo com sucesso. \n");
     } catch (IOException e) {
-      e.printStackTrace();
+      printf("Exception: %s", e.getMessage());
     }
   }
 
@@ -135,13 +135,13 @@ public class ComprasRepository implements ComprasRepositoryView {
         writer.newLine();
       }
     } catch (IOException e) {
-      e.printStackTrace();
+      printf("Exception: %s", e.getMessage());
     }
 
     File fileCarrinho = new File(CARRINHO);
     File tempFileCarrinho = new File("temp_carrinho.txt");
     if (!tempFileCarrinho.renameTo(fileCarrinho)) {
-      throw new BusinessException(ERROR_TEMP_FILE);
+      print(ERROR_TEMP_FILE);
     }
 
     print("Carrinho limpo com sucesso. \n");
@@ -160,57 +160,57 @@ public class ComprasRepository implements ComprasRepositoryView {
     print("=".repeat(70) +
         "\nNOTA FISCAL: " + nf + "\n" +
         "DATA: " + LocalDate.now() + "\n" +
-        "CPF: " + cpf + "\n" +
+        "CPF: " + ClienteDto.cpfFormatter(cpf) + "\n" +
         "NOME: " + cliente.getNome() + "\n" +
-        "TELEFONE: " + cliente.getTelefone() + "\n" +
-        "Forma de pagamento: " + formaPagamento + "\n" +
-        "Itens: \n" +
+        "TELEFONE: " + ClienteDto.telefoneFormatter(cliente.getTelefone()) + "\n" +
+        "FORMA DE PAGAMENTO: " + formaPagamento.toUpperCase() + "\n" +
+        "=".repeat(31) + " Itens " + "=".repeat(32).concat("\n") +
         "=".repeat(70) + "\n");
     printf("%-10s | %-20s | %-8s | %-10s | %-10s |%n",
         "CÓDIGO", "DESCRIÇÃO", "R$ UNIT", "QUANTIDADE", "R$ TOTAL");
     for (CarrinhoDto item : carrinho) {
-      printf("%-10s | %-20s | %-8.2f | %-10d | %-10.2f |%n",
+      printf("%-10s | %-20s | R$ %-6.2f | %-10d | R$ %-7.2f |%n",
           item.getCodigo(), item.getDescricao(), item.getValor(),
           item.getQuantidade(), (item.getValor()*item.getQuantidade()));
     }
     print("=".repeat(70) + "\n");
     if (DINHEIRO.equals(formaPagamento)) {
-      printf("%-25s | %-10.2f%n", "VALOR DO DESCONTO: R$ ", desconto);
-      printf("%-25s | %-10.2f%n", "TOTAL COM DESCONTO: R$ ", totalComDesconto);
+      printf("%-25s | R$ %-7.2f%n", "VALOR DO DESCONTO: ", desconto);
+      printf("%-25s | R$ %-7.2f%n", "TOTAL COM DESCONTO: ", totalComDesconto);
     } else if (CARTAO.equals(formaPagamento)){
-      printf("%-25s | %-10 R$.2f%n", "TOTAL:", total);
+      printf("%-25s | R$ %-10.2f%n", "TOTAL:", total);
     }
 
     print("=".repeat(70) + "\n");
 
     try (PrintWriter writer = new PrintWriter(new FileWriter(nomeArquivo))) {
       writer.printf("%-10" + "s%n", "Nota fiscal: " + nf);
-      writer.println("Data: " + LocalDate.now());
-      writer.println("CPF do cliente: " + cpf);
+      writer.println("DATA: " + LocalDate.now());
+      writer.println("CPF: " + ClienteDto.cpfFormatter(cpf));
       writer.println("NOME: " + cliente.getNome());
-      writer.println("TELEFONE: " + cliente.getTelefone());
-      writer.println("Forma de pagamento: " + formaPagamento);
-      writer.println("Itens:");
+      writer.println("TELEFONE: " + ClienteDto.telefoneFormatter(cliente.getTelefone()));
+      writer.println("FORMA DE PAGAMENTO: " + formaPagamento.toUpperCase());
+      writer.println("=".repeat(31).concat("Itens").concat("=".repeat(31)).concat("\n"));
       writer.println("=".repeat(70));
       writer.printf("%-10s | %-20s | %-8s | %-10s | %-10s |%n",
           "CÓDIGO", "DESCRIÇÃO", "R$ UNIT", "QUANTIDADE", "R$ TOTAL");
       writer.println("=".repeat(70) + "\n");
 
       for (CarrinhoDto item : carrinho) {
-        writer.printf("%-10s | %-20s | %-8.2f | %-10d | %-10.2f |%n",
+        writer.printf("%-10s | %-20s | R$ %-6.2f | %-10d | R$ %-7.2f |%n",
             item.getCodigo(), item.getDescricao(), item.getValor(), item.getQuantidade(), (item.getValor() * item.getQuantidade()));
       }
       writer.println("=".repeat(70));
       if (DINHEIRO.equals(formaPagamento)) {
-        writer.printf("%-25s | %-10.2f%n", "VALOR DO DESCONTO:", desconto);
-        writer.printf("%-25s | %-10.2f%n", "TOTAL COM DESCONTO:", totalComDesconto);
+        writer.printf("%-25s | R$ %-10.2f%n", "VALOR DO DESCONTO:", desconto);
+        writer.printf("%-25s | R$ %-10.2f%n", "TOTAL COM DESCONTO:", totalComDesconto);
       } else if (CARTAO.equals(formaPagamento)){
-        writer.printf("%-25s | %-10.2f%n", "TOTAL:", total);
+        writer.printf("%-25s | R$ %-10.2f%n", "TOTAL:", total);
       }
 
-      print("Nota fiscal emitida com sucesso. Arquivo gerado: " + nomeArquivo + "\n");
+      print("Nota fiscal emitida com sucesso.\nArquivo gerado: " + nomeArquivo + "\n");
     } catch (IOException e) {
-      e.printStackTrace();
+      printf("Exception: %s", e.getMessage());
     }
   }
 

@@ -46,8 +46,6 @@ Y
 )src/main/java/service/ComprasService.java,0/9/09d695f6b328d2ffe05f62f7bc4007ec502c64b0
 a
 1src/main/java/infrastructure/utils/FileUtils.java,d/7/d7f018c6e36ea5e6b54c8bcae5b99f27724b4b0a
-U
-%src/main/java/rest/dtos/Carrinho.java,a/b/ab94528342b21194521e14e7f58d5c12432b1b45
 W
 'src/main/java/rest/dtos/ProdutoDto.java,9/8/98193496caeda613ac66d20fabdc34a73e126626
 ]

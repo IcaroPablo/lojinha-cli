@@ -1,6 +1,5 @@
 package src.main.java.repositories.repository;
 
-import src.main.java.infrastructure.exception.BusinessException;
 import src.main.java.repositories.UserRepositoryView;
 import src.main.java.rest.dtos.ClienteDto;
 
@@ -44,8 +43,9 @@ public class UserRepository implements UserRepositoryView {
       }
       return false;
     } catch (IOException e) {
-      throw new BusinessException(ERROR_READ_FILE);
+      print(ERROR_READ_FILE);
     }
+    return false;
   }
 
   @Override
@@ -59,7 +59,7 @@ public class UserRepository implements UserRepositoryView {
         }
       }
     } catch (IOException e) {
-      throw new BusinessException(ERROR_USER_EXISTS);
+      print(ERROR_USER_EXISTS);
     }
     return false;
   }
@@ -75,7 +75,7 @@ public class UserRepository implements UserRepositoryView {
         }
       }
     } catch (IOException e) {
-      throw new BusinessException(ERROR_READ_FILE);
+      print(ERROR_READ_FILE);
     }
     return null;
   }
@@ -103,7 +103,7 @@ public class UserRepository implements UserRepositoryView {
         }
       }
     } catch (IOException e) {
-      throw new BusinessException(ERROR_READ_FILE);
+      print(ERROR_READ_FILE);
     }
   }
 
@@ -123,7 +123,7 @@ public class UserRepository implements UserRepositoryView {
         writer.newLine();
       }
     } catch (IOException e) {
-      throw new BusinessException(ERROR_UPDATE_USER);
+      print(ERROR_UPDATE_USER);
     }
 
     File file = new File(BD_USUARIOS);
@@ -131,7 +131,7 @@ public class UserRepository implements UserRepositoryView {
     if (tempFile.renameTo(file)) {
       println("Cadastro alterado com sucesso.");
     } else {
-      throw new BusinessException(ERROR_TEMP_FILE);
+      print(ERROR_TEMP_FILE);
     }
   }
 
@@ -141,7 +141,7 @@ public class UserRepository implements UserRepositoryView {
       writer.write(cpf + "," + senha + "," + userType);
       writer.newLine();
     } catch (IOException e) {
-      throw new BusinessException(ERROR_CREATE_USER);
+      print(ERROR_CREATE_USER);
     }
   }
 
@@ -151,7 +151,7 @@ public class UserRepository implements UserRepositoryView {
       writer.write(cpf + "," + nome + "," + telefone + "," + userType);
       writer.newLine();
     } catch (IOException e) {
-      throw new BusinessException(ERROR_CREATE_USER);
+      print(ERROR_CREATE_USER);
     }
   }
 
@@ -170,13 +170,13 @@ public class UserRepository implements UserRepositoryView {
         writer.newLine();
       }
     } catch (IOException e) {
-      throw new BusinessException(ERROR_DELETE_USER);
+      print(ERROR_DELETE_USER);
     }
 
     File fileBD = new File(BD_USUARIOS);
     File tempFileBD = new File("temp_bd.txt");
     if (!tempFileBD.renameTo(fileBD)) {
-      throw new BusinessException(ERROR_TEMP_FILE);
+      print(ERROR_TEMP_FILE);
     }
 
     try (BufferedReader reader = new BufferedReader(new FileReader(LOGIN_USUARIOS));
@@ -192,13 +192,13 @@ public class UserRepository implements UserRepositoryView {
         writer.newLine();
       }
     } catch (IOException e) {
-      throw new BusinessException(ERROR_DELETE_USER);
+      print(ERROR_DELETE_USER);
     }
 
     File fileLogin = new File(LOGIN_USUARIOS);
     File tempFileLogin = new File("temp_login.txt");
     if (!tempFileLogin.renameTo(fileLogin)) {
-      throw new BusinessException(ERROR_TEMP_FILE);
+      print(ERROR_TEMP_FILE);
     }
 
     println("Cadastro removido com sucesso.");
@@ -221,7 +221,7 @@ public class UserRepository implements UserRepositoryView {
         }
       }
     } catch (IOException e) {
-      throw new BusinessException(ERROR_RETRIEVE_USER);
+      print(ERROR_RETRIEVE_USER);
     }
     return clientes;
   }

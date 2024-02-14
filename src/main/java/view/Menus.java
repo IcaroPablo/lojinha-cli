@@ -11,7 +11,6 @@ import src.main.java.service.ComprasService;
 import src.main.java.service.ProdutoService;
 import src.main.java.service.UsuarioService;
 
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +51,7 @@ public class Menus {
   InputStream inputStream = System.in;
   Scanner scanner = new Scanner(inputStream).useLocale(Locale.US);
 
-  public void menuInicial() throws BusinessException, FileNotFoundException {
+  public void menuInicial() {
     print("=".repeat(9) +
         " SEJA BEM-VINDO À LOJINHA! " +
         "=".repeat(9) + "\n" +
@@ -80,7 +79,7 @@ public class Menus {
     System.exit(0);
   }
 
-  public void loginUsuario() throws BusinessException, FileNotFoundException {
+  public void loginUsuario() {
     print("Opção 1 selecionada: FAZER LOGIN DE CLIENTE \nDigite o CPF: ");
     String cpf = scanner.next();
     scanner.nextLine();
@@ -100,7 +99,7 @@ public class Menus {
     }
   }
 
-  public void fazerCadastro() throws BusinessException, FileNotFoundException {
+  public void fazerCadastro() {
     print("""
         Opção selecionada: FAZER CADASTRO\s
          Você deseja fazer o cadastro de cliente ou administrador?\s
@@ -114,7 +113,7 @@ public class Menus {
     menuInicial();
   }
 
-  private void cadastrarUsuario(int tipoCadastro) throws FileNotFoundException {
+  private void cadastrarUsuario(int tipoCadastro) {
     String tipoUsuario = (tipoCadastro == 1) ? CLIENTE : GERENTE;
 
     print("Digite o CPF com 11 dígitos (APENAS NÚMEROS): ");
@@ -151,7 +150,7 @@ public class Menus {
     print("Cadastro realizado com sucesso! \n");
   }
 
-  public void loginAdministrador() throws BusinessException, FileNotFoundException {
+  public void loginAdministrador() {
     print("Opção 3 selecionada: FAZER LOGIN DE GERENTE \n Digite o CPF: ");
     String cpf = scanner.next();
     scanner.nextLine();
@@ -170,7 +169,7 @@ public class Menus {
     }
   }
 
-  public void menuCliente() throws BusinessException, FileNotFoundException {
+  public void menuCliente() {
     print("""
         Selecione uma opção:\s
          1. Nova Compra\s
@@ -193,7 +192,7 @@ public class Menus {
     menuInicial();
   }
 
-  private void removerCadastro() throws BusinessException, FileNotFoundException {
+  private void removerCadastro() {
     print("Opção 4 selecionada: Remover Cadastro \n Tem certeza que deseja deletar o cadastro? S/N: ");
     String resposta = scanner.next();
     if (resposta.equalsIgnoreCase("s")) {
@@ -211,7 +210,7 @@ public class Menus {
     }
   }
 
-  private void alterarCadastro() throws BusinessException, FileNotFoundException {
+  private void alterarCadastro() {
     print("Opção 3 selecionada: Alterar Cadastro \n Digite o CPF novamente: ");
     String cpf = scanner.next();
     scanner.nextLine();
@@ -225,7 +224,7 @@ public class Menus {
     retornarAoMenu(CLIENTE);
   }
 
-  private void visualizarCadastro() throws BusinessException, FileNotFoundException {
+  private void visualizarCadastro() {
     print("Opção 2 selecionada: Visualizar Cadastro \n " +
         "Digite o CPF novamente: ");
     String cpf = scanner.next();
@@ -234,7 +233,7 @@ public class Menus {
     retornarAoMenu(CLIENTE);
   }
 
-  private void novaCompra() throws FileNotFoundException {
+  private void novaCompra() {
     print("Opção 1 selecionada: Nova compra \n " +
         "Digite o CPF novamente: ");
     String cpf = scanner.next();
@@ -268,17 +267,17 @@ public class Menus {
 
       comprasService.imprimirCarrinho(carrinho);
       if (!carrinho.isEmpty()) salvarOuFinalizarCompra(cpf, carrinho);
-      else retornarAoMenu(GERENTE);
+      else retornarAoMenu(CLIENTE);
     }
   }
 
-  private void salvarOuFinalizarCompra(String cpf, List<CarrinhoDto> carrinho) throws FileNotFoundException {
+  private void salvarOuFinalizarCompra(String cpf, List<CarrinhoDto> carrinho) {
     print("Deseja salvar o carrinho (S) ou finalizar a compra (F)? ");
     String resposta = scanner.next();
     assert comprasService != null;
     if (resposta.equalsIgnoreCase("S")) {
       comprasService.salvarCarrinho(cpf, carrinho);
-      retornarAoMenu(GERENTE);
+      retornarAoMenu(CLIENTE);
     } else if (resposta.equalsIgnoreCase("F")) {
       finalizarCompra(cpf, carrinho);
     } else {
@@ -286,7 +285,7 @@ public class Menus {
     }
   }
 
-  private void finalizarCompra(String cpf, List<CarrinhoDto> carrinho) throws FileNotFoundException {
+  private void finalizarCompra(String cpf, List<CarrinhoDto> carrinho) {
     print("Antes de finalizar, vejamos os itens e se é preciso alterar algum.\n");
     print("Deseja alterar ou remover algum item do carrinho? S/N: ");
     String alterar = scanner.next();
@@ -318,11 +317,11 @@ public class Menus {
       produtoService.alterarQuantidadeProduto(item.getCodigo(), item.getQuantidade(), SUBTRAIR);
     }
     comprasService.limparCarrinho(cpf);
-    print("Compra finalizada com sucesso.");
-    retornarAoMenu(GERENTE);
+    print("Compra finalizada com sucesso.\n");
+    retornarAoMenu(CLIENTE);
   }
 
-  public void menuGerente() throws BusinessException, FileNotFoundException {
+  public void menuGerente() {
     print("=".repeat(50));
     print("""
     Selecione uma opção:\s
@@ -358,7 +357,7 @@ public class Menus {
     menuInicial();
   }
 
-  public void visualizarCadastros() throws BusinessException, FileNotFoundException {
+  public void visualizarCadastros() {
     print("Opção 2 selecionada: Ver cadastros de clientes " + "\n" + "=".repeat(70) + "\n");
     assert usuarioService != null;
     recuperarClientes();
@@ -386,7 +385,7 @@ public class Menus {
     }
   }
 
-  public void alterarCadastroClientes() throws BusinessException, FileNotFoundException {
+  public void alterarCadastroClientes() {
     print("Opção 3 selecionada: Alterar cadastro de cliente\n" +
         "Listando primeiro os cadastros dos clientes para escolha.\n" +
         "=".repeat(70) + "\n");
@@ -403,7 +402,7 @@ public class Menus {
     retornarAoMenu(GERENTE);
   }
 
-  public void excluirCadastroClientes() throws BusinessException, FileNotFoundException {
+  public void excluirCadastroClientes() {
     print("Opção 4 selecionada: Excluir Cadastro de Cliente \n" +
         "=".repeat(70) + "\n");
     recuperarClientes();
@@ -421,7 +420,7 @@ public class Menus {
     menuGerente();
   }
 
-  public void cadastrarProduto() throws BusinessException, FileNotFoundException {
+  public void cadastrarProduto() {
     print("Opção 5 selecionada: Cadastrar Produto \n Digite o código do produto: ");
     String codigo = scanner.next();
     scanner.nextLine();
@@ -440,14 +439,14 @@ public class Menus {
     produtoService.cadastrarProduto(codigo, descricaoProduto, valor, quantidade);
     retornarAoMenu(GERENTE);
   }
-  public void visualizarCadastroProdutos() throws BusinessException, FileNotFoundException {
+  public void visualizarCadastroProdutos() {
     print("Opção 6 selecionada: visualizar cadastro de produto \n" +
         "=".repeat(70) + "\n");
     assert produtoService != null;
     recuperarProdutos();
     retornarAoMenu(GERENTE);
   }
-  public void alterarCadastroProduto() throws BusinessException, FileNotFoundException {
+  public void alterarCadastroProduto() {
     print("Opção 7 selecionada: Alterar cadastro de produto \n " +
         "=".repeat(70) + "\n");
     assert produtoService != null;
@@ -470,7 +469,7 @@ public class Menus {
     }
     retornarAoMenu(GERENTE);
   }
-  public void alterarPrecoProduto() throws BusinessException, FileNotFoundException {
+  public void alterarPrecoProduto() {
     print("Opção 8 selecionada: Alterar preço de produto \n" +
         "=".repeat(70) + "\n");
     assert produtoService != null;
@@ -482,7 +481,7 @@ public class Menus {
     produtoService.alterarPrecoProduto(codigo, novoValor);
     retornarAoMenu(GERENTE);
   }
-  public void inserirProdutoEstoque() throws BusinessException, FileNotFoundException {
+  public void inserirProdutoEstoque() {
     print("Opção 9 selecionada: Inserir produto no estoque \n" +
         "=".repeat(70) + "\n");
     assert produtoService != null;
@@ -495,7 +494,7 @@ public class Menus {
     retornarAoMenu(GERENTE);
   }
 
-  public void excluirProduto() throws FileNotFoundException {
+  public void excluirProduto() {
     print("Opção 10 selecionada: Excluir cadastro de produto \n" +
         "=".repeat(70) + "\n");
     assert produtoService != null;
@@ -507,7 +506,7 @@ public class Menus {
     retornarAoMenu(GERENTE);
   }
 
-  public void retornarAoMenu(String userType) throws BusinessException, FileNotFoundException {
+  public void retornarAoMenu(String userType) {
     print("Retornar ao menu? S/N: ");
     String resposta = scanner.next();
     scanner.nextLine();

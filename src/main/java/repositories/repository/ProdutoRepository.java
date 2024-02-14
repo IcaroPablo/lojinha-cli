@@ -1,13 +1,11 @@
 package src.main.java.repositories.repository;
 
-import src.main.java.infrastructure.exception.BusinessException;
 import src.main.java.repositories.ProdutoRepositoryVIew;
 import src.main.java.rest.dtos.ProdutoDto;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,28 +14,33 @@ import java.util.List;
 
 import static src.main.java.constants.Constantes.ADICIONAR;
 import static src.main.java.constants.Constantes.BD_PRODUTOS;
-import static src.main.java.constants.Constantes.ERROR_CREATE_PRODUCTS;
+import static src.main.java.constants.Constantes.ERROR_CREATE_PRODUCT;
 import static src.main.java.constants.Constantes.ERROR_DELETE_PRODUCT;
+import static src.main.java.constants.Constantes.ERROR_PRODUCT_EXISTS;
 import static src.main.java.constants.Constantes.ERROR_RETRIEVE_PRODUCTS;
 import static src.main.java.constants.Constantes.ERROR_TEMP_FILE;
+import static src.main.java.constants.Constantes.ERROR_UPDATE_PRODUCT;
 import static src.main.java.constants.Constantes.SUBSTITUIR;
 import static src.main.java.constants.Constantes.SUBTRAIR;
+import static src.main.java.constants.Constantes.SUCCESS_DELETE_PRODUCT;
+import static src.main.java.constants.Constantes.SUCCESS_UPDATE;
 import static src.main.java.infrastructure.utils.Present.print;
+import static src.main.java.infrastructure.utils.Present.printf;
 
 public class ProdutoRepository implements ProdutoRepositoryVIew {
 
   @Override
-  public void cadastrarProduto(String codigo, String descricaoProduto, Double valor, int quantidade) throws BusinessException {
+  public void cadastrarProduto(String codigo, String descricaoProduto, Double valor, int quantidade) {
     try (BufferedWriter writer = new BufferedWriter(new FileWriter(BD_PRODUTOS, true))) {
       writer.write(codigo + "," + descricaoProduto + "," + valor + "," + quantidade);
       writer.newLine();
     } catch (IOException e) {
-      throw new BusinessException(ERROR_CREATE_PRODUCTS);
+      print(ERROR_CREATE_PRODUCT);
     }
   }
 
   @Override
-  public boolean produtoExiste(String codigo, String fileName) throws BusinessException {
+  public boolean produtoExiste(String codigo, String fileName) {
     try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
       String linha;
       while ((linha = reader.readLine()) != null) {
@@ -47,13 +50,13 @@ public class ProdutoRepository implements ProdutoRepositoryVIew {
         }
       }
     } catch (IOException e) {
-      throw new BusinessException("Erro ao verificar se o produto existe");
+      print(ERROR_PRODUCT_EXISTS);
     }
     return false;
   }
 
   @Override
-  public void changeQuantity(String codigo, Integer quantidade, String method) throws BusinessException {
+  public void changeQuantity(String codigo, Integer quantidade, String method) {
     try (BufferedReader reader = new BufferedReader(new FileReader(BD_PRODUTOS))) {
       String linha;
       while ((linha = reader.readLine()) != null) {
@@ -69,12 +72,13 @@ public class ProdutoRepository implements ProdutoRepositoryVIew {
         }
       }
     } catch (IOException e) {
-      throw new BusinessException("Erro ao verificar se o produto existe");
+      print(ERROR_PRODUCT_EXISTS);
     }
   }
 
+  @SuppressWarnings("java:S2677")
   @Override
-  public List<ProdutoDto> visualizarCadastroProdutos() throws BusinessException {
+  public List<ProdutoDto> visualizarCadastroProdutos() {
     List<ProdutoDto> produtos = new ArrayList<>();
     try (BufferedReader reader = new BufferedReader(new FileReader(BD_PRODUTOS))) {
       reader.readLine();
@@ -91,13 +95,13 @@ public class ProdutoRepository implements ProdutoRepositoryVIew {
         }
       }
     } catch (IOException e) {
-      throw new BusinessException(ERROR_RETRIEVE_PRODUCTS);
+      print(ERROR_RETRIEVE_PRODUCTS);
     }
     return produtos;
   }
 
   @Override
-  public void alterarCadastroDeProduto(String codigo, String novaDescricao, Double novoValor, Integer novaQuantidade) throws BusinessException {
+  public void alterarCadastroDeProduto(String codigo, String novaDescricao, Double novoValor, Integer novaQuantidade) {
     try (BufferedReader reader = new BufferedReader(new FileReader(BD_PRODUTOS));
          BufferedWriter writer = new BufferedWriter(new FileWriter("temp.txt"))) {
 
@@ -119,15 +123,15 @@ public class ProdutoRepository implements ProdutoRepositoryVIew {
         writer.newLine();
       }
     } catch (IOException e) {
-      throw new BusinessException("Erro ao alterar cadastro de produto");
+      print(ERROR_UPDATE_PRODUCT);
     }
 
     File file = new File(BD_PRODUTOS);
     File tempFile = new File("temp.txt");
     if (tempFile.renameTo(file)) {
-      print("Cadastro alterado com sucesso. \n ");
+      print(SUCCESS_UPDATE);
     } else {
-      throw new BusinessException("Erro ao renomear o arquivo temporário.");
+      print(ERROR_TEMP_FILE);
     }
   }
 
@@ -146,16 +150,16 @@ public class ProdutoRepository implements ProdutoRepositoryVIew {
         writer.newLine();
       }
     } catch (IOException e) {
-      throw new BusinessException(ERROR_DELETE_PRODUCT);
+      print(ERROR_DELETE_PRODUCT);
     }
 
     File fileBD = new File(BD_PRODUTOS);
     File tempFileBD = new File("temp_bd.txt");
     if (!tempFileBD.renameTo(fileBD)) {
-      throw new BusinessException(ERROR_TEMP_FILE);
+      print(ERROR_TEMP_FILE);
     }
 
-    print("Produto removido com sucesso.");
+    print(SUCCESS_DELETE_PRODUCT);
   }
 
   @Override
@@ -170,7 +174,7 @@ public class ProdutoRepository implements ProdutoRepositoryVIew {
         }
       }
     } catch (IOException e) {
-      e.printStackTrace();
+      printf("Exception: %s", e.getMessage());
     }
     return false;
   }
@@ -191,7 +195,7 @@ public class ProdutoRepository implements ProdutoRepositoryVIew {
         }
       }
     } catch (IOException e) {
-      e.printStackTrace();
+      printf("Exception: %s", e.getMessage());
     }
     return produtoDto;
   }
