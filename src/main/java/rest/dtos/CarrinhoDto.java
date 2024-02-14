@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Carrinho {
+public class CarrinhoDto {
   private String codigo;
   private String descricao;
   private Double valor;

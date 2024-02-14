@@ -4,7 +4,7 @@ import src.main.java.entities.Cliente;
 import src.main.java.entities.Gerente;
 import src.main.java.infrastructure.exception.BusinessException;
 import src.main.java.infrastructure.utils.Valid;
-import src.main.java.rest.dtos.Carrinho;
+import src.main.java.rest.dtos.CarrinhoDto;
 import src.main.java.rest.dtos.ClienteDto;
 import src.main.java.rest.dtos.ProdutoDto;
 import src.main.java.service.ComprasService;
@@ -243,18 +243,15 @@ public class Menus {
     print("Opção 1 selecionada: Nova compra \n " +
         "Digite o CPF novamente: ");
     String cpf = scanner.next();
-//    scanner.nextLine();
-//    print("=".repeat(70).concat("\n"));
-//    recuperarProdutos();
     if(comprasService.carrinhoSalvo(cpf)) {
-      List<Carrinho> carrinho = comprasService.verCarrinho(cpf);
+      List<CarrinhoDto> carrinho = comprasService.verCarrinho(cpf);
       comprasService.imprimirCarrinho(carrinho);
       salvarOuFinalizarCompra(cpf, carrinho);
     } else {
       print("Veja os itens que temos disponíveis: \n");
       print("=".repeat(70) + "\n");
       recuperarProdutos();
-      List<Carrinho> carrinho = new ArrayList<>();
+      List<CarrinhoDto> carrinho = new ArrayList<>();
       do {
         print("Digite o código do produto ou 0 para encerrar a compra: ");
         String codigo = scanner.next();
@@ -266,7 +263,7 @@ public class Menus {
             String descricao = produtoService.getProduto(codigo).getDescricao();
             Double valor = produtoService.getProduto(codigo).getValor();
 
-            carrinho.add(new Carrinho(codigo, descricao, valor, quantidade));
+            carrinho.add(new CarrinhoDto(codigo, descricao, valor, quantidade));
           } else {
             printf("Não há estoque disponível para o produto %s ", produtoService.getProduto(codigo).getDescricao());
           }
@@ -280,7 +277,7 @@ public class Menus {
     }
   }
 
-  private void salvarOuFinalizarCompra(String cpf, List<Carrinho> carrinho) throws FileNotFoundException {
+  private void salvarOuFinalizarCompra(String cpf, List<CarrinhoDto> carrinho) throws FileNotFoundException {
     print("Deseja salvar o carrinho (S) ou finalizar a compra (F)? ");
     String resposta = scanner.next();
     assert comprasService != null;
@@ -294,9 +291,8 @@ public class Menus {
     }
   }
 
-  private void finalizarCompra(String cpf, List<Carrinho> carrinho) throws FileNotFoundException {
+  private void finalizarCompra(String cpf, List<CarrinhoDto> carrinho) throws FileNotFoundException {
     print("Antes de finalizar, vejamos os itens e se é preciso alterar algum.\n");
-//    comprasService.imprimirCarrinho(carrinho);
     print("Deseja alterar ou remover algum item do carrinho? S/N: ");
     String alterar = scanner.next();
     do {
@@ -323,7 +319,7 @@ public class Menus {
       case "c" -> comprasService.emitirNotaFiscal(carrinho, cpf, CARTAO);
       default -> print("");
     }
-    for (Carrinho item : carrinho) {
+    for (CarrinhoDto item : carrinho) {
       produtoService.alterarQuantidadeProduto(item.getCodigo(), item.getQuantidade(), SUBTRAIR);
     }
     comprasService.limparCarrinho(cpf);

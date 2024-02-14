@@ -132,7 +132,7 @@ public class ProdutoRepository implements ProdutoRepositoryVIew {
   }
 
   @Override
-  public void excluirProduto(String codigo) throws BusinessException {
+  public void excluirProduto(String codigo){
     try (BufferedReader reader = new BufferedReader(new FileReader(BD_PRODUTOS));
          BufferedWriter writer = new BufferedWriter(new FileWriter("temp_bd.txt"))) {
 
@@ -159,7 +159,7 @@ public class ProdutoRepository implements ProdutoRepositoryVIew {
   }
 
   @Override
-  public boolean haQuantidadeDisponivel(String codigo, int quantidade) throws FileNotFoundException {
+  public boolean haQuantidadeDisponivel(String codigo, int quantidade) {
     try(BufferedReader reader = new BufferedReader(new FileReader(BD_PRODUTOS))) {
       String linha;
       while ((linha = reader.readLine()) != null) {

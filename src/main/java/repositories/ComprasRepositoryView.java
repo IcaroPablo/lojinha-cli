@@ -1,26 +1,22 @@
 package src.main.java.repositories;
 
-import src.main.java.rest.dtos.Carrinho;
+import src.main.java.rest.dtos.CarrinhoDto;
 
 import java.util.List;
-import java.util.Map;
 
 public interface ComprasRepositoryView {
 
   boolean carrinhoAberto(String cpf);
 
-//  void abrirCarrinho(String cpf);
-//
-//  void adicionarItem(String cpf, String codigo, int quantidade);
+  List<CarrinhoDto> obterItensCarrinho(String cpf);
 
-  List<Carrinho> obterItensCarrinho(String cpf);
+  void imprimirCarrinho(List<CarrinhoDto> carrinho);
 
-  void imprimirCarrinho(List<Carrinho> carrinho);
-  void alterarItemCarrinho(List<Carrinho> carrinho, String codigo, Integer quantidade);
+  void alterarItemCarrinho(List<CarrinhoDto> carrinho, String codigo, Integer quantidade);
 
-  void salvarCarrinho(String cpf, List<Carrinho> carrinho);
+  void salvarCarrinho(String cpf, List<CarrinhoDto> carrinho);
 
-  void emitirNotaFiscal(List<Carrinho> itens, String cpf, String formaPagamento);
+  void emitirNotaFiscal(List<CarrinhoDto> itens, String cpf, String formaPagamento);
 
   void limparCarrinho(String cpf);
 

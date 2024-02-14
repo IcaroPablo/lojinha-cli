@@ -30,7 +30,7 @@ public class UsuarioService {
   private static UserRepositoryView repository;
   private final Valid valid;
 
-  public UsuarioService(FileUtils fileUtils, UserRepository repository, Valid valid) throws FileNotFoundException {
+  public UsuarioService(FileUtils fileUtils, UserRepository repository, Valid valid){
     this.fileUtils = fileUtils;
     this.repository = repository;
     this.valid = valid;
@@ -69,20 +69,17 @@ public class UsuarioService {
     return repository.getCliente(cpf);
   }
 
-  public void verCadastro(String cpf, String fileName) throws BusinessException {
-//    if (!usuarioExiste(cpf, BD_USUARIOS)) throw new Businthrows BusinessExceptionessException(NAO_EXISTE_USUARIO);
+  public void verCadastro(String cpf, String fileName){
     if (!usuarioExiste(cpf, BD_USUARIOS)) print(NAO_EXISTE_USUARIO);
     repository.visualizarCadastro(cpf, fileName);
   }
 
-  public void alterarCadastro(String cpf, String novoNome, String novoTelefone) throws BusinessException {
-//    if (!usuarioExiste(cpf, BD_USUARIOS)) throw new BusinessException(NAO_EXISTE_USUARIO);
+  public void alterarCadastro(String cpf, String novoNome, String novoTelefone){
     if (!usuarioExiste(cpf, BD_USUARIOS)) print(NAO_EXISTE_USUARIO);
     repository.alterarCadastro(cpf, novoNome, novoTelefone);
   }
 
-  public void excluirCadastro(String cpf) throws BusinessException {
-//    if (!usuarioExiste(cpf, BD_USUARIOS)) throw new BusinessException(NAO_EXISTE_USUARIO);
+  public void excluirCadastro(String cpf) {
     repository.removerCadastro(cpf);
   }
 }

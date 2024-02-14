@@ -24,8 +24,4 @@ public class Valid {
 
     return matcher.matches();
   }
-
-  public boolean isValidNome(String nome) {
-    return !nome.isEmpty() || !nome.isBlank();
-  }
 }

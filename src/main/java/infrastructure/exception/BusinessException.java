@@ -8,5 +8,4 @@ public class BusinessException extends LojinhaGenericException {
     super("Operação não pode ser realizada", reason, Map.of(REASON, reason));
   }
 
-  public BusinessException(String title, String reason) { super(title, reason, Map.of(REASON, reason)); }
 }

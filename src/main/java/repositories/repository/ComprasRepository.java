@@ -1,9 +1,8 @@
 package src.main.java.repositories.repository;
 
-import src.main.java.entities.Cliente;
 import src.main.java.infrastructure.exception.BusinessException;
 import src.main.java.repositories.ComprasRepositoryView;
-import src.main.java.rest.dtos.Carrinho;
+import src.main.java.rest.dtos.CarrinhoDto;
 import src.main.java.rest.dtos.ClienteDto;
 import src.main.java.service.UsuarioService;
 
@@ -44,8 +43,8 @@ public class ComprasRepository implements ComprasRepositoryView {
     return false;
   }
 
-  public List<Carrinho> obterItensCarrinho(String cpf) {
-    List<Carrinho> carrinhoItens = new ArrayList<>();
+  public List<CarrinhoDto> obterItensCarrinho(String cpf) {
+    List<CarrinhoDto> carrinhoItens = new ArrayList<>();
     try (BufferedReader reader = new BufferedReader(new FileReader(CARRINHO))) {
       String line;
       while ((line = reader.readLine()) != null) {
@@ -58,7 +57,7 @@ public class ComprasRepository implements ComprasRepositoryView {
             String descricao = itemValues[1];
             double valor = Double.parseDouble(itemValues[2]);
             int quantidade = Integer.parseInt(itemValues[3]);
-            carrinhoItens.add(new Carrinho(codigo, descricao, valor, quantidade));
+            carrinhoItens.add(new CarrinhoDto(codigo, descricao, valor, quantidade));
           }
           break;
         }
@@ -69,14 +68,14 @@ public class ComprasRepository implements ComprasRepositoryView {
     return carrinhoItens;
   }
 
-  public void imprimirCarrinho(List<Carrinho> itensCarrinho) {
+  public void imprimirCarrinho(List<CarrinhoDto> itensCarrinho) {
     if(itensCarrinho.isEmpty()) {
       print("O carrinho está vazio \n");
     } else {
       printf("Itens do carrinho: \n");
       printf("%-10s | %-20s | %-10s | %-5s | %-12s |%n",
           "CÓDIGO", "DESCRIÇÃO", "VALOR", "QTD", "SUBTOTAL");
-      for (Carrinho item : itensCarrinho) {
+      for (CarrinhoDto item : itensCarrinho) {
         double subtotal = item.getValor() * item.getQuantidade();
         printf("%-10s | %-20s | R$ %-7.2f | %-5d | R$ %-9.2f |%n",
             item.getCodigo(), item.getDescricao(), item.getValor(), item.getQuantidade(), subtotal);
@@ -86,13 +85,13 @@ public class ComprasRepository implements ComprasRepositoryView {
   }
 
   @Override
-  public void alterarItemCarrinho(List<Carrinho> carrinho, String codigo, Integer quantidade) {
+  public void alterarItemCarrinho(List<CarrinhoDto> carrinho, String codigo, Integer quantidade) {
     if(carrinho.isEmpty()) {
       print("O carrinho está vazio");
       return;
     }
     for (int i = 0; i < carrinho.size(); i++) {
-      Carrinho item = carrinho.get(i);
+      CarrinhoDto item = carrinho.get(i);
       if (item.getCodigo().equals(codigo)) {
         if (quantidade == 0) {
           carrinho.remove(i);
@@ -104,10 +103,10 @@ public class ComprasRepository implements ComprasRepositoryView {
     }
   }
 
-  public void salvarCarrinho(String cpf, List<Carrinho> itensCarrinho) {
+  public void salvarCarrinho(String cpf, List<CarrinhoDto> itensCarrinho) {
     try (BufferedWriter writer = new BufferedWriter(new FileWriter(CARRINHO, true))) {
       StringBuilder linha = new StringBuilder(cpf + ",aberto");
-      for (Carrinho item : itensCarrinho) {
+      for (CarrinhoDto item : itensCarrinho) {
         linha.append(",").append(item.getCodigo()).append(":")
             .append(item.getDescricao()).append(":")
             .append(item.getValor()).append(":")
@@ -149,7 +148,7 @@ public class ComprasRepository implements ComprasRepositoryView {
   }
 
   @Override
-  public void emitirNotaFiscal(List<Carrinho> carrinho, String cpf, String formaPagamento) {
+  public void emitirNotaFiscal(List<CarrinhoDto> carrinho, String cpf, String formaPagamento) {
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
     ClienteDto cliente = UsuarioService.recuperarCliente(cpf);
     String nomeArquivo = "nota_fiscal_CPF_" + cpf + "_" + dateFormat.format(new Date()) + ".txt";
@@ -169,7 +168,7 @@ public class ComprasRepository implements ComprasRepositoryView {
         "=".repeat(70) + "\n");
     printf("%-10s | %-20s | %-8s | %-10s | %-10s |%n",
         "CÓDIGO", "DESCRIÇÃO", "R$ UNIT", "QUANTIDADE", "R$ TOTAL");
-    for (Carrinho item : carrinho) {
+    for (CarrinhoDto item : carrinho) {
       printf("%-10s | %-20s | %-8.2f | %-10d | %-10.2f |%n",
           item.getCodigo(), item.getDescricao(), item.getValor(),
           item.getQuantidade(), (item.getValor()*item.getQuantidade()));
@@ -197,7 +196,7 @@ public class ComprasRepository implements ComprasRepositoryView {
           "CÓDIGO", "DESCRIÇÃO", "R$ UNIT", "QUANTIDADE", "R$ TOTAL");
       writer.println("=".repeat(70) + "\n");
 
-      for (Carrinho item : carrinho) {
+      for (CarrinhoDto item : carrinho) {
         writer.printf("%-10s | %-20s | %-8.2f | %-10d | %-10.2f |%n",
             item.getCodigo(), item.getDescricao(), item.getValor(), item.getQuantidade(), (item.getValor() * item.getQuantidade()));
       }
@@ -215,9 +214,9 @@ public class ComprasRepository implements ComprasRepositoryView {
     }
   }
 
-  private double calcularTotal(List<Carrinho> carrinho, String formaPagamento) {
+  private double calcularTotal(List<CarrinhoDto> carrinho, String formaPagamento) {
     double valorTotal = 0.0;
-    for (Carrinho item : carrinho) {
+    for (CarrinhoDto item : carrinho) {
       valorTotal += item.getValor() * item.getQuantidade();
     }
     if ("DINHEIRO".equals(formaPagamento)) {

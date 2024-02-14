@@ -58,3 +58,9 @@ _
 /nota_fiscal_CPF_11111111111_20240213_203651.txt,1/a/1af0bdbe70cfd3a1bdb5e55c6a2db4f3300103da
 _
 /nota_fiscal_CPF_01489404473_20240213_232131.txt,3/7/379a81fe55a1f4e977fbd711c0cb52085e158a80
+X
+(src/main/java/rest/dtos/CarrinhoDto.java,0/1/017811d8836a2409b6ecbe6ccc3743b999899174
+S
+#src/main/java/entities/Usuario.java,c/4/c45381e2ae9969a7f344833fb9ce0a2d3703dbbc
+_
+/src/main/java/infrastructure/utils/Present.java,0/b/0b09965a66dd39aea698d8e478d2ef54544fc6fa
