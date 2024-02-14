@@ -1,6 +1,5 @@
 package src.main.java.repositories.repository;
 
-import src.main.java.entities.Usuario;
 import src.main.java.infrastructure.exception.BusinessException;
 import src.main.java.repositories.UserRepositoryView;
 import src.main.java.rest.dtos.ClienteDto;
@@ -14,7 +13,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static src.main.java.constants.Constantes.BD_USER_CABECALHO;
 import static src.main.java.constants.Constantes.BD_USUARIOS;
 import static src.main.java.constants.Constantes.CLIENTE;
 import static src.main.java.constants.Constantes.ERROR_CREATE_USER;
@@ -207,7 +205,8 @@ public class UserRepository implements UserRepositoryView {
   }
 
   @Override
-  public void visualizarCadastros() throws BusinessException {
+  public List<ClienteDto> visualizarCadastros() throws BusinessException {
+    List<ClienteDto> clientes = new ArrayList<>();
     try (BufferedReader reader = new BufferedReader(new FileReader(BD_USUARIOS))) {
       reader.readLine();
       String linha;
@@ -217,22 +216,14 @@ public class UserRepository implements UserRepositoryView {
           String cpf = dados[0];
           String nome = dados[1];
           String telefone = dados[2];
-          String administrador = dados[3];
-
-          print(" CPF: "
-              .concat(cpf)
-              .concat(" \n Nome: ")
-              .concat(nome)
-              .concat(" \n Telefone: ")
-              .concat(telefone)
-              .concat(" \n Administrador: ")
-              .concat(administrador + "\n")
-              .concat("=".repeat(70)).concat(" \n "));
+          ClienteDto cliente = new ClienteDto(cpf, nome, telefone);
+          clientes.add(cliente);
         }
       }
     } catch (IOException e) {
       throw new BusinessException(ERROR_RETRIEVE_USER);
     }
+    return clientes;
   }
 
   @Override

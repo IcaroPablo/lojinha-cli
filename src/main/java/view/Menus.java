@@ -5,6 +5,8 @@ import src.main.java.entities.Gerente;
 import src.main.java.infrastructure.exception.BusinessException;
 import src.main.java.infrastructure.utils.Valid;
 import src.main.java.rest.dtos.Carrinho;
+import src.main.java.rest.dtos.ClienteDto;
+import src.main.java.rest.dtos.ProdutoDto;
 import src.main.java.service.ComprasService;
 import src.main.java.service.ProdutoService;
 import src.main.java.service.UsuarioService;
@@ -27,6 +29,7 @@ import static src.main.java.constants.Constantes.DINHEIRO;
 import static src.main.java.constants.Constantes.GERENTE;
 import static src.main.java.constants.Constantes.LOGIN_GERENTES;
 import static src.main.java.constants.Constantes.LOGIN_USUARIOS;
+import static src.main.java.constants.Constantes.NAO_EXISTE_USUARIO;
 import static src.main.java.constants.Constantes.SAINDO;
 import static src.main.java.constants.Constantes.SUBSTITUIR;
 import static src.main.java.constants.Constantes.SUBTRAIR;
@@ -110,54 +113,47 @@ public class Menus {
     int tipoCadastro = scanner.nextInt();
     scanner.nextLine();
 
-    if (tipoCadastro == 1) {
-      print("Digite o CPF: ");
-      String cpf = scanner.next();
-      if (usuarioService.usuarioExiste(cpf, BD_USUARIOS)) {
-        print("Já existe um usuário com este CPF. \nRedirecionando ao menu principal.");
-        menuInicial();
-        return;
-      }
-      scanner.nextLine();
-      print("Digite o nome: ");
-      String nome = scanner.nextLine();
-      if(nome.isBlank()) throw new BusinessException("O nome não pode ser vazio");
-      print("Digite o telefone: ");
-      String telefone = scanner.next();
-      if(!valid.isValidTelefone(telefone)) throw new BusinessException("O número do celular é inválido.");
-      print("Digite a senha de acesso: ");
-      String senha = scanner.next();
-      Cliente cliente = new Cliente(cpf, nome, telefone);
-      usuarioService.salvarUsuario(cpf, nome, telefone, CLIENTE, BD_USUARIOS);
-      usuarioService.salvarDadosAcessoUsuario(cliente.getCpf(), senha, CLIENTE, LOGIN_USUARIOS);
-      print("Cadastro realizado com sucesso! \n");
-
-    } else if (tipoCadastro == 2) {
-      print("Digite o CPF: ");
-      String cpf = scanner.next();
-      scanner.nextLine();
-      if (usuarioService.usuarioExiste(cpf, BD_GERENTES)) {
-        print("Já existe um administrador com este CPF. \n Redirecionando ao menu principal \n");
-        menuInicial();
-        return;
-      }
-      scanner.nextLine();
-      print("Digite o nome: ");
-      String nome = scanner.nextLine();
-      if(nome.isBlank()) throw new BusinessException("O nome não pode ser vazio");
-      print("Digite o telefone: ");
-      String telefone = scanner.next();
-      if(!valid.isValidTelefone(telefone)) throw new BusinessException("O número do celular é inválido.");
-      print("Digite a senha de acesso: ");
-      String senha = scanner.next();
-      Gerente gerente = new Gerente(cpf, nome, telefone);
-      usuarioService.salvarUsuario(cpf, nome, telefone, GERENTE, BD_GERENTES);
-      usuarioService.salvarDadosAcessoUsuario(gerente.getCpf(), senha, GERENTE, LOGIN_GERENTES);
-      println("Cadastro realizado com sucesso!");
-    }
+    cadastrarUsuario(tipoCadastro);
 
     print("Redirecionando para o Menu Inicial \n Faça login, por favor.\n");
     menuInicial();
+  }
+
+  private void cadastrarUsuario(int tipoCadastro) throws FileNotFoundException {
+    String tipoUsuario = (tipoCadastro == 1) ? CLIENTE : GERENTE;
+
+    print("Digite o CPF com 11 dígitos (APENAS NÚMEROS): ");
+    String cpf = scanner.next();
+    scanner.nextLine();
+    if (usuarioService.usuarioExiste(cpf, tipoUsuario.equals(CLIENTE) ? BD_USUARIOS : BD_GERENTES)) {
+      print("Já existe um usuário com este CPF. \nRedirecionando ao menu principal.\n");
+      menuInicial();
+      return;
+    }
+
+    print("Digite o nome: ");
+    String nome = scanner.nextLine();
+    if (nome.isBlank()) throw new BusinessException("O nome não pode ser vazio");
+
+    print("Digite o telefone no formato (xx)9xxxx-xxxx (APENAS NÚMEROS): ");
+    String telefone = scanner.next();
+    if (!valid.isValidTelefone(telefone)) throw new BusinessException("O número do celular é inválido.");
+
+    print("Digite a senha de acesso: ");
+    String senha = scanner.next();
+    if (senha.isBlank()) throw new BusinessException("A senha não pode ser vazia.");
+
+    if (tipoCadastro == 1) {
+      Cliente cliente = new Cliente(cpf, nome, telefone);
+      usuarioService.salvarUsuario(cpf, nome, telefone, CLIENTE, BD_USUARIOS);
+      usuarioService.salvarDadosAcessoUsuario(cliente.getCpf(), senha, CLIENTE, LOGIN_USUARIOS);
+    } else if (tipoCadastro == 2) {
+      Gerente gerente = new Gerente(cpf, nome, telefone);
+      usuarioService.salvarUsuario(cpf, nome, telefone, GERENTE, BD_GERENTES);
+      usuarioService.salvarDadosAcessoUsuario(gerente.getCpf(), senha, GERENTE, LOGIN_GERENTES);
+    }
+
+    print("Cadastro realizado com sucesso! \n");
   }
 
   public void loginAdministrador() throws BusinessException, FileNotFoundException {
@@ -186,19 +182,15 @@ public class Menus {
             "2. Visualizar Cadastro \n " +
             "3. Alterar Cadastro \n " +
             "4. Remover Cadastro \n " +
-            "5. Ver carrinho \n " +
-            "6. Limpar carrinho \n " +
-            "7. Sair \n " +
+            "5. Sair \n " +
             "DIGITE SUA OPÇÃO: ");
     int option = scanner.nextInt();
-    while (option != 7) {
+    while (option != 5) {
       switch (option) {
         case 1 -> novaCompra();
         case 2 -> visualizarCadastro();
         case 3 -> alterarCadastro();
         case 4 -> removerCadastro();
-//        case 5 -> verCarrinho();
-//        case 6 -> limparCarrinho();
         default -> print("Escolha uma opção válida");
       }
     }
@@ -248,17 +240,20 @@ public class Menus {
   }
 
   private void novaCompra() throws FileNotFoundException {
-    print("Opção 3 selecionada: Nova compra \n " +
+    print("Opção 1 selecionada: Nova compra \n " +
         "Digite o CPF novamente: ");
     String cpf = scanner.next();
-    scanner.nextLine();
+//    scanner.nextLine();
+//    print("=".repeat(70).concat("\n"));
+//    recuperarProdutos();
     if(comprasService.carrinhoSalvo(cpf)) {
       List<Carrinho> carrinho = comprasService.verCarrinho(cpf);
       comprasService.imprimirCarrinho(carrinho);
       salvarOuFinalizarCompra(cpf, carrinho);
     } else {
+      print("Veja os itens que temos disponíveis: \n");
       print("=".repeat(70) + "\n");
-      produtoService.visualizarProdutos();
+      recuperarProdutos();
       List<Carrinho> carrinho = new ArrayList<>();
       do {
         print("Digite o código do produto ou 0 para encerrar a compra: ");
@@ -291,6 +286,7 @@ public class Menus {
     assert comprasService != null;
     if (resposta.equalsIgnoreCase("S")) {
       comprasService.salvarCarrinho(cpf, carrinho);
+      retornarAoMenu(GERENTE);
     } else if (resposta.equalsIgnoreCase("F")) {
       finalizarCompra(cpf, carrinho);
     } else {
@@ -300,7 +296,7 @@ public class Menus {
 
   private void finalizarCompra(String cpf, List<Carrinho> carrinho) throws FileNotFoundException {
     print("Antes de finalizar, vejamos os itens e se é preciso alterar algum.\n");
-    comprasService.imprimirCarrinho(carrinho);
+//    comprasService.imprimirCarrinho(carrinho);
     print("Deseja alterar ou remover algum item do carrinho? S/N: ");
     String alterar = scanner.next();
     do {
@@ -309,11 +305,16 @@ public class Menus {
         String codigo = scanner.next();
         print("Digite a quantidade: (Caso queira remover algum item, digite a quantidade 0)");
         int quantidade = scanner.nextInt();
+        assert comprasService != null;
         comprasService.alterarItemCarrinho(carrinho, codigo, quantidade);
+        if (carrinho.isEmpty()) {
+          retornarAoMenu(CLIENTE);
+          break;
+        }
         comprasService.imprimirCarrinho(carrinho);
       }
     } while (!"n".equalsIgnoreCase(alterar));
-    print("Finalizemos sua compra.\nPara pagamentos à vista temos desconto de 10%\nNo cartão não há desconto.");
+    print("Finalizemos sua compra.\nPara pagamentos à vista temos desconto de 10%\nNo cartão não há desconto.\n");
     print("Qual a forma de pagamento? Dinheiro (D) ou Cartão de Crédito (C)? ");
     String resposta = scanner.next();
     resposta.toLowerCase();
@@ -331,7 +332,8 @@ public class Menus {
   }
 
   public void menuGerente() throws BusinessException, FileNotFoundException {
-    print("Selecione uma opção: \n " +
+    print("=".repeat(50).concat("\n") +
+        "Selecione uma opção: \n " +
         " 1. Cadastrar Cliente \n " +
         " 2. Ver cadastros de clientes \n " +
         " 3. Alterar cadastro de cliente \n " +
@@ -366,18 +368,39 @@ public class Menus {
   }
 
   public void visualizarCadastros() throws BusinessException, FileNotFoundException {
-    print("Opção 2 selecionada: Ver cadastros de clientes " + "\n " + "=".repeat(70));
+    print("Opção 2 selecionada: Ver cadastros de clientes " + "\n" + "=".repeat(70) + "\n");
     assert usuarioService != null;
-    usuarioService.recuperarCadastros();
+    recuperarClientes();
     retornarAoMenu(GERENTE);
   }
 
+  private void recuperarClientes() {
+    List<ClienteDto> clientes = usuarioService.recuperarCadastros();
+    printf("%-15s | %-20s | %-15s |%n",
+        "CPF", "NOME", "TELEFONE");
+    for (ClienteDto cliente : clientes) {
+      printf("%-15s | %-20s | %-15s |%n",
+          cliente.getCpf(), cliente.getNome(), cliente.getTelefone());
+      println("=".repeat(70));
+    }
+  }
+  private void recuperarProdutos() {
+    List<ProdutoDto> produtos = produtoService.visualizarProdutos();
+    printf("%-10s | %-20s | %-18s  | %-12s |%n",
+        "CÓDIGO", "DESCRIÇÃO", "VALOR", "QUANTIDADE");
+    for (ProdutoDto produto : produtos) {
+      printf("%-10s | %-20s | R$ %-15s  | %-12s |%n",
+          produto.getCodigo(), produto.getDescricao(), produto.getValor(), produto.getQuantidade());
+      println("-".repeat(70));
+    }
+  }
+
   public void alterarCadastroClientes() throws BusinessException, FileNotFoundException {
-    print("Opção 3 selecionada: Alterar cadastro de cliente \n " +
-        "Listando primeiro os cadastros dos clientes para escolha. \n " +
-        "=".repeat(70));
+    print("Opção 3 selecionada: Alterar cadastro de cliente\n" +
+        "Listando primeiro os cadastros dos clientes para escolha.\n" +
+        "=".repeat(70) + "\n");
     assert usuarioService != null;
-    usuarioService.recuperarCadastros();
+    recuperarClientes();
     print("Digite o CPF do CLIENTE que deseja alterar: ");
     String cpf = scanner.next();
     scanner.nextLine();
@@ -390,15 +413,20 @@ public class Menus {
   }
 
   public void excluirCadastroClientes() throws BusinessException, FileNotFoundException {
-    print("Opção 4 selecionada: Excluir Cadastro de Cliente \n " +
-        "=".repeat(70));
-    assert usuarioService != null;
-    usuarioService.recuperarCadastros();
+    print("Opção 4 selecionada: Excluir Cadastro de Cliente \n" +
+        "=".repeat(70) + "\n");
+    recuperarClientes();
     print("Digite o CPF do cliente que deseja excluir: ");
     String cpf = scanner.next();
     scanner.nextLine();
+    if (!usuarioService.usuarioExiste(cpf, BD_USUARIOS)) {
+      print(NAO_EXISTE_USUARIO);
+      print("Voltando ao menu.\n");
+      menuGerente();
+      return;
+    }
     usuarioService.excluirCadastro(cpf);
-    print("Voltando ao menu. \n ");
+    print("Voltando ao menu.\n");
     menuGerente();
   }
 
@@ -425,14 +453,14 @@ public class Menus {
     print("Opção 6 selecionada: visualizar cadastro de produto \n" +
         "=".repeat(70) + "\n");
     assert produtoService != null;
-    produtoService.visualizarProdutos();
+    recuperarProdutos();
     retornarAoMenu(GERENTE);
   }
   public void alterarCadastroProduto() throws BusinessException, FileNotFoundException {
     print("Opção 7 selecionada: Alterar cadastro de produto \n " +
         "=".repeat(70) + "\n");
     assert produtoService != null;
-    produtoService.visualizarProdutos();
+    recuperarProdutos();
     print("Digite o código do produto: ");
     String codigo = scanner.next();
     print("Digite a nova descrição: ");
@@ -455,7 +483,7 @@ public class Menus {
     print("Opção 8 selecionada: Alterar preço de produto \n" +
         "=".repeat(70) + "\n");
     assert produtoService != null;
-    produtoService.visualizarProdutos();
+    recuperarProdutos();
     print("Digite o código do produto: ");
     String codigo = scanner.next();
     print("Digite o novo valor: ");
@@ -467,7 +495,7 @@ public class Menus {
     print("Opção 9 selecionada: Inserir produto no estoque \n" +
         "=".repeat(70) + "\n");
     assert produtoService != null;
-    produtoService.visualizarProdutos();
+    recuperarProdutos();
     print("Digite o código do produto: ");
     String codigo = scanner.next();
     print("Digite a quantidade do produto no estoque: ");
@@ -480,7 +508,7 @@ public class Menus {
     print("Opção 10 selecionada: Excluir cadastro de produto \n" +
         "=".repeat(70) + "\n");
     assert produtoService != null;
-    produtoService.visualizarProdutos();
+    recuperarProdutos();
     print("Digite o código do produto: ");
     String codigo = scanner.next();
     if (produtoService.produtoExiste(codigo, BD_PRODUTOS))
@@ -506,7 +534,7 @@ public class Menus {
         scanner.close();
         break;
       default:
-        System.out.println("Saindo do sistema. Até breve!");
+        print("Saindo do sistema. Até breve!\n");
     }
   }
 }

@@ -4,6 +4,7 @@ import src.main.java.infrastructure.exception.BusinessException;
 import src.main.java.rest.dtos.ProdutoDto;
 
 import java.io.FileNotFoundException;
+import java.util.List;
 
 public interface ProdutoRepositoryVIew {
   void cadastrarProduto(String codigo, String descricaoProduto, Double valor, int quantidade) throws BusinessException;
@@ -14,7 +15,7 @@ public interface ProdutoRepositoryVIew {
 
   void changeQuantity(String codigo, Integer quantidade, String method) throws BusinessException;
 
-  void visualizarCadastroProdutos() throws BusinessException;
+  List<ProdutoDto> visualizarCadastroProdutos() throws BusinessException;
 
   void alterarCadastroDeProduto(String codigo, String novaDescricao, Double novoValor, Integer novaQuantidade) throws BusinessException;
 

@@ -11,7 +11,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
 
 import static src.main.java.constants.Constantes.ADICIONAR;
 import static src.main.java.constants.Constantes.BD_PRODUTOS;
@@ -73,7 +74,8 @@ public class ProdutoRepository implements ProdutoRepositoryVIew {
   }
 
   @Override
-  public void visualizarCadastroProdutos() throws BusinessException {
+  public List<ProdutoDto> visualizarCadastroProdutos() throws BusinessException {
+    List<ProdutoDto> produtos = new ArrayList<>();
     try (BufferedReader reader = new BufferedReader(new FileReader(BD_PRODUTOS))) {
       reader.readLine();
       String linha;
@@ -82,15 +84,16 @@ public class ProdutoRepository implements ProdutoRepositoryVIew {
         if (dados.length >= 3) {
           String codigo = dados[0];
           String descricaoProduto = dados[1];
-          String valor = dados[2];
-          String quantidade = dados[3];
-          print("CÓDIGO: " + codigo + "\nDESCRIÇÃO: " + descricaoProduto + "\nVALOR: " + valor + "\nQUANTIDADE: " + quantidade + "\n");
-          print("=".repeat(70) + "\n");
+          Double valor = Double.valueOf(dados[2]);
+          int quantidade = Integer.parseInt(dados[3]);
+          ProdutoDto produto = new ProdutoDto(codigo, descricaoProduto, valor, quantidade);
+          produtos.add(produto);
         }
       }
     } catch (IOException e) {
       throw new BusinessException(ERROR_RETRIEVE_PRODUCTS);
     }
+    return produtos;
   }
 
   @Override

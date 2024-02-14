@@ -1,0 +1,16 @@
+Nota fiscal: nota_fiscal_CPF_11111111111_20240213_203651.txt
+Data: 2024-02-13
+CPF do cliente: 11111111111
+NOME: akira
+TELEFONE: 11911111111
+Forma de pagamento: dinheiro
+Itens:
+======================================================================
+CÓDIGO     | DESCRIÇÃO            | R$ UNIT  | QUANTIDADE | R$ TOTAL   |
+======================================================================
+
+1234       | Coffee               | 6,00     | 2          | 12,00      |
+55555      | Castanha do Pará     | 50,00    | 20         | 1000,00    |
+======================================================================
+VALOR DO DESCONTO:        | 101,20    
+TOTAL COM DESCONTO:       | 910,80    

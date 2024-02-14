@@ -36,22 +36,12 @@ s
 Csrc/main/java/infrastructure/exception/LojinhaGenericException.java,f/f/ffc5cbe85a76a736b463889e4e0be7ca42dc0505
 m
 =src/main/java/infrastructure/exception/BusinessException.java,3/c/3c2b656cc8215037ceb47341397fdf76c5dba538
-r
-Bsrc/main/java/infrastructure/exception/response/ResponseError.java,2/a/2ab9b20b0f2037ccfcd91c78d76ac7e2526ba529
-T
-$src/main/java/rest/dtos/UserDto.java,d/c/dcd6c6c131067510d8f12c94250d140d86662565
 S
 #src/main/java/entities/Cliente.java,3/c/3cbc542abad3dc7f88fb89c23b141f3238062786
-S
-#src/main/java/entities/Produto.java,d/7/d735f3ea1f7c2bccaed93b0c80d60da6344743a4
-a
-1src/main/java/infrastructure/utils/Validator.java,9/0/90ae98852324e09c2e0b0a058e42122d0c9f8ef6
 l
 <src/main/java/repositories/repository/ComprasRepository.java,5/1/5121e951282685328562ec6d23af3aeb66b3d8a6
 e
 5src/main/java/repositories/ComprasRepositoryView.java,c/c/cc0209e911611e243bd4e50966f2ef662f481529
-Z
-*src/main/java/service/CarrinhoService.java,a/0/a070d3471b53d89ac1b6a0e5f3b2738c0f6569fc
 Y
 )src/main/java/service/ComprasService.java,0/9/09d695f6b328d2ffe05f62f7bc4007ec502c64b0
 a
@@ -62,23 +52,9 @@ W
 'src/main/java/rest/dtos/ProdutoDto.java,9/8/98193496caeda613ac66d20fabdc34a73e126626
 ]
 -src/main/java/infrastructure/utils/Valid.java,0/c/0c3e5d52a17dc56b2ed26730b674c1951b43d33d
-_
-/src/main/java/repositories/repository/File.java,1/9/193ad4caead27715d8401dec8a551b7135696044
-O
-nota_fiscal_20240213_173605.txt,5/8/58a95fede9de039f6674ed9bbfad7365db1a887e
-O
-nota_fiscal_20240213_181443.txt,6/b/6b553ee5da29374338717861a6e4a6914c95a50c
-O
-nota_fiscal_20240213_183109.txt,c/6/c61ace71faa68be6e225d6f13da27b790b59e274
-W
-'nota_fiscal_CPF_123_20240213_184738.txt,3/6/366d006b4bad43f4caf32979570bf1b25291c32b
-W
-'nota_fiscal_CPF_123_20240213_185220.txt,b/4/b4ca058ef8f0c7b7b579dd3317c3f6bc2b558e0a
-W
-'nota_fiscal_CPF_123_20240213_185433.txt,f/d/fde8bbdb94661675ad25d4c12873a7fd2827149b
-W
-'nota_fiscal_CPF_123_20240213_192300.txt,0/3/032cf5bf4c5ebd188630354d9b54080ed69659fd
 W
 'src/main/java/rest/dtos/ClienteDto.java,1/c/1c25a0d139f933c28f5a862ee5d00efb47746a46
-W
-'nota_fiscal_CPF_123_20240213_194537.txt,8/9/8979b0b03b9f208c6c7f2b20f0e9065742897d6f
+_
+/nota_fiscal_CPF_11111111111_20240213_203651.txt,1/a/1af0bdbe70cfd3a1bdb5e55c6a2db4f3300103da
+_
+/nota_fiscal_CPF_01489404473_20240213_232131.txt,3/7/379a81fe55a1f4e977fbd711c0cb52085e158a80

@@ -3,6 +3,8 @@ package src.main.java.repositories;
 import src.main.java.infrastructure.exception.BusinessException;
 import src.main.java.rest.dtos.ClienteDto;
 
+import java.util.List;
+
 public interface UserRepositoryView {
   boolean login(String cpf, String senha, String fileName) throws BusinessException;
 
@@ -20,7 +22,7 @@ public interface UserRepositoryView {
 
   void removerCadastro(String cpf) throws BusinessException;
 
-  void visualizarCadastros() throws BusinessException;
+  List<ClienteDto> visualizarCadastros() throws BusinessException;
 
   ClienteDto getCliente(String cpf);
 }

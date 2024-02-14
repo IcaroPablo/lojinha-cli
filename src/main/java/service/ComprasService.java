@@ -53,6 +53,7 @@ public class ComprasService {
   public void limparCarrinho(String cpf) {
     repository.limparCarrinho(cpf);
   }
+
   public void emitirNotaFiscal(List<Carrinho> itens, String cpf,  String formaPagamento) {
     repository.emitirNotaFiscal(itens, cpf, formaPagamento);
   }

@@ -7,6 +7,7 @@ import src.main.java.repositories.repository.ProdutoRepository;
 import src.main.java.rest.dtos.ProdutoDto;
 
 import java.io.FileNotFoundException;
+import java.util.List;
 
 import static src.main.java.constants.Constantes.BD_PRODUTOS;
 import static src.main.java.constants.Constantes.BD_PRODUTOS_CABECALHO;
@@ -36,8 +37,8 @@ public class ProdutoService {
     repository.changeQuantity(codigo, quantidade, metodo);
   }
 
-  public void visualizarProdutos() throws BusinessException {
-    repository.visualizarCadastroProdutos();
+  public List<ProdutoDto> visualizarProdutos() throws BusinessException {
+    return repository.visualizarCadastroProdutos();
   }
 
   public void alterarPrecoProduto(String codigo, Double novoValor) throws BusinessException {

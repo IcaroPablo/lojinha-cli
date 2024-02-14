@@ -73,10 +73,13 @@ public class ComprasRepository implements ComprasRepositoryView {
     if(itensCarrinho.isEmpty()) {
       print("O carrinho está vazio \n");
     } else {
-      print("Itens do carrinho: \n CÓDIGO  |   DESCRIÇÃO   |   VALOR   |  QTD  |   SUBTOTAL   | \n");
+      printf("Itens do carrinho: \n");
+      printf("%-10s | %-20s | %-10s | %-5s | %-12s |%n",
+          "CÓDIGO", "DESCRIÇÃO", "VALOR", "QTD", "SUBTOTAL");
       for (Carrinho item : itensCarrinho) {
-//        print("CÓDIGO: " + item.getCodigo() + "\n DESCRIÇÃO: " + item.getDescricao() + "\n VALOR: " + item.getValor() + "\n QUANTIDADE: " + item.getQuantidade() + "\n");
-        printf("  %s   |   %s   |  R$ %.2f  |  %d  |   R$ %.2f   |\n", item.getCodigo(), item.getDescricao(), item.getValor(), item.getQuantidade(), (item.getValor()* item.getQuantidade()));
+        double subtotal = item.getValor() * item.getQuantidade();
+        printf("%-10s | %-20s | R$ %-7.2f | %-5d | R$ %-9.2f |%n",
+            item.getCodigo(), item.getDescricao(), item.getValor(), item.getQuantidade(), subtotal);
       }
       print("=".repeat(70) + "\n");
     }
@@ -84,10 +87,19 @@ public class ComprasRepository implements ComprasRepositoryView {
 
   @Override
   public void alterarItemCarrinho(List<Carrinho> carrinho, String codigo, Integer quantidade) {
-    for (Carrinho item : carrinho) {
+    if(carrinho.isEmpty()) {
+      print("O carrinho está vazio");
+      return;
+    }
+    for (int i = 0; i < carrinho.size(); i++) {
+      Carrinho item = carrinho.get(i);
       if (item.getCodigo().equals(codigo)) {
-        if(quantidade > 0) item.setQuantidade(quantidade);
-        else carrinho.remove(item);
+        if (quantidade == 0) {
+          carrinho.remove(i);
+          i--;
+        } else {
+          item.setQuantidade(quantidade);
+        }
       }
     }
   }
@@ -141,12 +153,13 @@ public class ComprasRepository implements ComprasRepositoryView {
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
     ClienteDto cliente = UsuarioService.recuperarCliente(cpf);
     String nomeArquivo = "nota_fiscal_CPF_" + cpf + "_" + dateFormat.format(new Date()) + ".txt";
+    String nf = "NF_CPF" + cpf + "_" + dateFormat.format(new Date());
     double total = calcularTotal(carrinho, formaPagamento);
     double desconto = total * 0.1;
     double totalComDesconto = total - desconto;
 
     print("=".repeat(70) +
-        "NOTA FISCAL: " + nomeArquivo + "\n" +
+        "\nNOTA FISCAL: " + nf + "\n" +
         "DATA: " + LocalDate.now() + "\n" +
         "CPF: " + cpf + "\n" +
         "NOME: " + cliente.getNome() + "\n" +
@@ -172,7 +185,7 @@ public class ComprasRepository implements ComprasRepositoryView {
     print("=".repeat(70) + "\n");
 
     try (PrintWriter writer = new PrintWriter(new FileWriter(nomeArquivo))) {
-      writer.printf("%-10" + "s%n", "Nota fiscal: " + nomeArquivo);
+      writer.printf("%-10" + "s%n", "Nota fiscal: " + nf);
       writer.println("Data: " + LocalDate.now());
       writer.println("CPF do cliente: " + cpf);
       writer.println("NOME: " + cliente.getNome());
