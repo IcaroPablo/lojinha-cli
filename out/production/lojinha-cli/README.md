@@ -1,7 +1,5 @@
 # src-cli
 
-Um mini projeto para praticar conceitos básicos de programação orientada a objetos
-
 ## Requisitos
 - Gerenciamento de usuários
     - Deve haver um sistema de autenticação para os usuários
@@ -22,16 +20,7 @@ Um mini projeto para praticar conceitos básicos de programação orientada a ob
     - Exibir uma nota fiscal (e gerar um arquivo) com os itens escolhidos, as quantidades de cada item e o valor a ser pago
     - Itens comprados devem ser removidos do estoque
 
-## V1.0.0
-
-- A aplicação deve ter uma interface em linha de comando apenas
-- Não devem ser usados frameworks ou bibliotecas para a implementação de quaisquer funcionalidades
-
-## Material de referência
-
-- [Orientação a objetos com Java](https://www.alura.com.br/apostila-java-orientacao-objetos)
-- [SOLID](https://www.alura.com.br/artigos/solid)
-- [MVC](https://www.alura.com.br/apostila-java-web/mvc-model-view-controller)
-
-## Bônus
+## TO DO
 - Modelagem com UML e diagrama de casos de uso
+
+V1.0.0
